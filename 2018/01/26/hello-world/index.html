@@ -82,7 +82,7 @@
 <meta name="description" content="Hexo+Github假如你有一个Github帐号，我们就可以开始了，如果你说没有，就去注册好了。想想咱们注册微信时也不是很难的事吧，准备好一个邮箱就行了，真的别的都不需要。 快速开始在 Github 上创建一个仓库（Repo）登陆Github网址，用你的账号登陆进去，点右上角的+，弹出菜单选择New repository,在弹出的Repository name下面的文本框内按照yourname.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用框架Hexo在Github上搭建个人博客">
-<meta property="og:url" content="https://github.com/konglongyinger/zhaodongchun.github.io/2018/01/26/hello-world/index.html">
+<meta property="og:url" content="https://zhaodongchun.com/2018/01/26/hello-world/index.html">
 <meta property="og:site_name" content="赵东春的博客">
 <meta property="og:description" content="Hexo+Github假如你有一个Github帐号，我们就可以开始了，如果你说没有，就去注册好了。想想咱们注册微信时也不是很难的事吧，准备好一个邮箱就行了，真的别的都不需要。 快速开始在 Github 上创建一个仓库（Repo）登陆Github网址，用你的账号登陆进去，点右上角的+，弹出菜单选择New repository,在弹出的Repository name下面的文本框内按照yourname.">
 <meta property="og:locale" content="zh-Hans">
@@ -119,7 +119,7 @@
 
 
 
-  <link rel="canonical" href="https://github.com/konglongyinger/zhaodongchun.github.io/2018/01/26/hello-world/"/>
+  <link rel="canonical" href="https://zhaodongchun.com/2018/01/26/hello-world/"/>
 
 
 
@@ -242,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/konglongyinger/zhaodongchun.github.io/zhaodongchun.github.io/2018/01/26/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://zhaodongchun.com/zhaodongchun.github.io/2018/01/26/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leo Zhao">
@@ -309,7 +309,7 @@
       
 
       
-        <p><a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>+<a href="https://github.com">Github</a><br>假如你有一个Github帐号，我们就可以开始了，如果你说没有，就去注册好了。想想咱们注册微信时也不是很难的事吧，准备好一个邮箱就行了，真的别的都不需要。</p>
+        <p><a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>+<a href="https://github.com" target="_blank" rel="noopener">Github</a><br>假如你有一个Github帐号，我们就可以开始了，如果你说没有，就去注册好了。想想咱们注册微信时也不是很难的事吧，准备好一个邮箱就行了，真的别的都不需要。</p>
 <h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="在-Github-上创建一个仓库（Repo）"><a href="#在-Github-上创建一个仓库（Repo）" class="headerlink" title="在 Github 上创建一个仓库（Repo）"></a>在 Github 上创建一个仓库（Repo）</h3><p>登陆Github网址，用你的账号登陆进去，点右上角的<code>+</code>，弹出菜单选择<code>New repository</code>,在弹出的Repository name下面的文本框内按照<code>yourname.github.io</code> 这种格式输入，然后选中 <label class="input-label"><input class="input-radio" type="radio" name="radio"> <code>Public</code></label>, 最后点击绿色的<code>Create repository</code>创建成功。</p>
 <p>重新登陆，点右上角你的头像，在弹出的菜单中选中<code>Your profile</code>,会发现“youname.github.io”分支创建成功，点击进去，在右边找到<code>Settings</code>,在左侧栏最下面找到<code>Deploy keys</code>,点击<code>Add deploy key</code>,输入你的”key”,密匙的求解过程请参见<a href="http://iissnan.com/progit/html/zh/ch4_3.html" target="_blank" rel="noopener">Git密匙</a>,至此你的远程仓库部分已经配置完成。</p>
 <p>如果你对git很感兴趣，或者，对git的命令行方式很头疼的，可以阅读此物: <a href="http://iissnan.com/progit/" target="_blank" rel="noopener">Git入门教材</a></p>
@@ -340,7 +340,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server --debug</span><br></pre></td></tr></table></figure>
 <h3 id="部署到-Github-上"><a href="#部署到-Github-上" class="headerlink" title="部署到 Github 上"></a>部署到 Github 上</h3><p>把本地文件上传到github远程前，我们需要告诉atom上传到的路径，先登陆github，进入<code>zhaodongchun.github.io</code>这个分支，点击绿色的<code>clone or download</code>按钮拷贝出来路径，再进入atom，左侧根目录会有一个<code>_config.yml</code>文件，下面我们设置下这个配置文件，先把拷贝出来的路径粘贴到url后面，注意截止到<code>/</code>,将root后面改成你的github上的仓库一样，repo后面的直接把你拷贝出来的粘贴就行了，注意<code>:</code>后面的空格不要少，这样就atom就知道上传给谁了。</p>
 <blockquote>
-<p>url: <a href="https://github.com/konglongyinger/zhaodongchun.github.io/">https://github.com/konglongyinger/zhaodongchun.github.io/</a><br>   root: /zhaodongchun.github.io<br> deploy:<br>   type: git<br>   repo: <a href="https://github.com/konglongyinger/zhaodongchun.github.io.git">https://github.com/konglongyinger/zhaodongchun.github.io.git</a></p>
+<p>url: <a href="https://github.com/konglongyinger/zhaodongchun.github.io/" target="_blank" rel="noopener">https://github.com/konglongyinger/zhaodongchun.github.io/</a><br>   root: /zhaodongchun.github.io<br> deploy:<br>   type: git<br>   repo: <a href="https://github.com/konglongyinger/zhaodongchun.github.io.git" target="_blank" rel="noopener">https://github.com/konglongyinger/zhaodongchun.github.io.git</a></p>
 </blockquote>
 <p>修改完成后保存，在atom终端输入下面命令，在github上查看上传结果，如果发现文件已经显示，就可以进入github你的分支下的settings，往下翻找到<code>GitHub Pages</code>这里，将<code>source</code>下的<code>None</code>改为<code>master branch</code>,点击保存后，会出现绿色的一条提示<code>Your site is published at https://konglongyinger.github.io/zhaodongchun.github.io/</code>，后面链接就是你的网址了，现在你可以点击登陆进去看看效果。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
