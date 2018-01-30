@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Hexo+Github [Mac环境]假如你有一个Github帐号，我们就可以开始了，如果你说没有，就去注册好了。想想咱们注册微信时也不是很难的事吧，准备好一个邮箱就行了，真的别的都不需要。 快速开始在 Github 上创建一个仓库（Repo）登陆Github网址，用你的账号登陆进去，点右上角的+，弹出菜单选择New repository,在弹出的Repository name下面的文本框内按照y">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用框架Hexo在Github上搭建个人博客">
+<meta property="og:url" content="https://zhaodongchun.com/2018/01/30/go1/index.html">
+<meta property="og:site_name" content="赵东春的博客">
+<meta property="og:description" content="Hexo+Github [Mac环境]假如你有一个Github帐号，我们就可以开始了，如果你说没有，就去注册好了。想想咱们注册微信时也不是很难的事吧，准备好一个邮箱就行了，真的别的都不需要。 快速开始在 Github 上创建一个仓库（Repo）登陆Github网址，用你的账号登陆进去，点右上角的+，弹出菜单选择New repository,在弹出的Repository name下面的文本框内按照y">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-30T07:46:27.926Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用框架Hexo在Github上搭建个人博客">
+<meta name="twitter:description" content="Hexo+Github [Mac环境]假如你有一个Github帐号，我们就可以开始了，如果你说没有，就去注册好了。想想咱们注册微信时也不是很难的事吧，准备好一个邮箱就行了，真的别的都不需要。 快速开始在 Github 上创建一个仓库（Repo）登陆Github网址，用你的账号登陆进去，点右上角的+，弹出菜单选择New repository,在弹出的Repository name下面的文本框内按照y">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zhaodongchun.com/2018/01/30/go1/"/>
+
+
+
+
+
+  <title>使用框架Hexo在Github上搭建个人博客 | 赵东春的博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4224474104259248ae107d6d2699cf80";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">赵东春的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhaodongchun.com/2018/01/30/go1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Zhao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://p3d3seyjq.bkt.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="赵东春的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用框架Hexo在Github上搭建个人博客</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-30T15:35:12+08:00">
+                2018-01-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>+<a href="https://github.com" target="_blank" rel="noopener">Github</a> [Mac环境]<br>假如你有一个Github帐号，我们就可以开始了，如果你说没有，就去注册好了。想想咱们注册微信时也不是很难的事吧，准备好一个邮箱就行了，真的别的都不需要。</p>
+<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="在-Github-上创建一个仓库（Repo）"><a href="#在-Github-上创建一个仓库（Repo）" class="headerlink" title="在 Github 上创建一个仓库（Repo）"></a>在 Github 上创建一个仓库（Repo）</h3><p>登陆Github网址，用你的账号登陆进去，点右上角的<code>+</code>，弹出菜单选择<code>New repository</code>,在弹出的<code>Repository name</code>下面的文本框内按照<code>yourname.github.io</code> 这种格式输入，然后选中 <label class="input-label"><input class="input-radio" type="radio" name="radio"> <code>Public</code></label>, 最后点击绿色的<code>Create repository</code>创建成功。</p>
+<p>重新登陆，点右上角你的头像，在弹出的菜单中选中<code>Your profile</code>,会发现“youname.github.io”分支创建成功，点击进去，在右边找到<code>Settings</code>,在左侧栏最下面找到<code>Deploy keys</code>,点击<code>Add deploy key</code>,输入你的”key”,密匙的求解过程请参见<a href="http://iissnan.com/progit/html/zh/ch4_3.html" target="_blank" rel="noopener">Git密匙</a>,至此你的远程仓库部分已经配置完成。</p>
+<p>如果你对git很感兴趣，或者，对git的命令行方式很头疼的，可以阅读此物: <a href="http://iissnan.com/progit/" target="_blank" rel="noopener">Git入门教材</a></p>
+<p> <em>⚠️我的git仓库名字为zhaodongchun.github.io,你的就用你自己的名字好了.</em></p>
+<a id="more"></a>
+<h3 id="确认本地已经安装好-git-和-npm"><a href="#确认本地已经安装好-git-和-npm" class="headerlink" title="确认本地已经安装好 git 和 npm"></a>确认本地已经安装好 git 和 npm</h3><p>在终端输入下面两条命令，确认已经安装好git和npm,如果电脑还没装这两个东西的，请参照官方文档安装：<a href="http://iissnan.com/progit/" target="_blank" rel="noopener">Git入门教材</a>+<a href="https://www.npmjs.com.cn/" target="_blank" rel="noopener">npm中文文档</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br><span class="line">npm --version</span><br></pre></td></tr></table></figure>
+<h3 id="安装-hexo"><a href="#安装-hexo" class="headerlink" title="安装 hexo"></a>安装 hexo</h3><p>先通读官方文档<a href="https://hexo.io/zh-cn/docs/generating.html" target="_blank" rel="noopener">hexo自动部署网站</a>,不需要看内容，快速翻一遍知道有这个工具在这里就可以了，以后需要时再调用它。然后终端输入以下命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g</span><br><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure></p>
+<h3 id="创建本地工作目录"><a href="#创建本地工作目录" class="headerlink" title="创建本地工作目录"></a>创建本地工作目录</h3><p>先登陆到github，点击你的分支<code>yourname.github.io</code>,在右边有个绿色的按钮<code>Clone or download</code>,点开后点击<code>copy to clipboard</code>把自己的git地址拷贝出来，在终端cd到你希望把站点放置的位置，下面我cd到Desktop了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/Desktop</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/zhaodongchun/zhaodongchun.github.io.git</span><br></pre></td></tr></table></figure>
+<h3 id="初始化你的本地站点"><a href="#初始化你的本地站点" class="headerlink" title="初始化你的本地站点"></a>初始化你的本地站点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo init yourname.github.io</span><br><span class="line"><span class="built_in">cd</span> yourname.github.io</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo generate</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>在终端打完以上命令后，如果最后显示<code>Database saved</code>，代表本地站点已经初始化完成，可以终端里按住ctrl的同时点击<code>http://localhost:4000/</code>查看你的站点了，需要注意的是这个效果是hexo默认模版landscape的效果，下面我们学学怎么更换模版为Next模版。</p>
+<h3 id="设置个人模版"><a href="#设置个人模版" class="headerlink" title="设置个人模版"></a>设置个人模版</h3><p>这里涉及两个东西，一个是Hexo,一个是Next,我们先到<a href="https://hexo.io/themes/" target="_blank" rel="noopener">Hexo模版</a>，先看看都有哪些模版可供我们选择，如果你点击模版下面的大标题名字后会进入到github的源文件地址，和创建本地工作目录一样，可以把它的Git地址拷贝出来。先以<a href="http://theme-next.iissnan.com" target="_blank" rel="noopener">next模版</a>为例，先定位到Hexo站点目录下，在终端输入以下命令安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> your-hexo-site</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<p>安装完成后，修改配置文件<code>_config.yml</code>中的 <code>theme</code> 字段为 <code>next</code>后保存，至此我们完成了站点配置。在终端继续输入以下命令完成模版调试，如果再此出现<code>Database saved</code>，代表本地站点已经初始化完成，可以终端里按住ctrl的同时点击<code>http://localhost:4000/</code>查看你的站点了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server --debug</span><br></pre></td></tr></table></figure>
+<h3 id="使用Atom码文章"><a href="#使用Atom码文章" class="headerlink" title="使用Atom码文章"></a>使用Atom码文章</h3><p>先把<a href="https://atom.io" target="_blank" rel="noopener">Atom</a>下载下来，官网直接下载安装或在终端输入下面命令也可以，如果对Atom还不熟悉没关系，先从官方文档开始逐渐建立Atom语法吧，在线阅读:<a href="https://wizardforcel.gitbooks.io/atom-flight-manual-zh-cn/content/" target="_blank" rel="noopener">飞行手册</a></p>
+<p>给 Atom 安装一个命令行面板，Atom 里同时按<code>command+，</code>调出<code>setting</code>面板，定位到<code>install</code>选项，在文本框中搜索<code>platformio-ide-terminal</code>后点击<code>install</code>安装atom包，安装完成后按<code>command+shift+t</code>在下面会出现一个终端，这个包的作用就是解决总是来回切换atom和终端的问题。</p>
+<p>完成上面的操作后，我们对包大概有了个概念，下面继续安装一个<code>markdown</code>包，点击Atom菜单下的Preference的左侧倒数第二项<code>+ install</code>，输入<code>markdown</code>，依次安装几个包</p>
+<blockquote>
+<p>markdown-scroll-sync<br>linter-markdown<br>markdown-writer<br>markdown-toc<br>markdown-pdf<br>markdown-preview</p>
+</blockquote>
+<p>然后就是随便折腾一会，看看这几个都实现什么功能，接下来用markdown书写文章的过程中会经常使用这几个包<br><code>/Desktop/zhaodongchun.github.io/zhaodongchun.github.io</code>,这是我的目前位置，你可以在mac终端输入ls查看你是否在根路径下，然后终端输入<code>atom .</code>在atom中打开所有文件，然后使用快捷键command+shift+t打开atom终端，mac的终端就可以关闭了，在左侧栏定位到<code>source</code>文件夹下的<code>_posts</code>文件夹，展开后有一个<code>hello-world.md</code>文件，这个文件就是网站上看到的源文件。<br>我们用一下刚才掌握的几个快捷键试试</p>
+<blockquote>
+<p>command+w 关闭当前标签<br>command+shift+m 终端<br>ctrl+shift+m 预览<br> “&gt;”  块引用<br> “-”  任务列表<br>“0.” 有序列表</p>
+</blockquote>
+<p>快捷键熟悉差多了，再回去翻翻<a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">Next模版</a>，设置下<code>站点配置文件</code>和<code>主题配置文件</code>，设置语言和你的昵称，基本上博客就可以了，保存后在终端输入下面调试命令,如果再此出现<code>Database saved</code>，代表本地站点已经初始化完成，可以在浏览器输入<code>http://localhost:4000/</code>查看你的站点了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server --debug</span><br></pre></td></tr></table></figure>
+<h3 id="部署到-Github-上"><a href="#部署到-Github-上" class="headerlink" title="部署到 Github 上"></a>部署到 Github 上</h3><p>把本地文件上传到github远程前，我们需要告诉atom上传到的路径，先登陆github，进入<code>zhaodongchun.github.io</code>这个分支，点击绿色的<code>clone or download</code>按钮拷贝出来路径，再进入atom，左侧根目录会有一个<code>_config.yml</code>文件，下面我们设置下这个配置文件，先把拷贝出来的路径粘贴到url后面，注意截止到<code>/</code>,将root后面改成你的github上的仓库一样，repo后面的直接把你拷贝出来的粘贴就行了，注意<code>:</code>后面的空格不要少，这样atom就知道上传给谁了。</p>
+<blockquote>
+<p>url: <a href="https://github.com/konglongyinger/zhaodongchun.github.io/" target="_blank" rel="noopener">https://github.com/konglongyinger/zhaodongchun.github.io/</a><br>   root: /zhaodongchun.github.io<br> deploy:<br>   type: git<br>   repo: <a href="https://github.com/konglongyinger/zhaodongchun.github.io.git" target="_blank" rel="noopener">https://github.com/konglongyinger/zhaodongchun.github.io.git</a></p>
+</blockquote>
+<p>修改完成后保存，在atom终端输入下面命令，在github上查看上传结果，如果发现文件已经显示，就可以进入github你的分支下的settings，往下翻找到<code>GitHub Pages</code>这里，将<code>source</code>下的<code>None</code>改为<code>master branch</code>,点击保存后，会出现绿色的一条提示<code>Your site is published at https://konglongyinger.github.io/zhaodongchun.github.io/</code>，后面链接就是你的网址了，现在你可以点击看看效果。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<h3 id="调试网站"><a href="#调试网站" class="headerlink" title="调试网站"></a>调试网站</h3><p>如果每次在本地修改文章，可以用下面命令调试预览</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s --debug</span><br></pre></td></tr></table></figure>
+<p>如果改动了配置文件，在上传到github前最好使用清理命令，清除public目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
+<p>如果完成阶段性任务了可以用下面命令上传到github</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h3 id="域名绑定"><a href="#域名绑定" class="headerlink" title="域名绑定"></a>域名绑定</h3><p>首先你的有个域名，举例来说我是从<a href="https://console.bce.baidu.com/#/index/overview" target="_blank" rel="noopener">百度</a>买的，有了域名后再分三步走。</p>
+<p><strong>配置CNAME</strong></p>
+<p>在hexo文件夹下的source中新建一个文本文档， 里边输入刚才我们买到的域名的二级域名。举例来说，我申请的是<code>zhaodongchun.com</code>，就填写<code>zhaodongchun.com</code>,然后保存为<code>CNAME</code>.注意大写的CNAME.</p>
+<p><strong>配置解析服务器</strong></p>
+<p>接下来进域名服务商的后台进行域名解析设置,添加<code>CNAME</code>记录类型，解析线路<code>默认</code>就好了，记录值为<code>zhaodongchun.github.io</code>,配置好后我们本地重新上传到github。</p>
+<p><strong>配置站点设置文件重定向</strong></p>
+<p>还记得我们没有绑定域名之前设置的配置文件吗，绑定域名后需要重新设置下<code>url</code>和<code>root</code>,否则css有可能会丢失，将其设置回默认，如下设置：</p>
+<blockquote>
+<p>url: <a href="https://zhaodongchun.com">https://zhaodongchun.com</a><br>root: /</p>
+</blockquote>
+<p>好，到此为止，重新执行下面命令将文件上传到github，浏览器输入你的域名就可以正常登陆了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<h2 id="吟诗一首"><a href="#吟诗一首" class="headerlink" title="吟诗一首"></a>吟诗一首</h2><p>千呼万唤始出来 犹抱琵琶半遮面</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/26/Hexo/" rel="next" title="使用框架Hexo在Github上搭建个人博客">
+                <i class="fa fa-chevron-left"></i> 使用框架Hexo在Github上搭建个人博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://p3d3seyjq.bkt.clouddn.com/avatar.png"
+                alt="Leo Zhao" />
+            
+              <p class="site-author-name" itemprop="name">Leo Zhao</p>
+              <p class="site-description motion-element" itemprop="description">山重水复疑无路,柳岸花明又一春</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#快速开始"><span class="nav-number">1.</span> <span class="nav-text">快速开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在-Github-上创建一个仓库（Repo）"><span class="nav-number">1.1.</span> <span class="nav-text">在 Github 上创建一个仓库（Repo）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#确认本地已经安装好-git-和-npm"><span class="nav-number">1.2.</span> <span class="nav-text">确认本地已经安装好 git 和 npm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-hexo"><span class="nav-number">1.3.</span> <span class="nav-text">安装 hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建本地工作目录"><span class="nav-number">1.4.</span> <span class="nav-text">创建本地工作目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化你的本地站点"><span class="nav-number">1.5.</span> <span class="nav-text">初始化你的本地站点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置个人模版"><span class="nav-number">1.6.</span> <span class="nav-text">设置个人模版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Atom码文章"><span class="nav-number">1.7.</span> <span class="nav-text">使用Atom码文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署到-Github-上"><span class="nav-number">1.8.</span> <span class="nav-text">部署到 Github 上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调试网站"><span class="nav-number">1.9.</span> <span class="nav-text">调试网站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#域名绑定"><span class="nav-number">1.10.</span> <span class="nav-text">域名绑定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#吟诗一首"><span class="nav-number">2.</span> <span class="nav-text">吟诗一首</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Zhao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
