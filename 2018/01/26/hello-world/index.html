@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="赵东春的博客">
 <meta property="og:description" content="Hexo+Github假如你有一个Github帐号，我们就可以开始了，如果你说没有，就去注册好了。想想咱们注册微信时也不是很难的事吧，准备好一个邮箱就行了，真的别的都不需要。 快速开始在 Github 上创建一个仓库（Repo）登陆Github网址，用你的账号登陆进去，点右上角的+，弹出菜单选择New repository,在弹出的Repository name下面的文本框内按照yourname.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-29T16:22:32.979Z">
+<meta property="og:updated_time" content="2018-01-30T05:43:04.136Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用框架Hexo在Github上搭建个人博客">
 <meta name="twitter:description" content="Hexo+Github假如你有一个Github帐号，我们就可以开始了，如果你说没有，就去注册好了。想想咱们注册微信时也不是很难的事吧，准备好一个邮箱就行了，真的别的都不需要。 快速开始在 Github 上创建一个仓库（Repo）登陆Github网址，用你的账号登陆进去，点右上角的+，弹出菜单选择New repository,在弹出的Repository name下面的文本框内按照yourname.">
@@ -310,10 +310,10 @@
 
       
         <p><a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>+<a href="https://github.com">Github</a><br>假如你有一个Github帐号，我们就可以开始了，如果你说没有，就去注册好了。想想咱们注册微信时也不是很难的事吧，准备好一个邮箱就行了，真的别的都不需要。</p>
-<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="在-Github-上创建一个仓库（Repo）"><a href="#在-Github-上创建一个仓库（Repo）" class="headerlink" title="在 Github 上创建一个仓库（Repo）"></a>在 Github 上创建一个仓库（Repo）</h3><p>登陆Github网址，用你的账号登陆进去，点右上角的<code>+</code>，弹出菜单选择<code>New repository</code>,在弹出的Repository name下面的文本框内按照<code>yourname.github.io</code>* 这种格式输入，然后选中 <label class="input-label"><input class="input-radio" type="radio" name="radio"> <code>Public</code></label>, 最后点击绿色的<code>Create repository</code>创建成功。</p>
+<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="在-Github-上创建一个仓库（Repo）"><a href="#在-Github-上创建一个仓库（Repo）" class="headerlink" title="在 Github 上创建一个仓库（Repo）"></a>在 Github 上创建一个仓库（Repo）</h3><p>登陆Github网址，用你的账号登陆进去，点右上角的<code>+</code>，弹出菜单选择<code>New repository</code>,在弹出的Repository name下面的文本框内按照<code>yourname.github.io</code> 这种格式输入，然后选中 <label class="input-label"><input class="input-radio" type="radio" name="radio"> <code>Public</code></label>, 最后点击绿色的<code>Create repository</code>创建成功。</p>
 <p>重新登陆，点右上角你的头像，在弹出的菜单中选中<code>Your profile</code>,会发现“youname.github.io”分支创建成功，点击进去，在右边找到<code>Settings</code>,在左侧栏最下面找到<code>Deploy keys</code>,点击<code>Add deploy key</code>,输入你的”key”,密匙的求解过程请参见<a href="http://iissnan.com/progit/html/zh/ch4_3.html" target="_blank" rel="noopener">Git密匙</a>,至此你的远程仓库部分已经配置完成。</p>
 <p>如果你对git很感兴趣，或者，对git的命令行方式很头疼的，可以阅读此物: <a href="http://iissnan.com/progit/" target="_blank" rel="noopener">Git入门教材</a></p>
-<p> <em>⚠️我的git账户名字是zhaodongchun，So我的仓库名字为zhaodongchun.github.io,你的就用你自己的名字好了.</em></p>
+<p> ⚠️我的git账户名字是zhaodongchun，So我的仓库名字为zhaodongchun.github.io,你的就用你自己的名字好了.</p>
 <a id="more"></a>
 <h3 id="确认本地已经安装好-git-和-npm"><a href="#确认本地已经安装好-git-和-npm" class="headerlink" title="确认本地已经安装好 git 和 npm"></a>确认本地已经安装好 git 和 npm</h3><p>在终端输入下面两条命令，确认已经安装好git和npm,如果电脑还没装这两个东西的，请参照官方文档安装：<a href="http://iissnan.com/progit/" target="_blank" rel="noopener">Git入门教材</a>+<a href="https://www.npmjs.com.cn/" target="_blank" rel="noopener">npm中文文档</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br><span class="line">npm --version</span><br></pre></td></tr></table></figure>
@@ -346,11 +346,13 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
 <h3 id="调试网站"><a href="#调试网站" class="headerlink" title="调试网站"></a>调试网站</h3><p>如果每次在本地修改文章，可以用下面命令调试预览</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s --debug</span><br></pre></td></tr></table></figure>
+<p>如果改动了配置文件，在上传到github前最好使用清理命令，清除public目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
 <p>如果完成阶段性任务了可以用下面命令上传到github</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <h3 id="域名绑定"><a href="#域名绑定" class="headerlink" title="域名绑定"></a>域名绑定</h3><p>首先你的有个域名，举例来说我是从<a href="https://console.bce.baidu.com/#/index/overview" target="_blank" rel="noopener">百度</a>买的，有了域名后分两步走</p>
 <p>配置CNAME</p>
-<p>在hexo文件夹下的source中新建一个文本文档， 里边输入刚才我们买到的域名的二级域名。举例来说，我申请的是<code>zhaodongchun.com</code>，就填写<code>blog.zhaodongchun.com</code>,然后保存为<code>CNAME</code>.注意大写的CNAME.</p>
+<p>在hexo文件夹下的source中新建一个文本文档， 里边输入刚才我们买到的域名的二级域名。举例来说，我申请的是<code>zhaodongchun.com</code>，就填写<code>zhaodongchun.com</code>,然后保存为<code>CNAME</code>.注意大写的CNAME.</p>
 <p>配置解析服务器</p>
 <p>接下来进域名服务商的后台进行域名解析设置,添加<code>CNAME</code>记录类型，解析线路<code>默认</code>就好了，记录值为<code>zhaodongchun.github.io</code>,配置好后我们本地重新上传到github。</p>
 
