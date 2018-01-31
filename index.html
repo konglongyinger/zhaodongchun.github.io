@@ -252,6 +252,133 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhaodongchun.com/2018/01/31/go2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Zhao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://p3d3seyjq.bkt.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="赵东春的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/31/go2/" itemprop="url">Go语言系列之管道分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-31T08:55:45+08:00">
+                2018-01-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="创建管道"><a href="#创建管道" class="headerlink" title="创建管道"></a>创建管道</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c := make(chan int, 1)//创建一个管道</span><br></pre></td></tr></table></figure>
+<h3 id="读写数据"><a href="#读写数据" class="headerlink" title="读写数据"></a>读写数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c &lt;- 10 //写入数据，这条管道只能写入int类型</span><br><span class="line">&lt;-c //从管道里面取值</span><br></pre></td></tr></table></figure>
+<h3 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a, ok := &lt;-c //同步</span><br></pre></td></tr></table></figure>
+<h3 id="缓冲管道和非缓冲管道"><a href="#缓冲管道和非缓冲管道" class="headerlink" title="缓冲管道和非缓冲管道"></a>缓冲管道和非缓冲管道</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c := make(chan int) //非缓冲管道</span><br><span class="line">c := make(chan int，10) //缓冲管道</span><br></pre></td></tr></table></figure>
+<h3 id="管道的长度和容量"><a href="#管道的长度和容量" class="headerlink" title="管道的长度和容量"></a>管道的长度和容量</h3><p>管道遵循先进先出的阵列原则。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">len()</span><br><span class="line">cap()</span><br></pre></td></tr></table></figure></p>
+<h3 id="管道的作用"><a href="#管道的作用" class="headerlink" title="管道的作用"></a>管道的作用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">管道是多个线程之间传递数据和同步数据的重要手段。</span><br></pre></td></tr></table></figure>
+<h3 id="管道操作"><a href="#管道操作" class="headerlink" title="管道操作"></a>管道操作</h3><p>关闭管道可以用下面命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">close(c)</span><br></pre></td></tr></table></figure></p>
+<h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><p>我们知道管道有长度和容量，数据进入管道后，就可以按照顺序读取出来，假如管道中无数据，那读取的是一个空管道，这时候会发生什么，请看下面完整案例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">	c := make(chan int)</span><br><span class="line">	done := make(chan bool)</span><br><span class="line"></span><br><span class="line">	go func() &#123;</span><br><span class="line">		for i := 0; i &lt; 10; i++ &#123;</span><br><span class="line">			c &lt;- i</span><br><span class="line">		&#125;</span><br><span class="line">		done &lt;- true</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">	go func() &#123;</span><br><span class="line">		for i := 0; i &lt; 10; i++ &#123;</span><br><span class="line">			c &lt;- i</span><br><span class="line">		&#125;</span><br><span class="line">		done &lt;- true</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">	&lt;-done //死锁</span><br><span class="line">	&lt;-done</span><br><span class="line">	close(c)</span><br><span class="line"></span><br><span class="line">	for n := range c &#123;</span><br><span class="line">		fmt.Println(n)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhaodongchun.com/2018/01/30/go1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -271,7 +398,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/30/go1/" itemprop="url">使用框架Hexo在Github上搭建个人博客</a></h1>
+                <a class="post-title-link" href="/2018/01/30/go1/" itemprop="url">孔壹学院区块链培训课程大纲-解读</a></h1>
         
 
         <div class="post-meta">
@@ -322,11 +449,21 @@
 
       
         
-          <p><a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>+<a href="https://github.com" target="_blank" rel="noopener">Github</a> [Mac环境]<br>假如你有一个Github帐号，我们就可以开始了，如果你说没有，就去注册好了。想想咱们注册微信时也不是很难的事吧，准备好一个邮箱就行了，真的别的都不需要。</p>
-<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="在-Github-上创建一个仓库（Repo）"><a href="#在-Github-上创建一个仓库（Repo）" class="headerlink" title="在 Github 上创建一个仓库（Repo）"></a>在 Github 上创建一个仓库（Repo）</h3><p>登陆Github网址，用你的账号登陆进去，点右上角的<code>+</code>，弹出菜单选择<code>New repository</code>,在弹出的<code>Repository name</code>下面的文本框内按照<code>yourname.github.io</code> 这种格式输入，然后选中 <label class="input-label"><input class="input-radio" type="radio" name="radio"> <code>Public</code></label>, 最后点击绿色的<code>Create repository</code>创建成功。</p>
-<p>重新登陆，点右上角你的头像，在弹出的菜单中选中<code>Your profile</code>,会发现“youname.github.io”分支创建成功，点击进去，在右边找到<code>Settings</code>,在左侧栏最下面找到<code>Deploy keys</code>,点击<code>Add deploy key</code>,输入你的”key”,密匙的求解过程请参见<a href="http://iissnan.com/progit/html/zh/ch4_3.html" target="_blank" rel="noopener">Git密匙</a>,至此你的远程仓库部分已经配置完成。</p>
-<p>如果你对git很感兴趣，或者，对git的命令行方式很头疼的，可以阅读此物: <a href="http://iissnan.com/progit/" target="_blank" rel="noopener">Git入门教材</a></p>
-<p> <em>⚠️我的git仓库名字为zhaodongchun.github.io,你的就用你自己的名字好了.</em></p>
+          <p><a href="http://www.kongyixueyuan.com/classes/info?id=8" target="_blank" rel="noopener">课程大纲</a><br>上面是区块链修炼记的总览，对与区块链不了解的朋友，初次见到可能会感叹：好专业啊，怎么都看不懂那，下面请听我来解读解读。</p>
+<h2 id="课程大纲"><a href="#课程大纲" class="headerlink" title="课程大纲"></a>课程大纲</h2><p>工欲善其事必先利其器，同样道理，区块链开发应先选择一种利器，这就是go语言，有了工具，我们就可以开始打磨精美玉器，但是价值不菲的美玉不会轻易示人，必有精美的盒子，如果用精美的盒子类比区块链，这一容器承载着的代币可类比为美玉。</p>
+<p>我如此这么说只是不想让人认为区块链是什么高深的东西，其实很早就已经存在于人类历史中，只是换了一种说法，人话换成了计算机语言。</p>
+<h3 id="Go语言"><a href="#Go语言" class="headerlink" title="Go语言"></a>Go语言</h3><p>说到了计算机语言，和人类语言一样一样的，相反人类语言比计算机语言复杂多了，计算机只有0和1，人类还有26个字母。</p>
+<h4 id="go语言基础"><a href="#go语言基础" class="headerlink" title="go语言基础"></a>go语言基础</h4><p>语言需要环境，go语言运行的环境，选择的是linux操作系统-ubutun<br>接下来讲解的是go语言的基本语法，分别是变量，常量，类型和函数。</p>
+<h4 id="常用算法"><a href="#常用算法" class="headerlink" title="常用算法"></a>常用算法</h4><p>算法是什么那，就是计算机处理数据的方法，数据从你那到我这里可以直着走，也可以绕圈圈，尴尬的是数据一绕圈圈人就蒙圈，算法中有一个求质数算法，貌似和加密解密关系密切，求质数过程就是加密过程，分解质因数过程就是解密过程。</p>
+<h4 id="go语言高级编程"><a href="#go语言高级编程" class="headerlink" title="go语言高级编程"></a>go语言高级编程</h4><p>面向对象编程<br>并发编程<br>网络编程<br>工程管理</p>
+<h4 id="React"><a href="#React" class="headerlink" title="React"></a>React</h4><ul>
+<li>Html</li>
+<li>css</li>
+<li>ES6</li>
+<li>react</li>
+<li>Flux</li>
+<li>Redux</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/01/30/go1/#more" rel="contents">
@@ -545,7 +682,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
