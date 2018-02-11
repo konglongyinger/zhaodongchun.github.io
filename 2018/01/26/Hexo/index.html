@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="赵东春的博客">
 <meta property="og:description" content="Hexo+Github [Mac环境]假如你有一个Github帐号，我们就可以开始了，如果你说没有，就去注册好了。想想咱们注册微信时也不是很难的事吧，准备好一个邮箱就行了，真的别的都不需要。 快速开始在 Github 上创建一个仓库（Repo）登陆Github网址，用你的账号登陆进去，点右上角的+，弹出菜单选择New repository,在弹出的Repository name下面的文本框内按照y">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-30T09:46:44.573Z">
+<meta property="og:updated_time" content="2018-02-06T02:27:35.780Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用框架Hexo在Github上搭建个人博客">
 <meta name="twitter:description" content="Hexo+Github [Mac环境]假如你有一个Github帐号，我们就可以开始了，如果你说没有，就去注册好了。想想咱们注册微信时也不是很难的事吧，准备好一个邮箱就行了，真的别的都不需要。 快速开始在 Github 上创建一个仓库（Repo）登陆Github网址，用你的账号登陆进去，点右上角的+，弹出菜单选择New repository,在弹出的Repository name下面的文本框内按照y">
@@ -355,11 +355,11 @@
 <p>修改完成后保存，在atom终端输入下面命令，在github上查看上传结果，如果发现文件已经显示，就可以进入github你的分支下的settings，往下翻找到<code>GitHub Pages</code>这里，将<code>source</code>下的<code>None</code>改为<code>master branch</code>,点击保存后，会出现绿色的一条提示<code>Your site is published at https://konglongyinger.github.io/zhaodongchun.github.io/</code>，后面链接就是你的网址了，现在你可以点击看看效果。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
 <h3 id="调试网站"><a href="#调试网站" class="headerlink" title="调试网站"></a>调试网站</h3><p>如果每次在本地修改文章，可以用下面命令调试预览</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s --debug</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s --debug</span><br></pre></td></tr></table></figure>
 <p>如果改动了配置文件，在上传到github前最好使用清理命令，清除public目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
 <p>如果完成阶段性任务了可以用下面命令上传到github</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
 <h3 id="域名绑定"><a href="#域名绑定" class="headerlink" title="域名绑定"></a>域名绑定</h3><p>首先你的有个域名，举例来说我是从<a href="https://console.bce.baidu.com/#/index/overview" target="_blank" rel="noopener">百度</a>买的，有了域名后再分三步走。</p>
 <p><strong>配置CNAME</strong></p>
 <p>在hexo文件夹下的source中新建一个文本文档， 里边输入刚才我们买到的域名的二级域名。举例来说，我申请的是<code>zhaodongchun.com</code>，就填写<code>zhaodongchun.com</code>,然后保存为<code>CNAME</code>.注意大写的CNAME.</p>
@@ -372,7 +372,7 @@
 </blockquote>
 <p>好，到此为止，重新执行下面命令将文件上传到github，浏览器输入你的域名就可以正常登陆了。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<h2 id="吟诗一首"><a href="#吟诗一首" class="headerlink" title="吟诗一首"></a>吟诗一首</h2><p>千呼万唤始出来 犹抱琵琶半遮面</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>千呼万唤始出来 犹抱琵琶半遮面</p>
 
       
     </div>
@@ -486,7 +486,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -523,7 +523,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#快速开始"><span class="nav-number">1.</span> <span class="nav-text">快速开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在-Github-上创建一个仓库（Repo）"><span class="nav-number">1.1.</span> <span class="nav-text">在 Github 上创建一个仓库（Repo）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#确认本地已经安装好-git-和-npm"><span class="nav-number">1.2.</span> <span class="nav-text">确认本地已经安装好 git 和 npm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-hexo"><span class="nav-number">1.3.</span> <span class="nav-text">安装 hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建本地工作目录"><span class="nav-number">1.4.</span> <span class="nav-text">创建本地工作目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化你的本地站点"><span class="nav-number">1.5.</span> <span class="nav-text">初始化你的本地站点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置个人模版"><span class="nav-number">1.6.</span> <span class="nav-text">设置个人模版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Atom码文章"><span class="nav-number">1.7.</span> <span class="nav-text">使用Atom码文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署到-Github-上"><span class="nav-number">1.8.</span> <span class="nav-text">部署到 Github 上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调试网站"><span class="nav-number">1.9.</span> <span class="nav-text">调试网站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#域名绑定"><span class="nav-number">1.10.</span> <span class="nav-text">域名绑定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#吟诗一首"><span class="nav-number">2.</span> <span class="nav-text">吟诗一首</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#快速开始"><span class="nav-number">1.</span> <span class="nav-text">快速开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在-Github-上创建一个仓库（Repo）"><span class="nav-number">1.1.</span> <span class="nav-text">在 Github 上创建一个仓库（Repo）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#确认本地已经安装好-git-和-npm"><span class="nav-number">1.2.</span> <span class="nav-text">确认本地已经安装好 git 和 npm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-hexo"><span class="nav-number">1.3.</span> <span class="nav-text">安装 hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建本地工作目录"><span class="nav-number">1.4.</span> <span class="nav-text">创建本地工作目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化你的本地站点"><span class="nav-number">1.5.</span> <span class="nav-text">初始化你的本地站点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置个人模版"><span class="nav-number">1.6.</span> <span class="nav-text">设置个人模版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Atom码文章"><span class="nav-number">1.7.</span> <span class="nav-text">使用Atom码文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署到-Github-上"><span class="nav-number">1.8.</span> <span class="nav-text">部署到 Github 上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调试网站"><span class="nav-number">1.9.</span> <span class="nav-text">调试网站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#域名绑定"><span class="nav-number">1.10.</span> <span class="nav-text">域名绑定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
