@@ -81,13 +81,13 @@
 
 <meta name="description" content="山重水复疑无路,柳岸花明又一春">
 <meta property="og:type" content="website">
-<meta property="og:title" content="赵东春的博客">
+<meta property="og:title" content="LEO">
 <meta property="og:url" content="https://zhaodongchun.com/index.html">
-<meta property="og:site_name" content="赵东春的博客">
+<meta property="og:site_name" content="LEO">
 <meta property="og:description" content="山重水复疑无路,柳岸花明又一春">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="赵东春的博客">
+<meta name="twitter:title" content="LEO">
 <meta name="twitter:description" content="山重水复疑无路,柳岸花明又一春">
 
 
@@ -124,7 +124,7 @@
 
 
 
-  <title>赵东春的博客</title>
+  <title>LEO</title>
   
 
 
@@ -165,7 +165,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">赵东春的博客</span>
+        <span class="site-title">LEO</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -221,9 +221,43 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -255,13 +289,13 @@
     <link itemprop="mainEntityOfPage" href="https://zhaodongchun.com/2018/02/09/Solidity5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leo Zhao">
+      <meta itemprop="name" content="赵东春">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="http://p3d3seyjq.bkt.clouddn.com/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="赵东春的博客">
+      <meta itemprop="name" content="LEO">
     </span>
 
     
@@ -294,6 +328,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Solidity/" itemprop="url" rel="index">
+                    <span itemprop="name">Solidity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -322,38 +378,14 @@
 
       
         
-          
-            <p>关键字：枚举，结构体，字典，投票,元祖,dapp</p>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="开始之前复盘几个概念"><a href="#开始之前复盘几个概念" class="headerlink" title="开始之前复盘几个概念"></a>开始之前复盘几个概念</h3><p>枚举：go中关键字<code>iota</code>，solidity中关键字<code>enum</code><br>结构体：</p>
-<h3 id="一-声明枚举"><a href="#一-声明枚举" class="headerlink" title="一. 声明枚举"></a>一. 声明枚举</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.19;</span><br><span class="line"></span><br><span class="line">contract C &#123;</span><br><span class="line">    // 声明一个枚举类型ActionChoices</span><br><span class="line">    // 里面一共有四个值，GoLeft, GoRight, GoStraight, SitStill</span><br><span class="line">    // 其实位置的值GoLeft等于0，往后逐渐+1</span><br><span class="line">    // uint8是无符号整型，它的存储范围是0～255</span><br><span class="line">    // ActionChoices相当于是我们自己自定义的一个无符号整型，存储的值的范围由我们自己决定</span><br><span class="line">    // 当前案例里面ActionChoices的存储范围为0 ~ 3，在set方法中如果传值超过了3，那么就会越界</span><br><span class="line">    enum ActionChoices &#123; GoLeft, GoRight, GoStraight, SitStill &#125;</span><br><span class="line">    // 声明一个ActionChoices类型的变量_choice</span><br><span class="line">    ActionChoices _choice;</span><br><span class="line">    // 声明一个ActionChoices类型的常量，defaultChoice</span><br><span class="line">    // defaultChoice它的值为ActionChoices.GoStraight</span><br><span class="line">    ActionChoices constant defaultChoice = ActionChoices.GoStraight;</span><br><span class="line"></span><br><span class="line">    // 通过set方法修改变量_choice的值</span><br><span class="line">    function setGoStraight(ActionChoices choice)</span><br><span class="line">    public &#123;</span><br><span class="line">        _choice = choice;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // get方法，读取变量的_choice的值</span><br><span class="line">    function getChoice() constant public returns (ActionChoices) &#123;</span><br><span class="line">        return _choice;</span><br><span class="line">    &#125;</span><br><span class="line">    // 返回常量defaultChoice的值</span><br><span class="line">    function getDefaultChoice() pure public returns (uint) &#123;</span><br><span class="line">        return uint(defaultChoice);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.19;</span><br><span class="line"></span><br><span class="line">contract C &#123;</span><br><span class="line">  //枚举类型单词首字母大写，里面也是</span><br><span class="line">  enum Sex &#123; Man, Women, Unknown &#125;</span><br><span class="line"></span><br><span class="line">  function SexSelf()  public view returns (Sex) &#123;</span><br><span class="line">      return Sex.Man;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="二-初始化一个结构体"><a href="#二-初始化一个结构体" class="headerlink" title="二. 初始化一个结构体"></a>二. 初始化一个结构体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.19;</span><br><span class="line"></span><br><span class="line">contract Students &#123;</span><br><span class="line">//string 结构体声明关键字</span><br><span class="line">//Person 结构体类型</span><br><span class="line">  struct Person &#123;</span><br><span class="line">    uint age;</span><br><span class="line">    uint stuId;</span><br><span class="line">    string name;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.19;</span><br><span class="line"></span><br><span class="line">contract Students &#123;</span><br><span class="line">//string 结构体声明关键字</span><br><span class="line">//Person 结构体类型</span><br><span class="line">  struct Person &#123;</span><br><span class="line">    uint age;</span><br><span class="line">    uint stuId;</span><br><span class="line">    string name;</span><br><span class="line">   &#125;</span><br><span class="line">   //初始化方法一</span><br><span class="line">   Person person=Person(30,101,&quot;lillll&quot;);</span><br><span class="line"></span><br><span class="line">   //初始化方法二</span><br><span class="line">   Person _person=Person(&#123;stuId:101,age:18,name:&quot;liyecjc&quot;&#125;)</span><br><span class="line"></span><br><span class="line">   //元祖</span><br><span class="line">   function getPersonInfo() public view returns (uint,uint,string)&#123;</span><br><span class="line">     return (person.age,person.stuId,person.name);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="三-字典（和go语言的区别）"><a href="#三-字典（和go语言的区别）" class="headerlink" title="三. 字典（和go语言的区别）"></a>三. 字典（和go语言的区别）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.19;</span><br><span class="line"></span><br><span class="line">contract MappingExample &#123;</span><br><span class="line">mapping(address=&gt;uint) balances;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="四-众筹合约"><a href="#四-众筹合约" class="headerlink" title="四. 众筹合约"></a>四. 众筹合约</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.19;</span><br><span class="line"></span><br><span class="line">contract CrowdFunding &#123;</span><br><span class="line"></span><br><span class="line">//定义一个结构体类型</span><br><span class="line">struct Funder&#123;</span><br><span class="line">    address addr; //出资人地址</span><br><span class="line">    uint amout; //出资总额</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//定义一个结构体类型</span><br><span class="line">struct Campaign&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//通过campaignID给某个对象赞助</span><br><span class="line">function contribute(uint campaignID) public payable &#123;</span><br><span class="line">  Campaign storage c= Campaigns[campaignID];</span><br><span class="line">  c.funders[c.numFunders++]=Funder(&#123;add:msg.sender,amout:msg.sender&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//判断是否达标</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="五-如何把truffle的demo跑起来"><a href="#五-如何把truffle的demo跑起来" class="headerlink" title="五. 如何把truffle的demo跑起来"></a>五. 如何把truffle的demo跑起来</h3><ol>
-<li><p>安装truffle</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g truffle</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>运行项目模版</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">009_demo</span><br><span class="line">truffle unbox react</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>找到<code>src</code>下<code>app.js</code>,复制contract文件夹下的<code>migrations.sol</code>代码到web编译器，登陆mask钱包，切换到测试网络，点击<code>set</code>后点击<code>submit</code>,部署到测试网络。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">truffle develop</span><br></pre></td></tr></table></figure></p>
-<p>编译出一个build的文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure></p>
-<p>运行</p>
-<p>修改<code>app.js</code>,增加按钮<code>修改合约数据</code></p>
-<h3 id="六-跑一遍投票合约"><a href="#六-跑一遍投票合约" class="headerlink" title="六. 跑一遍投票合约"></a>六. 跑一遍投票合约</h3><ol>
-<li>复制模版</li>
-<li>改名voting.sol</li>
-<li>定位到前段代码<code>app.js</code>，更换合约地址和名字</li>
-<li>将合约拷贝到web端，run，create，submit</li>
-<li>拷贝合约地址到<code>app.js</code>，替换掉</li>
-<li>运行<code>truffle develop</code>编辑后<code>npm start</code>,前端启动。</li>
-</ol>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>不识庐山真面目，只缘身在此山中。</p>
-
-          
+          <p>关键字：枚举，结构体，字典，投票,元祖,dapp<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/09/Solidity5/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -403,13 +435,13 @@
     <link itemprop="mainEntityOfPage" href="https://zhaodongchun.com/2018/02/08/Solidity4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leo Zhao">
+      <meta itemprop="name" content="赵东春">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="http://p3d3seyjq.bkt.clouddn.com/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="赵东春的博客">
+      <meta itemprop="name" content="LEO">
     </span>
 
     
@@ -442,6 +474,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Solidity/" itemprop="url" rel="index">
+                    <span itemprop="name">Solidity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -470,92 +524,14 @@
 
       
         
-          
-            <p>关键字：固定，动态，memory,storage,bytes,push,索引</p>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="开始之前复盘几个概念"><a href="#开始之前复盘几个概念" class="headerlink" title="开始之前复盘几个概念"></a>开始之前复盘几个概念</h3><p>固定字节数组：bytes关键字后面直接带有数字，例如<code>bytes9 names</code><br>动态字节数组：bytes关键字后面不接数字，例如<code>bytes names</code><br>storage类型：指针传递，传递指针不传递内容，例如<code>bytes storage names</code><br>memory类型：值传递，传递的是内容，例如<code>bytes memory names</code></p>
-<h3 id="一-固定大小字节数组转动态大小字节数组（不能直接转换）"><a href="#一-固定大小字节数组转动态大小字节数组（不能直接转换）" class="headerlink" title="一. 固定大小字节数组转动态大小字节数组（不能直接转换）"></a>一. 固定大小字节数组转动态大小字节数组（不能直接转换）</h3><p><strong>需求</strong></p>
-<p>将<code>bytes9 name9</code>转化为<code>bytes name9</code></p>
-<p><strong>思路</strong></p>
-<p>尝试两种方法，第一种方法我们通过索引将固定大小字节数组内内容提取出来，再将其内容存储进一个动态大小字节数组，第二种方法我们通过push方法把固定大小字节数组内内容推送给一个动态大小字节数组。</p>
-<p><strong>通过索引</strong></p>
-<ol>
-<li>创建固定数组</li>
-<li>转换数组<ul>
-<li>创建存储数组，注意数组类型为<code>memory</code></li>
-<li>通过for循环更新存储数组内内容<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.19;</span><br><span class="line">contract C &#123;</span><br><span class="line">    //固定大小字节数组</span><br><span class="line">   bytes9 name9 = 0x6c697975656368756e;</span><br><span class="line">   //将固定大小字节数组转换为动态大小字节数组</span><br><span class="line">   function fixedSizeByteArraysToDynamicallySizedByteArray() public constant returns (bytes) &#123;</span><br><span class="line">       // 创建一个长度为name9的长度的动态大小字节数组，主要用于存储name9里面的字节内容</span><br><span class="line">       bytes memory names = new bytes(name9.length);</span><br><span class="line"></span><br><span class="line">       for(uint i = 0; i &lt; name9.length; i++) &#123;</span><br><span class="line">           //更新names里面的内容</span><br><span class="line">           names[i] = name9[i];</span><br><span class="line">       &#125;</span><br><span class="line">       return names;</span><br><span class="line">     &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-<p><strong>通过push方法</strong></p>
-<ol>
-<li>创建固定数组(为方便记忆理解，将字节数组简写为数组)</li>
-<li>创建一个空动态数组,注意关键字<code>new</code>(为方便记忆理解，将字节动态数组简写为动态数组)</li>
-<li>通过for循环推送内容（固定数组到动态数组），注意两个方法<code>.length</code> <code>.push</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.19;</span><br><span class="line">// 如果想要使用push，动态大小字节数组必须是storage类型</span><br><span class="line">// 通过new bytes(0)创建的状态变量/属性默认为storage类型</span><br><span class="line">// 在函数里面通过new bytes(0)创建的状态变量/属性默认为memory类型</span><br><span class="line">// memory类型的动态大小字节数组不能使用push，只能通过索引更新内容</span><br><span class="line">contract C &#123;</span><br><span class="line">    //固定大小字节数组</span><br><span class="line">   bytes9 name9 = 0x6c697975656368756e;</span><br><span class="line">   bytes  public names = new bytes(0);</span><br><span class="line">   //将固定大小字节数组转换为动态大小字节数组</span><br><span class="line">   function fixedSizeByteArraysToDynamicallySizedByteArray() public &#123;</span><br><span class="line"></span><br><span class="line">       for(uint i = 0; i &lt; name9.length; i++) &#123;</span><br><span class="line">           //更新names里面的内容</span><br><span class="line">           names.push(name9[i]);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="二-字符串转换为固定大小字节数组"><a href="#二-字符串转换为固定大小字节数组" class="headerlink" title="二.字符串转换为固定大小字节数组"></a>二.字符串转换为固定大小字节数组</h3><p><strong>需求</strong></p>
-<p>将字符串<code>&quot;zhaodongchun&quot;</code>转化为固定数组<code>bytes32</code></p>
-<p><strong>思路</strong></p>
-<p>直接转化成功，通过声明变量的方式失败。</p>
-<p><strong>直接转化</strong></p>
-<ol>
-<li>把字符串<code>&quot;zhaodongchun&quot;</code>通过<code>bytes32()</code>转化为固定数组后，值直接返回给函数<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.19;</span><br><span class="line">// string 转换为固定大小字节数组的问题</span><br><span class="line">// string 转换为固定大小字节数组 只有直接传字面量string时好使</span><br><span class="line">contract C &#123;</span><br><span class="line"></span><br><span class="line">    function stringToFixedBytes() pure public returns (bytes32) &#123;</span><br><span class="line">      return bytes32(&quot;zhaodongchun&quot;);  //直接将字面量字符串转换为固定大小字节数组，转换成功</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><strong>失败案例</strong></p>
-<ol>
-<li><p>函数内接参数，通过字符串类型<code>s</code>，值直接返回给函数行参，对比第一种方法，有什么异同。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.19;</span><br><span class="line">// string 转换为固定大小字节数组的问题</span><br><span class="line">contract C &#123;</span><br><span class="line">    //memory类型的string不能转换为固定大小字节数组</span><br><span class="line">    function stringToFixedBytes(string s) pure public returns (bytes32) &#123;</span><br><span class="line">      return bytes32(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编译器提示<code>memory</code>类型的字符串有问题，更改为<code>storage</code>测试依然报错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.19;</span><br><span class="line">// string 转换为固定大小字节数组的问题</span><br><span class="line">contract C &#123;</span><br><span class="line">    //报错</span><br><span class="line">    function stringToFixedBytes(string storage s) pure private returns (bytes32) &#123;</span><br><span class="line">      return bytes32(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果函数外声明字符串变量，测试依然报错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.19;</span><br><span class="line">// string 转换为固定大小字节数组的问题</span><br><span class="line">contract C &#123;</span><br><span class="line"></span><br><span class="line">    string s = &quot;liyuechun&quot;;</span><br><span class="line"></span><br><span class="line">    function stringToFixedBytes() pure public returns (bytes32) &#123;</span><br><span class="line">      return bytes32(s);  //报错</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="三-固定大小字节数组转换为字符串-不能直接转换"><a href="#三-固定大小字节数组转换为字符串-不能直接转换" class="headerlink" title="三.固定大小字节数组转换为字符串(不能直接转换)"></a>三.固定大小字节数组转换为字符串(不能直接转换)</h3><p><strong>需求</strong></p>
-<p>将固定数组<code>bytes9</code>转化为字符串<code>&quot;zhaodongchun&quot;</code></p>
-<p><strong>思路</strong></p>
-<p>但是固定可转动态，动态和字符串可直接互转，所以思路是这样，先将固定转动态，再动态转字符串</p>
-<p><strong>通过索引</strong></p>
-<ol>
-<li>创建固定数组</li>
-<li>转换数组<ul>
-<li>创建存储数组，注意数组类型为<code>memory</code></li>
-<li>通过for循环更新存储数组内内容</li>
-<li>动态数组转换为字符串，将值返回给函数<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.19;</span><br><span class="line">contract C &#123;</span><br><span class="line">  bytes9 name9=0x6c697975656368756e;</span><br><span class="line">  function ficTostring() view public returns(string)&#123;</span><br><span class="line"></span><br><span class="line">    bytes memory names=new bytes(name9.length);</span><br><span class="line">    for(uint i = 0; i &lt; name9.length; i++) &#123;</span><br><span class="line">      //更新names里面的内容</span><br><span class="line">      names[i] = name9[i];</span><br><span class="line">  &#125;</span><br><span class="line">  return string(names);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-<p><strong>通过push方法</strong></p>
-<ol>
-<li>创建固定数组<code>name9</code>(为方便记忆理解，将字节数组简写为数组)</li>
-<li>创建一个空动态数组<code>names</code>,注意关键字<code>new</code>(为方便记忆理解，将字节动态数组简写为动态数组)</li>
-<li>通过for循环推送内容（固定数组到动态数组），注意两个方法<code>.length</code> <code>.push</code></li>
-<li>动态数组<code>names</code>转换为字符串后值返回给函数<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.19;</span><br><span class="line">contract C &#123;</span><br><span class="line"></span><br><span class="line">   // 固定大小字节数组</span><br><span class="line">   bytes9 name9 = 0x6c697975656368756e;</span><br><span class="line">   bytes names = new bytes(0);</span><br><span class="line">   // 将names9转换为string</span><br><span class="line">   function fixToString() view public returns (string) &#123;</span><br><span class="line">     for (uint i=0; i&lt;name9.length; i++) &#123;</span><br><span class="line">       names.push(name9[i]);</span><br><span class="line">     &#125;</span><br><span class="line">     return string(names);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="四-固定大小字节数组和可变数组"><a href="#四-固定大小字节数组和可变数组" class="headerlink" title="四.固定大小字节数组和可变数组"></a>四.固定大小字节数组和可变数组</h3><ol>
-<li><p>固定大小字节数组长度不可修改，内容可以修改</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//固定大小字节数组</span><br><span class="line">uint [5] T = [1,2,3,4,5];</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>可变数组可动态修改数组的长度，内容可以修改</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//可变数组</span><br><span class="line">  uint [] T = [1,2,3,4,5];</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改可变数组实例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">  pragma solidity ^0.4.19;</span><br><span class="line">contract C &#123;</span><br><span class="line"></span><br><span class="line">    uint [] public T = [1,2,3,4,5];</span><br><span class="line"></span><br><span class="line">    function setTLength(uint len) public &#123;</span><br><span class="line">        //可动态修改数组的长度</span><br><span class="line">        T.length = len;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function TLength() constant public returns (uint) &#123;</span><br><span class="line"></span><br><span class="line">        return T.length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 添加一个数字</span><br><span class="line">    function pushANum(uint num) &#123;</span><br><span class="line">      T.push(num);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //删除整个数组的内容</span><br><span class="line">    function deleteTContent() &#123;</span><br><span class="line">      delete T;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="五-二维数组"><a href="#五-二维数组" class="headerlink" title="五.二维数组"></a>五.二维数组</h3><ol>
-<li>示例<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.19;</span><br><span class="line">contract C &#123;</span><br><span class="line">/* 1 2</span><br><span class="line">3 4</span><br><span class="line">5 6</span><br><span class="line">1 2 3</span><br><span class="line">4 5 6 */</span><br><span class="line"></span><br><span class="line">    uint [2][3] T = [[1,2],[3,4],[5,6]];</span><br><span class="line"></span><br><span class="line">    function T_len() constant public returns (uint) &#123;</span><br><span class="line"></span><br><span class="line">        return T.length; // 3</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>不识庐山真面目，只缘身在此山中。</p>
-
-          
+          <p>关键字：固定，动态，memory,storage,bytes,push,索引<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/08/Solidity4/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -605,13 +581,13 @@
     <link itemprop="mainEntityOfPage" href="https://zhaodongchun.com/2018/02/08/Solidity3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leo Zhao">
+      <meta itemprop="name" content="赵东春">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="http://p3d3seyjq.bkt.clouddn.com/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="赵东春的博客">
+      <meta itemprop="name" content="LEO">
     </span>
 
     
@@ -644,6 +620,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Solidity/" itemprop="url" rel="index">
+                    <span itemprop="name">Solidity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -672,34 +670,14 @@
 
       
         
-          
-            <p>关键字：固定，动态，memory,storage,bytes,push,索引</p>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="开发需要使用的钱包"><a href="#开发需要使用的钱包" class="headerlink" title="开发需要使用的钱包"></a>开发需要使用的钱包</h3><h4 id="1-Ethereum-Wallet"><a href="#1-Ethereum-Wallet" class="headerlink" title="1. Ethereum Wallet"></a>1. <a href="https://ethereum.org" target="_blank" rel="noopener">Ethereum Wallet</a></h4><p>同步时间比较长，可以以后安装</p>
-<h4 id="2-MyEtherWallet"><a href="#2-MyEtherWallet" class="headerlink" title="2. MyEtherWallet"></a>2. <a href="https://www.myetherwallet.com/#send-transaction" target="_blank" rel="noopener">MyEtherWallet</a></h4><p>需要安装</p>
-<h4 id="3-Metamask"><a href="#3-Metamask" class="headerlink" title="3.   Metamask"></a>3.   <a href="https://metamask.io/#how-it-works" target="_blank" rel="noopener">Metamask</a></h4><p>四种测试网络</p>
-<ul>
-<li>main</li>
-<li>roptest</li>
-<li><p>kovtest</p>
-<p>如何获取代币，到<a href="https://gitter.im/kovan-testnet/faucet?source=orgpage" target="_blank" rel="noopener">社区</a>要代币，<code>@epheph 0xF055775eBD516e7419ae486C1d50C682d4170645</code></p>
-</li>
-<li><p>local</p>
-</li>
-</ul>
-<h4 id="4-Parity"><a href="#4-Parity" class="headerlink" title="4. Parity"></a>4. <a href="https://www.parity.io" target="_blank" rel="noopener">Parity</a></h4><h3 id="两个框架"><a href="#两个框架" class="headerlink" title="两个框架"></a>两个框架</h3><h4 id="1-truffleframework"><a href="#1-truffleframework" class="headerlink" title="1.truffleframework"></a>1.<a href="http://truffleframework.com" target="_blank" rel="noopener">truffleframework</a></h4><h4 id="2-embark"><a href="#2-embark" class="headerlink" title="2.embark"></a>2.<a href="http://embark.readthedocs.io/en/2.5.2/" target="_blank" rel="noopener">embark</a></h4><h3 id="通过一个-demo简单讲解区块链原理"><a href="#通过一个-demo简单讲解区块链原理" class="headerlink" title="通过一个  demo简单讲解区块链原理"></a>通过一个  <a href="https://anders.com/blockchain/hash.html" target="_blank" rel="noopener">demo</a>简单讲解区块链原理</h3><p>打开上面的demo后会有六个菜单项，分别为<code>Hash</code> <code>Block</code> <code>Blockchain</code> <code>Distributed</code> <code>Tokens</code> <code>Coinbase</code></p>
-<h4 id="了解什么是哈希"><a href="#了解什么是哈希" class="headerlink" title="了解什么是哈希"></a>了解什么是哈希</h4><p>先看第一项，哈希是什么，在data框内随意输入一个字符，试试。</p>
-<p>咱们再拿版权保护举个例子，看看版权怎么记录，怎么溯源，怎么存储的问题。</p>
-<p>如果有一天我写了一篇文章，提交到了区块链，假如有个人后来改了个字然后说是他写的，你怎么判断是谁写的。</p>
-<p>哈希能解决这个问题，如果内容一旦发生变化，即使改一个字，一个空格，哈希也会变，这样我们只需要存储哈希就行了，不需存取整篇文章。<br>从现实角度讲，盗版，抄袭，无法杜绝，但是通过哈希计算我们可以很简单的识别出谁是原著谁是编著。</p>
-<p>原著和编著的区别，从法律角度讲，原著不可随意更改，编著可以随意编撰，不需付法律责任。</p>
-<h4 id="区块的概念"><a href="#区块的概念" class="headerlink" title="区块的概念"></a>区块的概念</h4><p>再看第二项blockchain页面有几个值，<code>block</code> <code>Nonce</code> <code>Data</code>,最后是<code>Hash</code><br>对比上面的四个值，我们先搞清楚什么是挖矿<br>  找noice的值，满足哈希值的条件，这就是挖矿<br>  0000的哈希和20个0的哈希哪个难度大</p>
-<p>  Block:<br>  Nonce:<br>  Data:<br>  拼接成一个哈希值</p>
-<p>  终端输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install blockchain-cli -g //安装</span><br><span class="line">blockchain</span><br><span class="line">显示genesis block</span><br><span class="line">previous hash:0 //创始区块</span><br><span class="line">nonce:94053</span><br><span class="line">mine liyc1215</span><br><span class="line">bc 用来查看</span><br></pre></td></tr></table></figure></p>
-<p>  如何用js实现挖矿过程-逻辑<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function isValidhashDifficulty(hash,difficulty)&#123;</span><br><span class="line">for (var i=0,b=hash.length;i&lt;b;i++)&#123;</span><br><span class="line">if (hash[i])!==&apos;0&apos;&#123;</span><br><span class="line">break;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">return i&gt;= difficulty;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="blockchain"><a href="#blockchain" class="headerlink" title="blockchain"></a>blockchain</h4><p>  如果更改date,数据损坏，需要重新挖矿，成本会非常高，最少搞定两条链，这就是51%攻击</p>
-<h4 id="token"><a href="#token" class="headerlink" title="token"></a>token</h4><h3 id="Solidity面向对象编程"><a href="#Solidity面向对象编程" class="headerlink" title="Solidity面向对象编程"></a>Solidity面向对象编程</h3><h3 id="以太坊私有链搭建"><a href="#以太坊私有链搭建" class="headerlink" title="以太坊私有链搭建"></a>以太坊私有链搭建</h3><h3 id="联盟链"><a href="#联盟链" class="headerlink" title="联盟链"></a>联盟链</h3><h3 id="truffle-embark"><a href="#truffle-embark" class="headerlink" title="truffle,embark"></a>truffle,embark</h3><h3 id="ipfs怎么配置"><a href="#ipfs怎么配置" class="headerlink" title="ipfs怎么配置"></a>ipfs怎么配置</h3><h3 id="如何写一个去中心化拍卖的网站"><a href="#如何写一个去中心化拍卖的网站" class="headerlink" title="如何写一个去中心化拍卖的网站"></a>如何写一个去中心化拍卖的网站</h3><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>不识庐山真面目，只缘身在此山中。</p>
-
-          
+          <p>关键字：固定，动态，memory,storage,bytes,push,索引<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/08/Solidity3/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -749,13 +727,13 @@
     <link itemprop="mainEntityOfPage" href="https://zhaodongchun.com/2018/02/05/Solidity2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leo Zhao">
+      <meta itemprop="name" content="赵东春">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="http://p3d3seyjq.bkt.clouddn.com/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="赵东春的博客">
+      <meta itemprop="name" content="LEO">
     </span>
 
     
@@ -788,6 +766,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Solidity/" itemprop="url" rel="index">
+                    <span itemprop="name">Solidity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -816,34 +816,14 @@
 
       
         
-          
-            <p>关键字：固定，动态，memory,storage,bytes,push,索引</p>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="开发需要使用的钱包"><a href="#开发需要使用的钱包" class="headerlink" title="开发需要使用的钱包"></a>开发需要使用的钱包</h3><h4 id="1-Ethereum-Wallet"><a href="#1-Ethereum-Wallet" class="headerlink" title="1. Ethereum Wallet"></a>1. <a href="https://ethereum.org" target="_blank" rel="noopener">Ethereum Wallet</a></h4><p>同步时间比较长，可以以后安装</p>
-<h4 id="2-MyEtherWallet"><a href="#2-MyEtherWallet" class="headerlink" title="2. MyEtherWallet"></a>2. <a href="https://www.myetherwallet.com/#send-transaction" target="_blank" rel="noopener">MyEtherWallet</a></h4><p>需要安装</p>
-<h4 id="3-Metamask"><a href="#3-Metamask" class="headerlink" title="3.   Metamask"></a>3.   <a href="https://metamask.io/#how-it-works" target="_blank" rel="noopener">Metamask</a></h4><p>四种测试网络</p>
-<ul>
-<li>main</li>
-<li>roptest</li>
-<li><p>kovtest</p>
-<p>如何获取代币，到<a href="https://gitter.im/kovan-testnet/faucet?source=orgpage" target="_blank" rel="noopener">社区</a>要代币，<code>@epheph 0xF055775eBD516e7419ae486C1d50C682d4170645</code></p>
-</li>
-<li><p>local</p>
-</li>
-</ul>
-<h4 id="4-Parity"><a href="#4-Parity" class="headerlink" title="4. Parity"></a>4. <a href="https://www.parity.io" target="_blank" rel="noopener">Parity</a></h4><h3 id="两个框架"><a href="#两个框架" class="headerlink" title="两个框架"></a>两个框架</h3><h4 id="1-truffleframework"><a href="#1-truffleframework" class="headerlink" title="1.truffleframework"></a>1.<a href="http://truffleframework.com" target="_blank" rel="noopener">truffleframework</a></h4><h4 id="2-embark"><a href="#2-embark" class="headerlink" title="2.embark"></a>2.<a href="http://embark.readthedocs.io/en/2.5.2/" target="_blank" rel="noopener">embark</a></h4><h3 id="通过一个-demo简单讲解区块链原理"><a href="#通过一个-demo简单讲解区块链原理" class="headerlink" title="通过一个  demo简单讲解区块链原理"></a>通过一个  <a href="https://anders.com/blockchain/hash.html" target="_blank" rel="noopener">demo</a>简单讲解区块链原理</h3><p>打开上面的demo后会有六个菜单项，分别为<code>Hash</code> <code>Block</code> <code>Blockchain</code> <code>Distributed</code> <code>Tokens</code> <code>Coinbase</code></p>
-<h4 id="了解什么是哈希"><a href="#了解什么是哈希" class="headerlink" title="了解什么是哈希"></a>了解什么是哈希</h4><p>先看第一项，哈希是什么，在data框内随意输入一个字符，试试。</p>
-<p>咱们再拿版权保护举个例子，看看版权怎么记录，怎么溯源，怎么存储的问题。</p>
-<p>如果有一天我写了一篇文章，提交到了区块链，假如有个人后来改了个字然后说是他写的，你怎么判断是谁写的。</p>
-<p>哈希能解决这个问题，如果内容一旦发生变化，即使改一个字，一个空格，哈希也会变，这样我们只需要存储哈希就行了，不需存取整篇文章。<br>从现实角度讲，盗版，抄袭，无法杜绝，但是通过哈希计算我们可以很简单的识别出谁是原著谁是编著。</p>
-<p>原著和编著的区别，从法律角度讲，原著不可随意更改，编著可以随意编撰，不需付法律责任。</p>
-<h4 id="区块的概念"><a href="#区块的概念" class="headerlink" title="区块的概念"></a>区块的概念</h4><p>再看第二项blockchain页面有几个值，<code>block</code> <code>Nonce</code> <code>Data</code>,最后是<code>Hash</code><br>对比上面的四个值，我们先搞清楚什么是挖矿<br>  找noice的值，满足哈希值的条件，这就是挖矿<br>  0000的哈希和20个0的哈希哪个难度大</p>
-<p>  Block:<br>  Nonce:<br>  Data:<br>  拼接成一个哈希值</p>
-<p>  终端输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install blockchain-cli -g //安装</span><br><span class="line">blockchain</span><br><span class="line">显示genesis block</span><br><span class="line">previous hash:0 //创始区块</span><br><span class="line">nonce:94053</span><br><span class="line">mine liyc1215</span><br><span class="line">bc 用来查看</span><br></pre></td></tr></table></figure></p>
-<p>  如何用js实现挖矿过程-逻辑<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function isValidhashDifficulty(hash,difficulty)&#123;</span><br><span class="line">for (var i=0,b=hash.length;i&lt;b;i++)&#123;</span><br><span class="line">if (hash[i])!==&apos;0&apos;&#123;</span><br><span class="line">break;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">return i&gt;= difficulty;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="blockchain"><a href="#blockchain" class="headerlink" title="blockchain"></a>blockchain</h4><p>  如果更改date,数据损坏，需要重新挖矿，成本会非常高，最少搞定两条链，这就是51%攻击</p>
-<h4 id="token"><a href="#token" class="headerlink" title="token"></a>token</h4><h3 id="Solidity面向对象编程"><a href="#Solidity面向对象编程" class="headerlink" title="Solidity面向对象编程"></a>Solidity面向对象编程</h3><h3 id="以太坊私有链搭建"><a href="#以太坊私有链搭建" class="headerlink" title="以太坊私有链搭建"></a>以太坊私有链搭建</h3><h3 id="联盟链"><a href="#联盟链" class="headerlink" title="联盟链"></a>联盟链</h3><h3 id="truffle-embark"><a href="#truffle-embark" class="headerlink" title="truffle,embark"></a>truffle,embark</h3><h3 id="ipfs怎么配置"><a href="#ipfs怎么配置" class="headerlink" title="ipfs怎么配置"></a>ipfs怎么配置</h3><h3 id="如何写一个去中心化拍卖的网站"><a href="#如何写一个去中心化拍卖的网站" class="headerlink" title="如何写一个去中心化拍卖的网站"></a>如何写一个去中心化拍卖的网站</h3><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>不识庐山真面目，只缘身在此山中。</p>
-
-          
+          <p>关键字：固定，动态，memory,storage,bytes,push,索引<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/05/Solidity2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -893,13 +873,13 @@
     <link itemprop="mainEntityOfPage" href="https://zhaodongchun.com/2018/02/05/Solidity1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leo Zhao">
+      <meta itemprop="name" content="赵东春">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="http://p3d3seyjq.bkt.clouddn.com/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="赵东春的博客">
+      <meta itemprop="name" content="LEO">
     </span>
 
     
@@ -932,6 +912,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Solidity/" itemprop="url" rel="index">
+                    <span itemprop="name">Solidity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -960,103 +962,14 @@
 
       
         
-          
-            <p>7天后，我们可以开发很多区块链小游戏，水滴石穿，天才来自积累，先展示大纲</p>
-<blockquote>
-<p>以太坊开发使用的钱包<br>  通过一个demo简单讲解区块链原理<br>  Solidity面向对象编程<br>  以太坊私有链搭建<br>  联盟链<br>  truffle,embark框架<br>  ipfs怎么配置<br>  如何写一个去中心化拍卖的网站</p>
-</blockquote>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="一-以太坊开发使用的钱包"><a href="#一-以太坊开发使用的钱包" class="headerlink" title="一. 以太坊开发使用的钱包"></a>一. 以太坊开发使用的钱包</h3><h4 id="1-Ethereum-Wallet"><a href="#1-Ethereum-Wallet" class="headerlink" title="1. Ethereum Wallet"></a>1. <a href="https://ethereum.org" target="_blank" rel="noopener">Ethereum Wallet</a></h4><p>以太坊完整钱包，发代币需要钱包，下载到本地几十G吧,同步时间比较长，可以以后安装</p>
-<h4 id="2-MyEtherWallet"><a href="#2-MyEtherWallet" class="headerlink" title="2. MyEtherWallet"></a>2. <a href="https://www.myetherwallet.com/#send-transaction" target="_blank" rel="noopener">MyEtherWallet</a></h4><p>网页版在线轻钱包，不需要同步所有数据</p>
-<h4 id="3-Metamask"><a href="#3-Metamask" class="headerlink" title="3.   Metamask"></a>3.   <a href="https://metamask.io/#how-it-works" target="_blank" rel="noopener">Metamask</a></h4><p>MetaMask是一款在谷歌浏览器Chrome上使用的插件类型的以太坊钱包,不需要下载，安装方法详见此<a href="http://8btc.com/thread-76137-1-5.html" target="_blank" rel="noopener">链接</a>吧，安装完后在浏览器右边会出现小狐狸头像，钱包界面下有这几项</p>
-<ul>
-<li>main Ethereum Network</li>
-<li>Ropsten Test Network</li>
-<li>kovan Test Network</li>
-<li>Rinkeby Test Network</li>
-<li>Localhost 8545</li>
-<li>custom RPC</li>
-</ul>
-<p>第一项是以太坊主网，第二项到第四项是测试网络，主网只在你的产品正式上线才用，测试千万别进主网，我们经常用的是<code>Ropstrn Test Network</code>和<code>Kovan Test Network</code>,如果我们需要内部局域网测试，偶尔也用<code>localhost 8545</code>。<br>获取<code>Ropsrn Test Network</code>可以直接点击<code>buy</code>按钮。<br>获取<code>Kovan Test Network</code>测试网络上的以太坊代币的渠道，需要到这个<a href="https://gitter.im/kovan-testnet/faucet?source=orgpage" target="_blank" rel="noopener">社区</a>，聊天文本本框内输入此格式<code>@epheph 你的钱包地址</code>epheph会发送eth到你钱包，</p>
-<h4 id="4-Parity"><a href="#4-Parity" class="headerlink" title="4. Parity"></a>4. <a href="https://www.parity.io" target="_blank" rel="noopener">Parity</a></h4><p>偶尔用一下，用于开发联盟链。</p>
-<h3 id="两个框架"><a href="#两个框架" class="headerlink" title="两个框架"></a>两个框架</h3><h4 id="1-truffleframework"><a href="#1-truffleframework" class="headerlink" title="1.truffleframework"></a>1.<a href="http://truffleframework.com" target="_blank" rel="noopener">truffleframework</a></h4><p>进官网后，点开<code>BOXES</code>看菜单项，看看里面都有什么，看到<code>react</code>了吗，以后我们会用到，看看还有什么，发现一个宠物商店，是一个领养猫的app。这些都是现成的demo,集成好的框架。</p>
-<h4 id="2-embark"><a href="#2-embark" class="headerlink" title="2.embark"></a>2.<a href="http://embark.readthedocs.io/en/2.5.2/" target="_blank" rel="noopener">embark</a></h4><p>这个框架也不错，集成了ipfs,封装好了api,以后用到时我们再详细介绍.</p>
-<h3 id="二-通过一个-demo简单讲解区块链原理"><a href="#二-通过一个-demo简单讲解区块链原理" class="headerlink" title="二. 通过一个  demo简单讲解区块链原理"></a>二. 通过一个  <a href="https://anders.com/blockchain/hash.html" target="_blank" rel="noopener">demo</a>简单讲解区块链原理</h3><p>打开上面的demo后会有六个菜单项，分别为<code>Hash</code> <code>Block</code> <code>Blockchain</code> <code>Distributed</code> <code>Tokens</code> <code>Coinbase</code>，下面详细解释。</p>
-<h4 id="1-了解什么是哈希"><a href="#1-了解什么是哈希" class="headerlink" title="1. 了解什么是哈希"></a>1. 了解什么是哈希</h4><p>先看第一项，哈希是什么，在data框内随意输入一个字符试试，会发现下面的哈希值也会同步变化，这就是说你输入内容的同时，网络会根据你的内容计算哈希值。为了便于理解，咱们拿版权保护举个例子，看看版权怎么记录，怎么溯源，怎么存储的问题。</p>
-<p>假如有一天我写了一篇文章，提交到了区块链，假如有个后来人改了个字然后说这篇文章是他写的，你怎么判断是谁写的。</p>
-<p>看看哈希计算怎么解决这个问题，如果内容一旦发生变化，即使改一个字，哈希值也会变，这样我们只需要存储哈希就行了，不需存取整篇文章。从现实角度讲，盗版，抄袭，无法杜绝，但是通过哈希计算我们可以很简单的识别出谁是原著谁是编著。</p>
-<p>原著和编著的区别，从法律角度讲，原著不可随意更改，编著可以随意编撰，不需负法律责任。</p>
-<h4 id="2-区块的概念"><a href="#2-区块的概念" class="headerlink" title="2. 区块的概念"></a>2. 区块的概念</h4><p>再看第二项<code>block</code>页面有几个值，<code>Block</code> <code>Nonce</code> <code>Data</code> <code>Hash</code><br>对比上面的四个值，我们先搞清楚什么是挖矿，在<code>Data</code>文本框内输入一个随机数<code>111</code>,再修改<code>Nonce</code>后面文本框内的值，只要你不断尝试，终有一天你会找到一个<code>Nonce</code>值和哈希值匹配上，我们也可以点击下面的<code>Mine</code>按钮，计算机会自动计算出一个正确的<code>Nonce</code>值和哈希值，我们可以理解挖矿就是找<code>Nonce</code>的值，直到满足哈希值要求的条件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Block+Nonce+Data=Hash</span><br></pre></td></tr></table></figure></p>
-<p>其实从上面公式我们也能分析出来挖矿就是用三个值拼接成一个哈希值的过程</p>
-<p>输入下面代码，在电脑终端运行一个小demo，可帮助我们深入理解区块链运行原理，详见<a href="http://p3d3seyjq.bkt.clouddn.com/3%E5%88%86%E9%92%9F%E9%80%9A%E8%BF%87%E4%B8%80%E4%B8%AAApp%E7%9A%84%E6%BC%94%E7%A4%BA%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%8C%BA%E5%9D%97%E9%93%BE%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86.pdf" target="_blank" rel="noopener">春哥的教程</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install blockchain-cli -g</span><br><span class="line">blockchain</span><br><span class="line">mine zhao</span><br><span class="line">bc</span><br></pre></td></tr></table></figure>
-  <!-- 如何用js实现挖矿过程-逻辑
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">  function isValidhashDifficulty(hash,difficulty)&#123;</span><br><span class="line">  for (var i=0,b=hash.length;i&lt;b;i++)&#123;</span><br><span class="line">  if (hash[i])!==&apos;0&apos;&#123;</span><br><span class="line">  break;</span><br><span class="line">  &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return i&gt;= difficulty;</span><br><span class="line">  &#125;</span><br><span class="line">``` --&gt;</span><br><span class="line"></span><br><span class="line">#### 3. 区块链的概念</span><br><span class="line">再看第三项`blockchain`页面，显示了5个块，如果更改3号block的`date`的值,整个后面的数据会损坏，这样就需要重新挖矿。</span><br><span class="line"></span><br><span class="line">#### 4. 分布式</span><br><span class="line">再看第四项`Distributed`页面，显示了`Peer A` `Peer B` `Peer C`三个节点，如果更改block的`date`的值，整个后面的数据会损坏，如果你想更改所有的节点，则需要最少搞定两条链，这样相应的成本会非常高，这种情况也就是51%攻击。</span><br><span class="line">#### 5. 代币</span><br><span class="line">再看第五项`Token`页面，`Tx`项后面增加了很多笔交易，`$`金额，`from`发起地址， `-&gt;`接收地址</span><br><span class="line">### 三. Solidity面向对象编程</span><br><span class="line"></span><br><span class="line">#### 1. atom环境配置-插件安装</span><br><span class="line">我们用atom写，所以先进atom在install菜单安装下面两个插件，</span><br><span class="line">- autocomplete-Solidity  代码自动补齐</span><br><span class="line">- language-ethereum 代码高亮状态</span><br><span class="line"></span><br><span class="line">#### 2. solidity版本</span><br><span class="line">先写一个小demo,创建一个文件名后缀为`sol`的文件,通过进入[官网](https://solidity.readthedocs.io/en/develop/bugs.html)，点击左侧栏底部的`develop`查询最新版本号。</span><br></pre></td></tr></table></figure>
-<p>pragma solidity ^0.4.19;<br>/<em> pragma 关键字<br>solidity 代表当前语言<br>0.4.19 代表soldity版本<br>^ 代表向上兼容<br>0.4 主版本<br>.19 副版本
-</em>/<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 3. 合约结构</span><br></pre></td></tr></table></figure></p>
-<p>  pragma  solidity ^0.4.19;</p>
-<p>  /<em> Class Person {} </em>/<br>  /<em> Class Dog extends Contract </em>/<br>  /<em><br>  属性<br>  行为<br>  构造函数<br>  普通函数<br>  get函数<br>  set函数<br>  析构函数
-  </em>/</p>
-<p>  //封装 继承 多态<br>  //</p>
-<p>  contract Dog {<br>    int internal age = 0; //年龄</p>
-<pre><code>//构造函数,在创建合约对象时，会先调用构造函数
-//构造函数，函数名和类名相同
-function Dog() public {
-  age = 35;
-}
-
-/*
-set方法，主要用于修改属性值
-*/
-function setAge(int a) public {
-  age = a;
-}
-/*
-读取属性值
-*/
-function getAge() view public returns (int)  {
-
-  return age;
-}
-
-//普通函数
-/* function f() {
-
-} */
-</code></pre><p>  }</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#### 4. 部署合约</span><br><span class="line">上面这个合约部署在哪，把上面代码复制到这个[网站](https://remix.ethereum.org/#optimize=false&amp;version=soljson-v0.4.19+commit.c4cbbb05.js)`browser/ballot.sol`下面的文本框内，粘贴进去。</span><br><span class="line">会发现`Compile`编译下面绿色的`Dog`条，点击`Run`菜单，`Enviroment`后面选择`Javascript VM`,点击`Create`按钮，编译后，出来两个按钮，`getAge` `setAge`,`setAge`后面的文本框输入`22`，点击`setAge`,再点击`getAge`,点击测试下。</span><br><span class="line"></span><br><span class="line">#### 5. 合约完整结构</span><br><span class="line">先看下面一个完整合约，分析结构,在网页编译运行，测试。</span><br></pre></td></tr></table></figure>
-<p>pragma  solidity ^0.4.19;</p>
-<p>contract C {<br>    uint age = 0; //属性<br>    address owner;<br>    // 构造函数<br>    // 创建合约对象时，仅调用一次</p>
-<pre><code>function C() public {
-  age = 30; //初始化属性的值
-  owner = msg.sender; //将部署合约的人的地址保存下来
-}
-
-// 通过set方法修改age的值
-function setAge(uint a) public  {
-  age = a;
-}
-
-// 返回属性age的值
-function getAge() view public returns (uint) {
-  return age;
-}
-
-// kill只是一个普通函数而已
-// selfdestruct 是析构函数，当析构函数一旦被调用，对象就会被销毁
-function kill() public {
-  // 判断当前正在操作合约的人是否是创建人
-  // owner 创建合约的人
-  // msg.sender 正在操作合约的人
-  if (owner == msg.sender) {
-    //析构函数
-    selfdestruct(msg.sender);
-  }
-}
-</code></pre><p>}</p>
-<p>```</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>不识庐山真面目，只缘身在此山中。</p>
--->
-          
+          <p>7天后，我们可以开发很多区块链小游戏，水滴石穿，天才来自积累，先展示大纲<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/05/Solidity1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1106,13 +1019,13 @@ function kill() public {
     <link itemprop="mainEntityOfPage" href="https://zhaodongchun.com/2018/02/04/web scraper2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leo Zhao">
+      <meta itemprop="name" content="赵东春">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="http://p3d3seyjq.bkt.clouddn.com/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="赵东春的博客">
+      <meta itemprop="name" content="LEO">
     </span>
 
     
@@ -1145,6 +1058,28 @@ function kill() public {
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/爬虫/" itemprop="url" rel="index">
+                    <span itemprop="name">爬虫</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1173,16 +1108,14 @@ function kill() public {
 
       
         
-          
-            <p>上一篇我们用web scraper这款爬虫工具爬取了单页的数据，这篇我们试下怎么一次设置抓取多页。</p>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="步骤一：看官方视频"><a href="#步骤一：看官方视频" class="headerlink" title="步骤一：看官方视频"></a>步骤一：看官方视频</h3><p>先进<a href="http://webscraper.io/tutorials" target="_blank" rel="noopener">官网</a>,看下<code>Pagination</code>这个视频，虽然是英文中国人也能看懂的，跟着视频操作几遍就好了。</p>
-<h3 id="步骤二：打开我们要抓取的网站"><a href="#步骤二：打开我们要抓取的网站" class="headerlink" title="步骤二：打开我们要抓取的网站"></a>步骤二：打开我们要抓取的网站</h3><h3 id="步骤三：抓取数据"><a href="#步骤三：抓取数据" class="headerlink" title="步骤三：抓取数据"></a>步骤三：抓取数据</h3><h3 id="步骤四：导出数据"><a href="#步骤四：导出数据" class="headerlink" title="步骤四：导出数据"></a>步骤四：导出数据</h3><p><strong>导出到Excel表格</strong></p>
-<p>抓取结束后，点击<code>Sitemap block</code>，从下拉菜单选择<code>Export data as CSV</code>，等待一秒后，点击蓝色的<code>Download now!</code>选择保存路径，我存在了Downloads文件夹下了。</p>
-<p><strong>对数据进行筛选</strong></p>
-<p>从Finder找到Downloads文件夹下的<code>block.csv</code>文件，右键选择<code>Numbers</code>打开，删掉不需要的列，仅保留需要的列，最后我们可以用Numbers右上角的<code>Sort&amp;Filter</code>,点击<code>Add a Column</code>,选择<code>num</code>排序,这样就和网站列表次序一致了，结果见下图</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>众里寻他千百度，<br>蓦然回首，那人却在灯火阑珊处。</p>
-
-          
+          <p>上一篇我们用web scraper这款爬虫工具爬取了单页的数据，这篇我们试下怎么一次设置抓取多页。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/04/web scraper2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1232,13 +1165,13 @@ function kill() public {
     <link itemprop="mainEntityOfPage" href="https://zhaodongchun.com/2018/02/04/web scraper1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leo Zhao">
+      <meta itemprop="name" content="赵东春">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="http://p3d3seyjq.bkt.clouddn.com/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="赵东春的博客">
+      <meta itemprop="name" content="LEO">
     </span>
 
     
@@ -1271,6 +1204,28 @@ function kill() public {
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/爬虫/" itemprop="url" rel="index">
+                    <span itemprop="name">爬虫</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1299,58 +1254,14 @@ function kill() public {
 
       
         
-          
-            <p><img src="http://p3d3seyjq.bkt.clouddn.com/open-web-scraper.png" alt="网络爬虫"><br>一直以来，我天天想着爬虫，做梦也想，可是也仅仅是想想罢了，最近需要几百份白皮书，了解到一款叫web scraper的爬虫工具，可以让普通人不敲代码轻松掌握爬虫技巧，下面我盘点下具体做法</p>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="步骤一：下载-Web-Scraper"><a href="#步骤一：下载-Web-Scraper" class="headerlink" title="步骤一：下载 Web Scraper"></a>步骤一：下载 Web Scraper</h3><p>Web Scraper是谷歌Chrome浏览器上的一个插件，你需要电脑上安装有chrome浏览器，且已经翻墙，具体怎么翻墙就不多介绍了，自个看外链吧。<br>如果你已经进入谷歌浏览器，请先点击网页左上角的<code>Apps</code>图标,在弹出的菜单中选择<code>Web Store</code>进入Chrome网上应用商店，在搜索框内输入关键词<code>Web scraper</code>,在列表中选中由Martins Balodist提供的<code>Web Scraper</code>,点击右上角的蓝色按钮<code>添加至CHROME</code>,将其添加进谷歌的扩展程序中后会有个蛛网标志出现在搜索框后面。</p>
-<h3 id="步骤二：打开-Web-Scraper"><a href="#步骤二：打开-Web-Scraper" class="headerlink" title="步骤二：打开 Web Scraper"></a>步骤二：打开 Web Scraper</h3><p>快捷键 Ctrl + Shift + I / F12打开开发者工具，找到Web Scraper。建议先进<a href="http://webscraper.io/" target="_blank" rel="noopener">官网</a>,看下<code>Watch the intro video</code>这个视频介绍，虽然是英文中国人也能看懂的，如果照葫芦画瓢跟着视频操作几遍，相信你已拿下它了，下面的内容你不看也会爬虫了。</p>
-<h3 id="步骤三：抓取数据"><a href="#步骤三：抓取数据" class="headerlink" title="步骤三：抓取数据"></a>步骤三：抓取数据</h3><p>我们以抓取<a href="https://block.cc/" target="_blank" rel="noopener">block.cc</a>网站的数据为例,先点击进入网站</p>
-<p><strong>新建Sitemap</strong></p>
-<p>点击 <code>Create New Sitemap</code>,在弹出的下拉菜单中选择<code>Create sitemap</code>,Sitemap name后面的文本框内输入<code>block</code>，这里是自定义名字，容易记忆就行，我自定义的是要抓取的网站名字<br>，Start URL后面的文本框内输入要抓取的网站入口网址<code>https://block.cc/</code>,最后点击按钮<code>Create Sitemap</code>，这样我们就创建了一个名字为block-cc的网站地图，这是我们想抓取数据的网站入口，也就是起点。</p>
-<p><strong>设置Sitemap</strong></p>
-<p>在页面最下面找到一个蓝色的按钮<code>Add new selector</code>,点击创建选择器，会弹出来选择器设置页面，有下面几项，我们一一解释</p>
-<blockquote>
-<p>Id ———-这个Id需要自定义，最好定义一个英文名字，原则就是简洁，好记。<br>Type ——-这个类型很重要，其实经常用的就三类：“文本”，”链接”，”元素”<br>Selector —-这个是选择器，第一个按钮<code>Select</code>，当按下时，在网页上点击后出现绿色框。</p>
-</blockquote>
-<p>其实重要的是捋清楚网页结构，搞清除哪些是文本，哪些是链接，哪些是元素，爬虫就很简单了。</p>
-<ol>
-<li><p>点击网页最下面的蓝色按钮<code>Add new selector</code>创建一个选择器，<code>Id</code>设置为<code>elemment-box</code>,Type设置为<code>Element</code>,</p>
-</li>
-<li><p>点击<code>Selector</code>后面的<code>Select</code>按钮，鼠标移动到网页中，定位到币种列表下第一项<code>BTC-比特币</code>最右边，是不是出现个绿色框，当如下图所示状态时，代表已经选中此行，点击，第一行变红，继续点击下一行，所有行都变成红色就可以了。<br><img src="http://p3d3seyjq.bkt.clouddn.com/process.png" alt=""></p>
-</li>
-<li><p>点击<code>Done selecting!</code>确认选中目标，字段会自动填充到<code>Selector</code>后面的文本框中</p>
-</li>
-<li><p>勾选上<code>Multiple</code>,最后点击<code>Save selector</code>保存，这样我们的一个选择器就创建成功了。</p>
-</li>
-</ol>
-<p>想想为什么我们创建一个类型为元素的选择器，其实看看网页结构就清楚了，我们要抓取的数据都包裹在一个个容器中，我们需要先抓取容器，共50行，下面抓取每一行内容。</p>
-<ol>
-<li><p>确认当前目录为<code>_root/element-box</code>,点击底部的<code>Add new selector</code>按钮，创建一个子集选择器，设置Id为<code>name</code>,Type为<code>Text</code>，当点击<code>选择</code>按钮后，选择名称下面的容器，别选择容器内文本，确认后面字段为<code>span.mgl10</code>,不需要选择<code>multiple</code>,直接<code>Save selector</code>就可以了</p>
-</li>
-<li><p>确认当前目录为<code>_root/element-box</code>,点击底部的<code>Add new selector</code>按钮，创建一个子集选择器，设置Id为<code>num</code>,Type为<code>Text</code>，当点击<code>选择</code>按钮后，选择#下面的容器，别选择容器内文本，确认后面字段为<code>div.col-md-1.col-xs-1</code>,不需要选择<code>multiple</code>,直接<code>Save selector</code>就可以了</p>
-</li>
-<li><p>确认当前目录为<code>_root/element-box</code>,点击底部的<code>Add new selector</code>按钮，创建一个子集选择器，设置Id为<code>name-link</code>,Type为<code>Link</code>，当点击<code>选择</code>按钮后，选择名称下面的容器，确认后面字段为<code>div.col-md-3 a</code>,不需要选择<code>multiple</code>,直接<code>Save selector</code>就可以了</p>
-</li>
-</ol>
-<p>下面我们抓取子页面的内容，先点击BTC-比特币的链接，进入子页面，然后进入name-link目录，在此目录下分别创建web,amout,resum，whitepaper,四个选择集</p>
-<ol>
-<li><p>web选择集设置Type为<code>Text</code>，Selector后面字段为<code>p.col-sm-4:nth-of-type(1) a</code></p>
-</li>
-<li><p>amout选择集设置Type为<code>Text</code>，Selector后面字段为<code>div.col-xs-6 p.num</code></p>
-</li>
-<li><p>resum选择集设置Type为<code>Text</code>，Selector后面字段为<code>p.break-line-4</code></p>
-</li>
-<li><p>whitepaper选择集设置Type为<code>Link</code>,Selector后面字段为<code>p.col-sm-4:nth-of-type(6) a</code></p>
-</li>
-</ol>
-<p><strong>抓取数据</strong></p>
-<p>完成上面的设置后，点击<code>Sitemap block</code>的下拉菜单选择<code>scrape</code>,保持延迟为默认<code>2000</code>，点击蓝色按钮<code>Start scraping</code>就开始抓取数据了.</p>
-<h3 id="步骤四：导出数据"><a href="#步骤四：导出数据" class="headerlink" title="步骤四：导出数据"></a>步骤四：导出数据</h3><p><strong>导出到Excel表格</strong></p>
-<p>抓取结束后，点击<code>Sitemap block</code>，从下拉菜单选择<code>Export data as CSV</code>，等待一秒后，点击蓝色的<code>Download now!</code>选择保存路径，我存在了Downloads文件夹下了。</p>
-<p><strong>对数据进行筛选</strong></p>
-<p>从Finder找到Downloads文件夹下的<code>block.csv</code>文件，右键选择<code>Numbers</code>打开，删掉不需要的列，仅保留需要的列，最后我们可以用Numbers右上角的<code>Sort&amp;Filter</code>,点击<code>Add a Column</code>,选择<code>num</code>排序,这样就和网站列表次序一致了，结果见下图<br><img src="http://p3d3seyjq.bkt.clouddn.com/result.jpg" alt=""></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>众里寻他千百度，<br>蓦然回首，那人却在灯火阑珊处。</p>
-
-          
+          <p><img src="http://p3d3seyjq.bkt.clouddn.com/open-web-scraper.png" alt="网络爬虫"><br>一直以来，我天天想着爬虫，做梦也想，可是也仅仅是想想罢了，最近需要几百份白皮书，了解到一款叫web scraper的爬虫工具，可以让普通人不敲代码轻松掌握爬虫技巧，下面我盘点下具体做法<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/04/web scraper1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1400,13 +1311,13 @@ function kill() public {
     <link itemprop="mainEntityOfPage" href="https://zhaodongchun.com/2018/01/31/go3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leo Zhao">
+      <meta itemprop="name" content="赵东春">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="http://p3d3seyjq.bkt.clouddn.com/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="赵东春的博客">
+      <meta itemprop="name" content="LEO">
     </span>
 
     
@@ -1439,6 +1350,28 @@ function kill() public {
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Go语言/" itemprop="url" rel="index">
+                    <span itemprop="name">Go语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1467,11 +1400,14 @@ function kill() public {
 
       
         
-          
-            <p>假设你的电脑是mac电脑，先下载<a href="https://pan.baidu.com/s/1nwVsez3" target="_blank" rel="noopener">ubuntu-16.04.3-desktop-amd64</a>安装包到本地,并且下载一个虚拟机<a href="http://p3d3seyjq.bkt.clouddn.com/VirtualBox-5.2.4-119785-OSX.dmg" target="_blank" rel="noopener">VirtualBox-5.2.4-119785-OSX</a>。</p>
-<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="安装ubuntu操作系统"><a href="#安装ubuntu操作系统" class="headerlink" title="安装ubuntu操作系统"></a>安装ubuntu操作系统</h3><p>按照次序安装，先安装VirtualBox,安装后运行，在 <code>Oracle VM VirtualBox Manager</code>主界面选择<code>New</code>创建一个<code>Name</code>为<code>Yourname</code>,<code>Type</code>为<code>Linux</code>,<code>Version</code>为<code>Ubuntu(64-bit)</code>后选择蓝色按钮<code>Continue</code>进入下一界面，设置<code>Memory size</code>为默认，继续下一步，设置<code>File location and size</code>为20G到50G之间就可以。</p>
-<h3 id="配置虚拟机ubuntu"><a href="#配置虚拟机ubuntu" class="headerlink" title="配置虚拟机ubuntu"></a>配置虚拟机ubuntu</h3>
-          
+          <p>假设你的电脑是mac电脑，先下载<a href="https://pan.baidu.com/s/1nwVsez3" target="_blank" rel="noopener">ubuntu-16.04.3-desktop-amd64</a>安装包到本地,并且下载一个虚拟机<a href="http://p3d3seyjq.bkt.clouddn.com/VirtualBox-5.2.4-119785-OSX.dmg" target="_blank" rel="noopener">VirtualBox-5.2.4-119785-OSX</a>。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/31/go3/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1521,13 +1457,13 @@ function kill() public {
     <link itemprop="mainEntityOfPage" href="https://zhaodongchun.com/2018/01/31/go2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leo Zhao">
+      <meta itemprop="name" content="赵东春">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="http://p3d3seyjq.bkt.clouddn.com/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="赵东春的博客">
+      <meta itemprop="name" content="LEO">
     </span>
 
     
@@ -1560,6 +1496,28 @@ function kill() public {
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Go语言/" itemprop="url" rel="index">
+                    <span itemprop="name">Go语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1588,25 +1546,14 @@ function kill() public {
 
       
         
-          
-            <h3 id="创建管道"><a href="#创建管道" class="headerlink" title="创建管道"></a>创建管道</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c := make(chan int, 1)//创建一个管道</span><br></pre></td></tr></table></figure>
-<h3 id="读写数据"><a href="#读写数据" class="headerlink" title="读写数据"></a>读写数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c &lt;- 10 //写入数据，这条管道只能写入int类型</span><br><span class="line">&lt;-c //从管道里面取值</span><br></pre></td></tr></table></figure>
-<h3 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a, ok := &lt;-c //同步</span><br></pre></td></tr></table></figure>
-<h3 id="缓冲管道和非缓冲管道"><a href="#缓冲管道和非缓冲管道" class="headerlink" title="缓冲管道和非缓冲管道"></a>缓冲管道和非缓冲管道</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c := make(chan int) //非缓冲管道</span><br><span class="line">c := make(chan int，10) //缓冲管道</span><br></pre></td></tr></table></figure>
-<h3 id="管道的长度和容量"><a href="#管道的长度和容量" class="headerlink" title="管道的长度和容量"></a>管道的长度和容量</h3><p>管道遵循先进先出的阵列原则。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">len()</span><br><span class="line">cap()</span><br></pre></td></tr></table></figure></p>
-<h3 id="管道的作用"><a href="#管道的作用" class="headerlink" title="管道的作用"></a>管道的作用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">管道是多个线程之间传递数据和同步数据的重要手段。</span><br></pre></td></tr></table></figure>
-<h3 id="管道操作"><a href="#管道操作" class="headerlink" title="管道操作"></a>管道操作</h3><p>关闭管道可以用下面命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">close(c)</span><br></pre></td></tr></table></figure></p>
-<h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><p>我们知道管道有长度和容量，数据进入管道后，就可以按照顺序读取出来，假如管道中无数据，那读取的是一个空管道，这时候会发生什么，请看下面完整案例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">	c := make(chan int)</span><br><span class="line">	done := make(chan bool)</span><br><span class="line"></span><br><span class="line">	go func() &#123;</span><br><span class="line">		for i := 0; i &lt; 10; i++ &#123;</span><br><span class="line">			c &lt;- i</span><br><span class="line">		&#125;</span><br><span class="line">		done &lt;- true</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">	go func() &#123;</span><br><span class="line">		for i := 0; i &lt; 10; i++ &#123;</span><br><span class="line">			c &lt;- i</span><br><span class="line">		&#125;</span><br><span class="line">		done &lt;- true</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">	&lt;-done //死锁</span><br><span class="line">	&lt;-done</span><br><span class="line">	close(c)</span><br><span class="line"></span><br><span class="line">	for n := range c &#123;</span><br><span class="line">		fmt.Println(n)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="管道检测"><a href="#管道检测" class="headerlink" title="管道检测"></a>管道检测</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for n := range c &#123;</span><br><span class="line">	fmt.Println(n)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="深刻理解"><a href="#深刻理解" class="headerlink" title="深刻理解"></a>深刻理解</h3><ul>
-<li>开关 //动作</li>
-<li>读写 //动作</li>
-<li>生产者 //对象</li>
-<li>消费者 //对象</li>
-</ul>
-<h3 id="人机对话"><a href="#人机对话" class="headerlink" title="人机对话"></a>人机对话</h3><p>用机器类比跑一下<br>用人类比跑一下</p>
-
-          
+          <p>关键字：管道，同步，异步，缓冲管道，非缓冲管道，死锁<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/31/go2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1656,13 +1603,13 @@ function kill() public {
     <link itemprop="mainEntityOfPage" href="https://zhaodongchun.com/2018/01/30/go1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leo Zhao">
+      <meta itemprop="name" content="赵东春">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="http://p3d3seyjq.bkt.clouddn.com/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="赵东春的博客">
+      <meta itemprop="name" content="LEO">
     </span>
 
     
@@ -1695,6 +1642,28 @@ function kill() public {
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Go语言/" itemprop="url" rel="index">
+                    <span itemprop="name">Go语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1723,21 +1692,7 @@ function kill() public {
 
       
         
-          <p><a href="http://www.kongyixueyuan.com/classes/info?id=8" target="_blank" rel="noopener">课程大纲</a><br>上面是区块链修炼记的总览，对与区块链不了解的朋友，初次见到可能会感叹：好专业啊，怎么都看不懂那，下面请听我来解读解读。</p>
-<h2 id="课程大纲"><a href="#课程大纲" class="headerlink" title="课程大纲"></a>课程大纲</h2><p>工欲善其事必先利其器，同样道理，区块链开发应先选择一种利器，这就是go语言，有了工具，我们就可以开始打磨精美玉器，但是价值不菲的美玉不会轻易示人，必有精美的盒子，如果用精美的盒子类比区块链，这一容器承载着的代币可类比为美玉。</p>
-<p>我如此这么说只是不想让人认为区块链是什么高深的东西，其实很早就已经存在于人类历史中，只是换了一种说法，人话换成了计算机语言。</p>
-<h3 id="Go语言"><a href="#Go语言" class="headerlink" title="Go语言"></a>Go语言</h3><p>说到了计算机语言，和人类语言一样一样的，相反人类语言比计算机语言复杂多了，计算机只有0和1，人类还有26个字母。</p>
-<h4 id="go语言基础"><a href="#go语言基础" class="headerlink" title="go语言基础"></a>go语言基础</h4><p>语言需要环境，go语言运行的环境，选择的是linux操作系统-ubutun<br>接下来讲解的是go语言的基本语法，分别是变量，常量，类型和函数。</p>
-<h4 id="常用算法"><a href="#常用算法" class="headerlink" title="常用算法"></a>常用算法</h4><p>算法是什么那，就是计算机处理数据的方法，数据从你那到我这里可以直着走，也可以绕圈圈，尴尬的是数据一绕圈圈人就蒙圈，算法中有一个求质数算法，貌似和加密解密关系密切，求质数过程就是加密过程，分解质因数过程就是解密过程。</p>
-<h4 id="go语言高级编程"><a href="#go语言高级编程" class="headerlink" title="go语言高级编程"></a>go语言高级编程</h4><p>面向对象编程<br>并发编程<br>网络编程<br>工程管理</p>
-<h4 id="React"><a href="#React" class="headerlink" title="React"></a>React</h4><ul>
-<li>Html</li>
-<li>css</li>
-<li>ES6</li>
-<li>react</li>
-<li>Flux</li>
-<li>Redux</li>
-</ul>
+          <p><a href="http://www.kongyixueyuan.com/classes/info?id=8" target="_blank" rel="noopener">课程大纲</a><br>上面是区块链修炼记的总览，对与区块链不了解的朋友，初次见到可能会感叹：好专业啊，怎么都看不懂那，下面请听我来解读解读。<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/01/30/go1/#more" rel="contents">
@@ -1819,9 +1774,9 @@ function kill() public {
             
               <img class="site-author-image" itemprop="image"
                 src="http://p3d3seyjq.bkt.clouddn.com/avatar.png"
-                alt="Leo Zhao" />
+                alt="赵东春" />
             
-              <p class="site-author-name" itemprop="name">Leo Zhao</p>
+              <p class="site-author-name" itemprop="name">赵东春</p>
               <p class="site-description motion-element" itemprop="description">山重水复疑无路,柳岸花明又一春</p>
           </div>
 
@@ -1839,6 +1794,15 @@ function kill() public {
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
 
             
 
@@ -1846,6 +1810,28 @@ function kill() public {
 
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/konglongyinger" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/zhao-dong-chun-91/posts" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://m.weibo.cn/p/1005053232517464" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+            </div>
           
 
           
@@ -1877,7 +1863,7 @@ function kill() public {
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Leo Zhao</span>
+  <span class="author" itemprop="copyrightHolder">赵东春</span>
 
   
 </div>
@@ -1942,6 +1928,9 @@ function kill() public {
 
 
 
+  
+  
+
 
 
 
@@ -1976,6 +1965,16 @@ function kill() public {
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
   
 
 
@@ -2034,6 +2033,323 @@ function kill() public {
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 

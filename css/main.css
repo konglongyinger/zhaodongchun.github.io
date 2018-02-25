@@ -1090,7 +1090,7 @@ pre .javascript .function {
   bottom: 19px;
 }
 .header {
-  background: transparent;
+  background-image: url("https://ws1.sinaimg.cn/large/694830ebgy1fh3pyd05klj21kw0f2dy2.jpg");
 }
 .header-inner {
   position: relative;
@@ -1822,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #49cdb8;
+  background: #df8a18;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2625,6 +2625,7 @@ embed {
     width: 100%;
     padding: 0;
     background: #fff;
+    background-image: url("https://ws1.sinaimg.cn/large/694830ebgy1fh3pyd05klj21kw0f2dy2.jpg");
     border-bottom: 1px solid #ddd;
     z-index: 1030;
   }
