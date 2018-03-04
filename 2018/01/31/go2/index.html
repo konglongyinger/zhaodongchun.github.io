@@ -79,17 +79,19 @@
 
 
 
-<meta name="description" content="关键字：管道，同步，异步，缓冲管道，非缓冲管道，死锁">
+<meta name="description" content="学习教程关键字：管道，同步，异步，缓冲管道，非缓冲管道，死锁">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go语言系列之管道分析">
+<meta property="og:title" content="Go语言系列（一）">
 <meta property="og:url" content="https://zhaodongchun.com/2018/01/31/go2/index.html">
 <meta property="og:site_name" content="LEO&#39;S BLOG">
-<meta property="og:description" content="关键字：管道，同步，异步，缓冲管道，非缓冲管道，死锁">
+<meta property="og:description" content="学习教程关键字：管道，同步，异步，缓冲管道，非缓冲管道，死锁">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-25T10:08:32.075Z">
+<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/go-guandao.png">
+<meta property="og:updated_time" content="2018-03-04T05:33:52.396Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go语言系列之管道分析">
-<meta name="twitter:description" content="关键字：管道，同步，异步，缓冲管道，非缓冲管道，死锁">
+<meta name="twitter:title" content="Go语言系列（一）">
+<meta name="twitter:description" content="学习教程关键字：管道，同步，异步，缓冲管道，非缓冲管道，死锁">
+<meta name="twitter:image" content="http://p3d3seyjq.bkt.clouddn.com/go-guandao.png">
 
 
 
@@ -125,7 +127,7 @@
 
 
 
-  <title>Go语言系列之管道分析 | LEO'S BLOG</title>
+  <title>Go语言系列（一） | LEO'S BLOG</title>
   
 
 
@@ -303,7 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Go语言系列之管道分析</h1>
+          <h1 class="post-title" itemprop="name headline">Go语言系列（一）</h1>
         
 
         <div class="post-meta">
@@ -375,7 +377,7 @@
       
 
       
-        <p>关键字：管道，同步，异步，缓冲管道，非缓冲管道，死锁<br><a id="more"></a></p>
+        <p><img src="http://p3d3seyjq.bkt.clouddn.com/go-guandao.png" alt=""><br><a href="http://docscn.studygolang.com" target="_blank" rel="noopener">学习教程</a><br>关键字：管道，同步，异步，缓冲管道，非缓冲管道，死锁<br><a id="more"></a></p>
 <h3 id="创建管道"><a href="#创建管道" class="headerlink" title="创建管道"></a>创建管道</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c := make(chan int, 1)//创建一个管道</span><br></pre></td></tr></table></figure>
 <h3 id="读写数据"><a href="#读写数据" class="headerlink" title="读写数据"></a>读写数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c &lt;- 10 //写入数据，这条管道只能写入int类型</span><br><span class="line">&lt;-c //从管道里面取值</span><br></pre></td></tr></table></figure>
 <h3 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a, ok := &lt;-c //同步</span><br></pre></td></tr></table></figure>
@@ -434,8 +436,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/31/go3/" rel="prev" title="Go语言系列之环境搭建-虚拟机ubuntu环境配置">
-                Go语言系列之环境搭建-虚拟机ubuntu环境配置 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/31/go3/" rel="prev" title="Go语言系列（二）">
+                Go语言系列（二） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -517,7 +519,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -528,7 +530,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

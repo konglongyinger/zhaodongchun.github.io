@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="关键字：枚举，结构体，字典，投票,元祖,dapp">
+<meta name="description" content="12345678910111213pragma solidity ^0.4.0;contract SimpleStorage &amp;#123;    uint storedData;    function set(uint x) public &amp;#123;        storedData = x;    &amp;#125;    function get() public constant retur">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用Solidity7天跑通以太坊开发（五）">
 <meta property="og:url" content="https://zhaodongchun.com/2018/02/09/Solidity5/index.html">
 <meta property="og:site_name" content="LEO&#39;S BLOG">
-<meta property="og:description" content="关键字：枚举，结构体，字典，投票,元祖,dapp">
+<meta property="og:description" content="12345678910111213pragma solidity ^0.4.0;contract SimpleStorage &amp;#123;    uint storedData;    function set(uint x) public &amp;#123;        storedData = x;    &amp;#125;    function get() public constant retur">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-25T10:04:52.234Z">
+<meta property="og:updated_time" content="2018-03-04T03:49:25.449Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用Solidity7天跑通以太坊开发（五）">
-<meta name="twitter:description" content="关键字：枚举，结构体，字典，投票,元祖,dapp">
+<meta name="twitter:description" content="12345678910111213pragma solidity ^0.4.0;contract SimpleStorage &amp;#123;    uint storedData;    function set(uint x) public &amp;#123;        storedData = x;    &amp;#125;    function get() public constant retur">
 
 
 
@@ -375,7 +375,8 @@
       
 
       
-        <p>关键字：枚举，结构体，字典，投票,元祖,dapp<br><a id="more"></a></p>
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.0;</span><br><span class="line"></span><br><span class="line">contract SimpleStorage &#123;</span><br><span class="line">    uint storedData;</span><br><span class="line"></span><br><span class="line">    function set(uint x) public &#123;</span><br><span class="line">        storedData = x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function get() public constant returns (uint) &#123;</span><br><span class="line">        return storedData;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>尝试理解一个基本实例<br><a id="more"></a></p>
 <h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="开始之前复盘几个概念"><a href="#开始之前复盘几个概念" class="headerlink" title="开始之前复盘几个概念"></a>开始之前复盘几个概念</h3><p>枚举：go中关键字<code>iota</code>，solidity中关键字<code>enum</code><br>结构体：</p>
 <h3 id="一-声明枚举"><a href="#一-声明枚举" class="headerlink" title="一. 声明枚举"></a>一. 声明枚举</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.19;</span><br><span class="line"></span><br><span class="line">contract C &#123;</span><br><span class="line">    // 声明一个枚举类型ActionChoices</span><br><span class="line">    // 里面一共有四个值，GoLeft, GoRight, GoStraight, SitStill</span><br><span class="line">    // 其实位置的值GoLeft等于0，往后逐渐+1</span><br><span class="line">    // uint8是无符号整型，它的存储范围是0～255</span><br><span class="line">    // ActionChoices相当于是我们自己自定义的一个无符号整型，存储的值的范围由我们自己决定</span><br><span class="line">    // 当前案例里面ActionChoices的存储范围为0 ~ 3，在set方法中如果传值超过了3，那么就会越界</span><br><span class="line">    enum ActionChoices &#123; GoLeft, GoRight, GoStraight, SitStill &#125;</span><br><span class="line">    // 声明一个ActionChoices类型的变量_choice</span><br><span class="line">    ActionChoices _choice;</span><br><span class="line">    // 声明一个ActionChoices类型的常量，defaultChoice</span><br><span class="line">    // defaultChoice它的值为ActionChoices.GoStraight</span><br><span class="line">    ActionChoices constant defaultChoice = ActionChoices.GoStraight;</span><br><span class="line"></span><br><span class="line">    // 通过set方法修改变量_choice的值</span><br><span class="line">    function setGoStraight(ActionChoices choice)</span><br><span class="line">    public &#123;</span><br><span class="line">        _choice = choice;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // get方法，读取变量的_choice的值</span><br><span class="line">    function getChoice() constant public returns (ActionChoices) &#123;</span><br><span class="line">        return _choice;</span><br><span class="line">    &#125;</span><br><span class="line">    // 返回常量defaultChoice的值</span><br><span class="line">    function getDefaultChoice() pure public returns (uint) &#123;</span><br><span class="line">        return uint(defaultChoice);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.19;</span><br><span class="line"></span><br><span class="line">contract C &#123;</span><br><span class="line">  //枚举类型单词首字母大写，里面也是</span><br><span class="line">  enum Sex &#123; Man, Women, Unknown &#125;</span><br><span class="line"></span><br><span class="line">  function SexSelf()  public view returns (Sex) &#123;</span><br><span class="line">      return Sex.Man;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -395,14 +396,6 @@
 <p>编译出一个build的文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure></p>
 <p>运行</p>
 <p>修改<code>app.js</code>,增加按钮<code>修改合约数据</code></p>
-<h3 id="六-跑一遍投票合约"><a href="#六-跑一遍投票合约" class="headerlink" title="六. 跑一遍投票合约"></a>六. 跑一遍投票合约</h3><ol>
-<li>复制模版</li>
-<li>改名voting.sol</li>
-<li>定位到前段代码<code>app.js</code>，更换合约地址和名字</li>
-<li>将合约拷贝到web端，run，create，submit</li>
-<li>拷贝合约地址到<code>app.js</code>，替换掉</li>
-<li>运行<code>truffle develop</code>编辑后<code>npm start</code>,前端启动。</li>
-</ol>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>不识庐山真面目，只缘身在此山中。</p>
 
       
@@ -529,7 +522,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -540,7 +533,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -597,7 +590,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开始"><span class="nav-number">1.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开始之前复盘几个概念"><span class="nav-number">1.1.</span> <span class="nav-text">开始之前复盘几个概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一-声明枚举"><span class="nav-number">1.2.</span> <span class="nav-text">一. 声明枚举</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-初始化一个结构体"><span class="nav-number">1.3.</span> <span class="nav-text">二. 初始化一个结构体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-字典（和go语言的区别）"><span class="nav-number">1.4.</span> <span class="nav-text">三. 字典（和go语言的区别）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四-众筹合约"><span class="nav-number">1.5.</span> <span class="nav-text">四. 众筹合约</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五-如何把truffle的demo跑起来"><span class="nav-number">1.6.</span> <span class="nav-text">五. 如何把truffle的demo跑起来</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六-跑一遍投票合约"><span class="nav-number">1.7.</span> <span class="nav-text">六. 跑一遍投票合约</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开始"><span class="nav-number">1.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开始之前复盘几个概念"><span class="nav-number">1.1.</span> <span class="nav-text">开始之前复盘几个概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一-声明枚举"><span class="nav-number">1.2.</span> <span class="nav-text">一. 声明枚举</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-初始化一个结构体"><span class="nav-number">1.3.</span> <span class="nav-text">二. 初始化一个结构体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-字典（和go语言的区别）"><span class="nav-number">1.4.</span> <span class="nav-text">三. 字典（和go语言的区别）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四-众筹合约"><span class="nav-number">1.5.</span> <span class="nav-text">四. 众筹合约</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五-如何把truffle的demo跑起来"><span class="nav-number">1.6.</span> <span class="nav-text">五. 如何把truffle的demo跑起来</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>

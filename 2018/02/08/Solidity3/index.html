@@ -79,17 +79,16 @@
 
 
 
-<meta name="description" content="关键字：固定，动态，memory,storage,bytes,push,索引">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用Solidity7天跑通以太坊开发（三）">
 <meta property="og:url" content="https://zhaodongchun.com/2018/02/08/Solidity3/index.html">
 <meta property="og:site_name" content="LEO&#39;S BLOG">
-<meta property="og:description" content="关键字：固定，动态，memory,storage,bytes,push,索引">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-25T10:04:30.829Z">
+<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/solidity-cover.png">
+<meta property="og:updated_time" content="2018-03-04T04:12:18.144Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用Solidity7天跑通以太坊开发（三）">
-<meta name="twitter:description" content="关键字：固定，动态，memory,storage,bytes,push,索引">
+<meta name="twitter:image" content="http://p3d3seyjq.bkt.clouddn.com/solidity-cover.png">
 
 
 
@@ -375,31 +374,7 @@
       
 
       
-        <p>关键字：固定，动态，memory,storage,bytes,push,索引<br><a id="more"></a></p>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="开发需要使用的钱包"><a href="#开发需要使用的钱包" class="headerlink" title="开发需要使用的钱包"></a>开发需要使用的钱包</h3><h4 id="1-Ethereum-Wallet"><a href="#1-Ethereum-Wallet" class="headerlink" title="1. Ethereum Wallet"></a>1. <a href="https://ethereum.org" target="_blank" rel="noopener">Ethereum Wallet</a></h4><p>同步时间比较长，可以以后安装</p>
-<h4 id="2-MyEtherWallet"><a href="#2-MyEtherWallet" class="headerlink" title="2. MyEtherWallet"></a>2. <a href="https://www.myetherwallet.com/#send-transaction" target="_blank" rel="noopener">MyEtherWallet</a></h4><p>需要安装</p>
-<h4 id="3-Metamask"><a href="#3-Metamask" class="headerlink" title="3.   Metamask"></a>3.   <a href="https://metamask.io/#how-it-works" target="_blank" rel="noopener">Metamask</a></h4><p>四种测试网络</p>
-<ul>
-<li>main</li>
-<li>roptest</li>
-<li><p>kovtest</p>
-<p>如何获取代币，到<a href="https://gitter.im/kovan-testnet/faucet?source=orgpage" target="_blank" rel="noopener">社区</a>要代币，<code>@epheph 0xF055775eBD516e7419ae486C1d50C682d4170645</code></p>
-</li>
-<li><p>local</p>
-</li>
-</ul>
-<h4 id="4-Parity"><a href="#4-Parity" class="headerlink" title="4. Parity"></a>4. <a href="https://www.parity.io" target="_blank" rel="noopener">Parity</a></h4><h3 id="两个框架"><a href="#两个框架" class="headerlink" title="两个框架"></a>两个框架</h3><h4 id="1-truffleframework"><a href="#1-truffleframework" class="headerlink" title="1.truffleframework"></a>1.<a href="http://truffleframework.com" target="_blank" rel="noopener">truffleframework</a></h4><h4 id="2-embark"><a href="#2-embark" class="headerlink" title="2.embark"></a>2.<a href="http://embark.readthedocs.io/en/2.5.2/" target="_blank" rel="noopener">embark</a></h4><h3 id="通过一个-demo简单讲解区块链原理"><a href="#通过一个-demo简单讲解区块链原理" class="headerlink" title="通过一个  demo简单讲解区块链原理"></a>通过一个  <a href="https://anders.com/blockchain/hash.html" target="_blank" rel="noopener">demo</a>简单讲解区块链原理</h3><p>打开上面的demo后会有六个菜单项，分别为<code>Hash</code> <code>Block</code> <code>Blockchain</code> <code>Distributed</code> <code>Tokens</code> <code>Coinbase</code></p>
-<h4 id="了解什么是哈希"><a href="#了解什么是哈希" class="headerlink" title="了解什么是哈希"></a>了解什么是哈希</h4><p>先看第一项，哈希是什么，在data框内随意输入一个字符，试试。</p>
-<p>咱们再拿版权保护举个例子，看看版权怎么记录，怎么溯源，怎么存储的问题。</p>
-<p>如果有一天我写了一篇文章，提交到了区块链，假如有个人后来改了个字然后说是他写的，你怎么判断是谁写的。</p>
-<p>哈希能解决这个问题，如果内容一旦发生变化，即使改一个字，一个空格，哈希也会变，这样我们只需要存储哈希就行了，不需存取整篇文章。<br>从现实角度讲，盗版，抄袭，无法杜绝，但是通过哈希计算我们可以很简单的识别出谁是原著谁是编著。</p>
-<p>原著和编著的区别，从法律角度讲，原著不可随意更改，编著可以随意编撰，不需付法律责任。</p>
-<h4 id="区块的概念"><a href="#区块的概念" class="headerlink" title="区块的概念"></a>区块的概念</h4><p>再看第二项blockchain页面有几个值，<code>block</code> <code>Nonce</code> <code>Data</code>,最后是<code>Hash</code><br>对比上面的四个值，我们先搞清楚什么是挖矿<br>  找noice的值，满足哈希值的条件，这就是挖矿<br>  0000的哈希和20个0的哈希哪个难度大</p>
-<p>  Block:<br>  Nonce:<br>  Data:<br>  拼接成一个哈希值</p>
-<p>  终端输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install blockchain-cli -g //安装</span><br><span class="line">blockchain</span><br><span class="line">显示genesis block</span><br><span class="line">previous hash:0 //创始区块</span><br><span class="line">nonce:94053</span><br><span class="line">mine liyc1215</span><br><span class="line">bc 用来查看</span><br></pre></td></tr></table></figure></p>
-<p>  如何用js实现挖矿过程-逻辑<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function isValidhashDifficulty(hash,difficulty)&#123;</span><br><span class="line">for (var i=0,b=hash.length;i&lt;b;i++)&#123;</span><br><span class="line">if (hash[i])!==&apos;0&apos;&#123;</span><br><span class="line">break;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">return i&gt;= difficulty;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="blockchain"><a href="#blockchain" class="headerlink" title="blockchain"></a>blockchain</h4><p>  如果更改date,数据损坏，需要重新挖矿，成本会非常高，最少搞定两条链，这就是51%攻击</p>
-<h4 id="token"><a href="#token" class="headerlink" title="token"></a>token</h4><h3 id="Solidity面向对象编程"><a href="#Solidity面向对象编程" class="headerlink" title="Solidity面向对象编程"></a>Solidity面向对象编程</h3><h3 id="以太坊私有链搭建"><a href="#以太坊私有链搭建" class="headerlink" title="以太坊私有链搭建"></a>以太坊私有链搭建</h3><h3 id="联盟链"><a href="#联盟链" class="headerlink" title="联盟链"></a>联盟链</h3><h3 id="truffle-embark"><a href="#truffle-embark" class="headerlink" title="truffle,embark"></a>truffle,embark</h3><h3 id="ipfs怎么配置"><a href="#ipfs怎么配置" class="headerlink" title="ipfs怎么配置"></a>ipfs怎么配置</h3><h3 id="如何写一个去中心化拍卖的网站"><a href="#如何写一个去中心化拍卖的网站" class="headerlink" title="如何写一个去中心化拍卖的网站"></a>如何写一个去中心化拍卖的网站</h3><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>不识庐山真面目，只缘身在此山中。</p>
+        <p><img src="http://p3d3seyjq.bkt.clouddn.com/solidity-cover.png" alt="react-cover"></p>
 
       
     </div>
@@ -496,17 +471,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -525,7 +491,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -536,7 +502,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -583,22 +549,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开始"><span class="nav-number">1.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开发需要使用的钱包"><span class="nav-number">1.1.</span> <span class="nav-text">开发需要使用的钱包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Ethereum-Wallet"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. Ethereum Wallet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-MyEtherWallet"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. MyEtherWallet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Metamask"><span class="nav-number">1.1.3.</span> <span class="nav-text">3.   Metamask</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Parity"><span class="nav-number">1.1.4.</span> <span class="nav-text">4. Parity</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两个框架"><span class="nav-number">1.2.</span> <span class="nav-text">两个框架</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-truffleframework"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.truffleframework</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-embark"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.embark</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过一个-demo简单讲解区块链原理"><span class="nav-number">1.3.</span> <span class="nav-text">通过一个  demo简单讲解区块链原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#了解什么是哈希"><span class="nav-number">1.3.1.</span> <span class="nav-text">了解什么是哈希</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#区块的概念"><span class="nav-number">1.3.2.</span> <span class="nav-text">区块的概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#blockchain"><span class="nav-number">1.3.3.</span> <span class="nav-text">blockchain</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#token"><span class="nav-number">1.3.4.</span> <span class="nav-text">token</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solidity面向对象编程"><span class="nav-number">1.4.</span> <span class="nav-text">Solidity面向对象编程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以太坊私有链搭建"><span class="nav-number">1.5.</span> <span class="nav-text">以太坊私有链搭建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#联盟链"><span class="nav-number">1.6.</span> <span class="nav-text">联盟链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#truffle-embark"><span class="nav-number">1.7.</span> <span class="nav-text">truffle,embark</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ipfs怎么配置"><span class="nav-number">1.8.</span> <span class="nav-text">ipfs怎么配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何写一个去中心化拍卖的网站"><span class="nav-number">1.9.</span> <span class="nav-text">如何写一个去中心化拍卖的网站</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
