@@ -87,7 +87,7 @@
 <meta property="og:description" content="Truffle是针对基于以太坊的Solidity语言的一套开发框架。本身基于Javascript。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/truffle-react1.png">
-<meta property="og:updated_time" content="2018-03-04T09:13:34.698Z">
+<meta property="og:updated_time" content="2018-03-08T06:50:57.247Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Truffle课程笔记（一）">
 <meta name="twitter:description" content="Truffle是针对基于以太坊的Solidity语言的一套开发框架。本身基于Javascript。">
@@ -380,36 +380,44 @@
         <p><img src="http://p3d3seyjq.bkt.clouddn.com/truffle-react1.png" alt="truffle-react"></p>
 <p>Truffle是针对基于以太坊的Solidity语言的一套开发框架。本身基于Javascript。</p>
 <a id="more"></a>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="简单创建一个项目"><a href="#简单创建一个项目" class="headerlink" title="简单创建一个项目"></a>简单创建一个项目</h3><h4 id="安装truffle框架"><a href="#安装truffle框架" class="headerlink" title="安装truffle框架"></a>安装truffle框架</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g truffle</span><br></pre></td></tr></table></figure>
-<h4 id="卸载truffle框架"><a href="#卸载truffle框架" class="headerlink" title="卸载truffle框架"></a>卸载truffle框架</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall -g truffle</span><br></pre></td></tr></table></figure>
-<h4 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ truffle version</span><br><span class="line">Truffle v4.1.0 (core: 4.1.0)</span><br><span class="line">Solidity v0.4.19 (solc-js)s</span><br></pre></td></tr></table></figure>
-<h4 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir demo</span><br><span class="line">truffle init</span><br></pre></td></tr></table></figure>
+<h2 id="1-简单创建一个项目"><a href="#1-简单创建一个项目" class="headerlink" title="1. 简单创建一个项目"></a>1. 简单创建一个项目</h2><p> 1) 安装truffle框架<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g truffle</span><br></pre></td></tr></table></figure></p>
+<p> 2) 卸载truffle框架<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall -g truffle</span><br></pre></td></tr></table></figure></p>
+<p> 3) 查看版本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ truffle version</span><br><span class="line">Truffle v4.1.0 (core: 4.1.0)</span><br><span class="line">Solidity v0.4.19 (solc-js)s</span><br></pre></td></tr></table></figure></p>
+<p> 4) 创建项目<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir demo</span><br><span class="line">truffle init</span><br></pre></td></tr></table></figure></p>
 <p>简单分析：有三个文件夹<code>contracts</code> <code>migrations</code> <code>test</code><br>结论：<code>最简单truffle框架，没有和任何前端结合。</code></p>
-<h3 id="使用BOXES创建一个项目"><a href="#使用BOXES创建一个项目" class="headerlink" title="使用BOXES创建一个项目"></a>使用BOXES创建一个项目</h3><p>使用truffle的最佳姿势是使用集成好的<code>BOXES</code>生成项目</p>
-<h4 id="安装truffle-box"><a href="#安装truffle-box" class="headerlink" title="安装truffle box"></a>安装truffle box</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">truffle unbox react</span><br></pre></td></tr></table></figure>
+<h2 id="2-使用BOXES创建一个项目"><a href="#2-使用BOXES创建一个项目" class="headerlink" title="2. 使用BOXES创建一个项目"></a>2. 使用BOXES创建一个项目</h2><p>使用truffle的最佳姿势是使用集成好的<code>BOXES</code>生成项目</p>
+<p> 1) 安装truffle box</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">truffle unbox react</span><br></pre></td></tr></table></figure>
 <p>如果前端使用react，推荐使用react盒子。</p>
-<h4 id="目录结构分析"><a href="#目录结构分析" class="headerlink" title="目录结构分析"></a>目录结构分析</h4><p>简单分析：有八个文件夹<code>config</code> <code>contracts</code> <code>migrations</code> <code>node_modules</code> <code>public</code> <code>scripts</code> <code>src</code> <code>test</code></p>
-<p>重要文件1：contract文件夹用来存放合约，其中<code>simpleStorage.sol</code>文件为默认合约，可以自定义修改</p>
-<p>重要文件2：src文件夹用来存放代码，其中<code>App.js</code>用来修改代码</p>
-<p>重要文件3：最底部<code>truffle.js</code>很有用</p>
-<h3 id="如何运行一个项目"><a href="#如何运行一个项目" class="headerlink" title="如何运行一个项目"></a>如何运行一个项目</h3><p>总体流程是：先编译合约，再部署合约，然后同步MetaMask和本地私有网络账号，最后运行服务。</p>
-<h4 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">truffle develop</span><br><span class="line">compile</span><br></pre></td></tr></table></figure>
-<p><code>develop</code>产生一个本地测试区块链，得到一个区块链服务器地址<code>http://localhost:9545/</code>和十个账号<code>Accounts:</code>，以及12个单词的助记词<code>Mnemonic：</code></p>
-<p><code>compile</code>编译后得到一个<code>build</code>文件夹,此文件夹存放abi和字节码</p>
-<h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">migrate</span><br></pre></td></tr></table></figure>
-<p>部署后得到一个合约地址<code>simpleStorage</code>，这样当前网络上已经部署合约。</p>
-<h4 id="MetaMask和本地私有网络账号同步"><a href="#MetaMask和本地私有网络账号同步" class="headerlink" title="MetaMask和本地私有网络账号同步"></a>MetaMask和本地私有网络账号同步</h4><p>对比本地网络地址<code>localhost：9545</code>和<br>网页端本地网络地址<code>localhost:8545</code>，需要将网页端和本地链接起来</p>
-<p>步骤一：拷贝本地网络地址<code>http://localhost:9545/</code></p>
-<p>步骤二：定位到网页端metamask钱包中custom RPC,将其粘贴进来</p>
-<p>步骤三：拷贝助记词到MetaMask中，通过此方法不需要使用web3转账。</p>
+<p> 2) 目录结构分析</p>
+<p>简单分析：有八个文件夹<code>config</code> <code>contracts</code> <code>migrations</code> <code>node_modules</code> <code>public</code> <code>scripts</code> <code>src</code> <code>test</code></p>
 <ul>
-<li>用web3解决网络钱包中没有钱的问题<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">web3.eth.getBalance(&quot;0x821aea9a577a9b44299b9c15c88cf3087f3b5544&quot;)</span><br><span class="line">//得到余额</span><br><span class="line">var count=web3.toWei(50,&apos;ether&apos;);</span><br><span class="line">count;</span><br><span class="line">count</span><br><span class="line">//50eth转换为位</span><br><span class="line">web3.eth.sendTransaction(&#123;from:&quot;&quot;,to:&quot;&quot;,value:count&#125;)</span><br><span class="line">//发送count从钱包地址1到钱包地址2.</span><br></pre></td></tr></table></figure>
+<li><p>重要文件1：contract文件夹用来存放合约，其中<code>simpleStorage.sol</code>文件为默认合约，可以自定义修改</p>
+</li>
+<li><p>重要文件2：src文件夹用来存放代码，其中<code>App.js</code>用来修改代码</p>
+</li>
+<li><p>重要文件3：最底部<code>truffle.js</code>很有用</p>
 </li>
 </ul>
-<p>运行完代码后，到网页端metamask钱包查看余额，为150eth就对了。</p>
-<h4 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run start</span><br></pre></td></tr></table></figure>
+<h2 id="3-如何运行一个项目"><a href="#3-如何运行一个项目" class="headerlink" title="3. 如何运行一个项目"></a>3. 如何运行一个项目</h2><p>总体流程是：先编译合约，再部署合约，然后同步MetaMask和本地私有网络账号，最后运行服务。</p>
+<h4 id="3-1-编译"><a href="#3-1-编译" class="headerlink" title="3.1 编译"></a>3.1 编译</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">truffle develop</span><br><span class="line">compile</span><br></pre></td></tr></table></figure>
+<p><code>develop</code>产生一个本地测试区块链，得到一个区块链服务器地址<code>http://localhost:9545/</code>和十个账号<code>Accounts:</code>，以及12个单词的助记词<code>Mnemonic：</code></p>
+<p><code>compile</code>编译后得到一个<code>build</code>文件夹,此文件夹存放abi和字节码</p>
+<h4 id="3-2-部署"><a href="#3-2-部署" class="headerlink" title="3.2 部署"></a>3.2 部署</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">migrate</span><br></pre></td></tr></table></figure>
+<p>部署后得到一个合约地址<code>simpleStorage</code>，这样当前网络上已经部署合约。</p>
+<h4 id="3-3-MetaMask和本地私有网络账号同步"><a href="#3-3-MetaMask和本地私有网络账号同步" class="headerlink" title="3.3 MetaMask和本地私有网络账号同步"></a>3.3 MetaMask和本地私有网络账号同步</h4><p>对比本地网络地址<code>localhost：9545</code>和<br>网页端本地网络地址<code>localhost:8545</code>，需要将网页端和本地链接起来</p>
+<p>1) 拷贝本地网络地址<code>http://localhost:9545/</code></p>
+<p>2) 定位到网页端metamask钱包中custom RPC,将其粘贴进来</p>
+<p>3) 拷贝助记词到MetaMask中，通过此方法不需要使用web3转账。</p>
+<ul>
+<li><p>用web3解决网络钱包中没有钱的问题</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">web3.eth.getBalance(<span class="string">"0x821aea9a577a9b44299b9c15c88cf3087f3b5544"</span>)</span><br><span class="line">//得到余额</span><br><span class="line">var count=web3.toWei(50,<span class="string">'ether'</span>);</span><br><span class="line">count;</span><br><span class="line">count</span><br><span class="line">//50eth转换为位</span><br><span class="line">web3.eth.sendTransaction(&#123;from:<span class="string">""</span>,to:<span class="string">""</span>,value:count&#125;)</span><br><span class="line">//发送count从钱包地址1到钱包地址2.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行完代码后，到网页端metamask钱包查看余额，为150eth就对了。</p>
+</li>
+</ul>
+<h4 id="3-4-启动服务"><a href="#3-4-启动服务" class="headerlink" title="3.4 启动服务"></a>3.4 启动服务</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run start</span><br></pre></td></tr></table></figure>
 <p>启动第二个终端，运行<code>npm run start</code>,如果结果为<code>5</code>则正常</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>横看成岭侧成峰 远近高低各不同</p>
 
       
     </div>
@@ -535,7 +543,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -603,7 +611,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开始"><span class="nav-number">1.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单创建一个项目"><span class="nav-number">1.1.</span> <span class="nav-text">简单创建一个项目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装truffle框架"><span class="nav-number">1.1.1.</span> <span class="nav-text">安装truffle框架</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#卸载truffle框架"><span class="nav-number">1.1.2.</span> <span class="nav-text">卸载truffle框架</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看版本"><span class="nav-number">1.1.3.</span> <span class="nav-text">查看版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建项目"><span class="nav-number">1.1.4.</span> <span class="nav-text">创建项目</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用BOXES创建一个项目"><span class="nav-number">1.2.</span> <span class="nav-text">使用BOXES创建一个项目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装truffle-box"><span class="nav-number">1.2.1.</span> <span class="nav-text">安装truffle box</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#目录结构分析"><span class="nav-number">1.2.2.</span> <span class="nav-text">目录结构分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何运行一个项目"><span class="nav-number">1.3.</span> <span class="nav-text">如何运行一个项目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编译"><span class="nav-number">1.3.1.</span> <span class="nav-text">编译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#部署"><span class="nav-number">1.3.2.</span> <span class="nav-text">部署</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MetaMask和本地私有网络账号同步"><span class="nav-number">1.3.3.</span> <span class="nav-text">MetaMask和本地私有网络账号同步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动服务"><span class="nav-number">1.3.4.</span> <span class="nav-text">启动服务</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-简单创建一个项目"><span class="nav-text">1. 简单创建一个项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-使用BOXES创建一个项目"><span class="nav-text">2. 使用BOXES创建一个项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-如何运行一个项目"><span class="nav-text">3. 如何运行一个项目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-编译"><span class="nav-text">3.1 编译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-部署"><span class="nav-text">3.2 部署</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-MetaMask和本地私有网络账号同步"><span class="nav-text">3.3 MetaMask和本地私有网络账号同步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-启动服务"><span class="nav-text">3.4 启动服务</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

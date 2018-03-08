@@ -88,7 +88,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/react-cover.png">
 <meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/react-test.png">
-<meta property="og:updated_time" content="2018-03-04T12:42:50.027Z">
+<meta property="og:updated_time" content="2018-03-08T06:08:13.571Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React课程笔记（二）">
 <meta name="twitter:description" content="运行一个todolist项目，学习react运行原理。">
@@ -381,15 +381,18 @@
         <p><img src="http://p3d3seyjq.bkt.clouddn.com/react-cover.png" alt="react-cover"></p>
 <p>运行一个todolist项目，学习react运行原理。</p>
 <a id="more"></a>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="了解并会使用React"><a href="#了解并会使用React" class="headerlink" title="了解并会使用React"></a>了解并会使用React</h3><p>对比html+css+js和react有什么不同<br>先阅读<a href="https://doc.react-china.org" target="_blank" rel="noopener">官网文档</a><br><strong>开发环境</strong></p>
+<h2 id="1-了解并会使用React"><a href="#1-了解并会使用React" class="headerlink" title="1. 了解并会使用React"></a>1. 了解并会使用React</h2><p>对比html+css+js和react有什么不同<br>先阅读<a href="https://doc.react-china.org" target="_blank" rel="noopener">官网文档</a></p>
+<p>1） 设置环境</p>
 <p>运行下面命令，确认已经安装npm<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br></pre></td></tr></table></figure></p>
-<p>工具下载<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install create-react-app -g</span><br></pre></td></tr></table></figure></p>
-<p>初始化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create-react-app todolist</span><br></pre></td></tr></table></figure></p>
-<p>初始化完成后，切换到工作目录todolist,运行测试下。</p>
+<p>2）工具下载<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install create-react-app -g</span><br></pre></td></tr></table></figure></p>
+<p>3）初始化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create-react-app todolist</span><br></pre></td></tr></table></figure></p>
+<p>4）运行测试。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd todolist</span><br><span class="line">npm run start</span><br></pre></td></tr></table></figure>
-<p>稍等片刻，服务如果打开<code>localhost:3000</code>，代表服务已经运行成功,以后我们修改值后，都会在这个终端显示结果。<br><img src="http://p3d3seyjq.bkt.clouddn.com/react-test.png" alt="react-test"><br>保持服务打开，我们需要再打开一个atom终端，两个atom同时运行，一个用来开启服务，另一个用来修改值用于测试。</p>
-<p>运行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd todolist</span><br><span class="line">atom .</span><br></pre></td></tr></table></figure></p>
-<p>在atom中打开todolist目录，我们分析下目录结构。</p>
+<p>稍等片刻，服务如果打开<code>localhost:3000</code>，代表服务已经运行成功,以后我们修改值后，都会在这个终端显示结果。<br><img src="http://p3d3seyjq.bkt.clouddn.com/react-test.png" alt="react-test"></p>
+<h2 id="2-更新内容"><a href="#2-更新内容" class="headerlink" title="2. 更新内容"></a>2. 更新内容</h2><p>保持服务打开，我们需要再打开一个atom终端，两个atom同时运行，一个用来开启服务，另一个用来修改值用于测试。</p>
+<p>1）运行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd todolist</span><br><span class="line">atom .</span><br></pre></td></tr></table></figure></p>
+<p>在atom中打开todolist目录</p>
+<p>2）分析目录结构。</p>
 <p>src目录</p>
 <blockquote>
 <p>App.js 写一个标签<br>  index.js 只有一个作用<br>  package.json</p>
@@ -399,18 +402,18 @@
 <p>index.html</p>
 </blockquote>
 <p> 在atom中同时打开上面四个文件，结合浏览器，我们学习下这几个文件的关系。</p>
-<p> 首先，根据localhost页面提示，编辑<code>src/App.js</code>找到下面字段：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 className=&quot;App-title&quot;&gt;Welcome to React&lt;/h1&gt;</span><br></pre></td></tr></table></figure></p>
+<p> 3）编辑<code>src/App.js</code>找到下面字段：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 className=&quot;App-title&quot;&gt;Welcome to React&lt;/h1&gt;</span><br></pre></td></tr></table></figure></p>
 <p>修改为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 className=&quot;App-title&quot;&gt;Test&lt;/h1&gt;</span><br></pre></td></tr></table></figure></p>
 <p>保存后，你会发现<code>locahost</code>页面也相应更新。</p>
-<p><strong>导入,导出</strong></p>
+<h2 id="3-接口"><a href="#3-接口" class="headerlink" title="3. 接口"></a>3. 接口</h2><p>1） 导入,导出</p>
 <p>尝试修改index.js文件,定位此代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import App from &apos;./App&apos;;</span><br></pre></td></tr></table></figure></p>
 <p>更改为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import App,&#123;Test3,Test2&#125; from &apos;./App&apos;;</span><br></pre></td></tr></table></figure></p>
 <p>切换到App.js文件，查看页面底部import后面的</p>
 <p>理解导入导出，导入两种方式。一种是名字，一种带括号的。</p>
-<p><strong>传值</strong></p>
+<p>2）传值</p>
 <p><code>index.js =&gt; app.js</code></p>
 <p>动态添加组件，并实时渲染出来</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>React理念可总结为一个公式：UI=render(data)</p>
+<h2 id="2-总结"><a href="#2-总结" class="headerlink" title="2. 总结"></a>2. 总结</h2><p>React理念可总结为一个公式：UI=render(data)</p>
 
       
     </div>
@@ -536,7 +539,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -604,7 +607,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开始"><span class="nav-number">1.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#了解并会使用React"><span class="nav-number">1.1.</span> <span class="nav-text">了解并会使用React</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-了解并会使用React"><span class="nav-text">1. 了解并会使用React</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-更新内容"><span class="nav-text">2. 更新内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-接口"><span class="nav-text">3. 接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-总结"><span class="nav-text">2. 总结</span></a></li></ol></div>
             
 
           </div>
