@@ -89,7 +89,7 @@
 <meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/open-web-scraper.png">
 <meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/process.png">
 <meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/result.jpg">
-<meta property="og:updated_time" content="2018-03-08T08:00:41.025Z">
+<meta property="og:updated_time" content="2018-03-08T09:39:14.491Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络爬虫-用web scraper抓取百份白皮书（一）">
 <meta name="twitter:description" content="一直以来，我天天想着爬虫，做梦也想，可是也仅仅是想想罢了，最近需要几百份白皮书，了解到一款叫web scraper的爬虫工具，可以让普通人不敲代码轻松掌握爬虫技巧，下面我盘点下具体做法">
@@ -383,8 +383,8 @@
 <h2 id="1-下载-Web-Scraper"><a href="#1-下载-Web-Scraper" class="headerlink" title="1.下载 Web Scraper"></a>1.下载 Web Scraper</h2><p>Web Scraper是谷歌Chrome浏览器上的一个插件，你需要电脑上安装有chrome浏览器，且已经翻墙，具体怎么翻墙就不多介绍了，自个看外链吧。<br>如果你已经进入谷歌浏览器，请先点击网页左上角的<code>Apps</code>图标,在弹出的菜单中选择<code>Web Store</code>进入Chrome网上应用商店，在搜索框内输入关键词<code>Web scraper</code>,在列表中选中由Martins Balodist提供的<code>Web Scraper</code>,点击右上角的蓝色按钮<code>添加至CHROME</code>,将其添加进谷歌的扩展程序中后会有个蛛网标志出现在搜索框后面。</p>
 <h2 id="2-打开-Web-Scraper"><a href="#2-打开-Web-Scraper" class="headerlink" title="2. 打开 Web Scraper"></a>2. 打开 Web Scraper</h2><p>快捷键 Ctrl + Shift + I / F12打开开发者工具，找到Web Scraper。建议先进<a href="http://webscraper.io/" target="_blank" rel="noopener">官网</a>,看下<code>Watch the intro video</code>这个视频介绍，虽然是英文中国人也能看懂的，如果照葫芦画瓢跟着视频操作几遍，相信你已拿下它了，下面的内容你不看也会爬虫了。</p>
 <h2 id="3-抓取数据"><a href="#3-抓取数据" class="headerlink" title="3. 抓取数据"></a>3. 抓取数据</h2><p>我们以抓取<a href="https://block.cc/" target="_blank" rel="noopener">block.cc</a>网站的数据为例,先点击进入网站</p>
-<h4 id="3-1-新建Sitemap"><a href="#3-1-新建Sitemap" class="headerlink" title="3.1 新建Sitemap"></a>3.1 新建Sitemap</h4><p>点击 <code>Create New Sitemap</code>,在弹出的下拉菜单中选择<code>Create sitemap</code>,Sitemap name后面的文本框内输入<code>block</code>，这里是自定义名字，容易记忆就行，我自定义的是要抓取的网站名字<br>，Start URL后面的文本框内输入要抓取的网站入口网址<code>https://block.cc/</code>,最后点击按钮<code>Create Sitemap</code>，这样我们就创建了一个名字为block-cc的网站地图，这是我们想抓取数据的网站入口，也就是起点。</p>
-<h4 id="3-2-设置Sitemap"><a href="#3-2-设置Sitemap" class="headerlink" title="3.2 设置Sitemap"></a>3.2 设置Sitemap</h4><p>在页面最下面找到一个蓝色的按钮<code>Add new selector</code>,点击创建选择器，会弹出来选择器设置页面，有下面几项，我们一一解释</p>
+<h3 id="3-1-新建Sitemap"><a href="#3-1-新建Sitemap" class="headerlink" title="3.1 新建Sitemap"></a>3.1 新建Sitemap</h3><p>点击 <code>Create New Sitemap</code>,在弹出的下拉菜单中选择<code>Create sitemap</code>,Sitemap name后面的文本框内输入<code>block</code>，这里是自定义名字，容易记忆就行，我自定义的是要抓取的网站名字<br>，Start URL后面的文本框内输入要抓取的网站入口网址<code>https://block.cc/</code>,最后点击按钮<code>Create Sitemap</code>，这样我们就创建了一个名字为block-cc的网站地图，这是我们想抓取数据的网站入口，也就是起点。</p>
+<h3 id="3-2-设置Sitemap"><a href="#3-2-设置Sitemap" class="headerlink" title="3.2 设置Sitemap"></a>3.2 设置Sitemap</h3><p>在页面最下面找到一个蓝色的按钮<code>Add new selector</code>,点击创建选择器，会弹出来选择器设置页面，有下面几项，我们一一解释</p>
 <blockquote>
 <p>Id ———-这个Id需要自定义，最好定义一个英文名字，原则就是简洁，好记。<br>Type ——-这个类型很重要，其实经常用的就三类：“文本”，”链接”，”元素”<br>Selector —-这个是选择器，第一个按钮<code>Select</code>，当按下时，在网页上点击后出现绿色框。</p>
 </blockquote>
@@ -407,9 +407,9 @@
 <p>10）amout选择集设置Type为<code>Text</code>，Selector后面字段为<code>div.col-xs-6 p.num</code></p>
 <p>11）resum选择集设置Type为<code>Text</code>，Selector后面字段为<code>p.break-line-4</code></p>
 <p>12）whitepaper选择集设置Type为<code>Link</code>,Selector后面字段为<code>p.col-sm-4:nth-of-type(6) a</code></p>
-<h4 id="3-3-抓取数据"><a href="#3-3-抓取数据" class="headerlink" title="3.3 抓取数据"></a>3.3 抓取数据</h4><p>完成上面的设置后，点击<code>Sitemap block</code>的下拉菜单选择<code>scrape</code>,保持延迟为默认<code>2000</code>，点击蓝色按钮<code>Start scraping</code>就开始抓取数据了.</p>
-<h2 id="4-导出数据"><a href="#4-导出数据" class="headerlink" title="4. 导出数据"></a>4. 导出数据</h2><h4 id="4-1-导出到Excel表格"><a href="#4-1-导出到Excel表格" class="headerlink" title="4.1 导出到Excel表格"></a>4.1 导出到Excel表格</h4><p>抓取结束后，点击<code>Sitemap block</code>，从下拉菜单选择<code>Export data as CSV</code>，等待一秒后，点击蓝色的<code>Download now!</code>选择保存路径，我存在了Downloads文件夹下了。</p>
-<h4 id="4-2-对数据进行筛选"><a href="#4-2-对数据进行筛选" class="headerlink" title="4.2 对数据进行筛选"></a>4.2 对数据进行筛选</h4><p>从Finder找到Downloads文件夹下的<code>block.csv</code>文件，右键选择<code>Numbers</code>打开，删掉不需要的列，仅保留需要的列，最后我们可以用Numbers右上角的<code>Sort&amp;Filter</code>,点击<code>Add a Column</code>,选择<code>num</code>排序,这样就和网站列表次序一致了，结果见下图<br><img src="http://p3d3seyjq.bkt.clouddn.com/result.jpg" alt=""></p>
+<h3 id="3-3-抓取数据"><a href="#3-3-抓取数据" class="headerlink" title="3.3 抓取数据"></a>3.3 抓取数据</h3><p>完成上面的设置后，点击<code>Sitemap block</code>的下拉菜单选择<code>scrape</code>,保持延迟为默认<code>2000</code>，点击蓝色按钮<code>Start scraping</code>就开始抓取数据了.</p>
+<h2 id="4-导出数据"><a href="#4-导出数据" class="headerlink" title="4. 导出数据"></a>4. 导出数据</h2><h3 id="4-1-导出到Excel表格"><a href="#4-1-导出到Excel表格" class="headerlink" title="4.1 导出到Excel表格"></a>4.1 导出到Excel表格</h3><p>抓取结束后，点击<code>Sitemap block</code>，从下拉菜单选择<code>Export data as CSV</code>，等待一秒后，点击蓝色的<code>Download now!</code>选择保存路径，我存在了Downloads文件夹下了。</p>
+<h3 id="4-2-对数据进行筛选"><a href="#4-2-对数据进行筛选" class="headerlink" title="4.2 对数据进行筛选"></a>4.2 对数据进行筛选</h3><p>从Finder找到Downloads文件夹下的<code>block.csv</code>文件，右键选择<code>Numbers</code>打开，删掉不需要的列，仅保留需要的列，最后我们可以用Numbers右上角的<code>Sort&amp;Filter</code>,点击<code>Add a Column</code>,选择<code>num</code>排序,这样就和网站列表次序一致了，结果见下图<br><img src="http://p3d3seyjq.bkt.clouddn.com/result.jpg" alt=""></p>
 
       
     </div>
@@ -603,7 +603,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-下载-Web-Scraper"><span class="nav-text">1.下载 Web Scraper</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-打开-Web-Scraper"><span class="nav-text">2. 打开 Web Scraper</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-抓取数据"><span class="nav-text">3. 抓取数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-新建Sitemap"><span class="nav-text">3.1 新建Sitemap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-设置Sitemap"><span class="nav-text">3.2 设置Sitemap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-抓取数据"><span class="nav-text">3.3 抓取数据</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-导出数据"><span class="nav-text">4. 导出数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-导出到Excel表格"><span class="nav-text">4.1 导出到Excel表格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-对数据进行筛选"><span class="nav-text">4.2 对数据进行筛选</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-下载-Web-Scraper"><span class="nav-text">1.下载 Web Scraper</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-打开-Web-Scraper"><span class="nav-text">2. 打开 Web Scraper</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-抓取数据"><span class="nav-text">3. 抓取数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-新建Sitemap"><span class="nav-text">3.1 新建Sitemap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-设置Sitemap"><span class="nav-text">3.2 设置Sitemap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-抓取数据"><span class="nav-text">3.3 抓取数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-导出数据"><span class="nav-text">4. 导出数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-导出到Excel表格"><span class="nav-text">4.1 导出到Excel表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-对数据进行筛选"><span class="nav-text">4.2 对数据进行筛选</span></a></li></ol></li></ol></div>
             
 
           </div>

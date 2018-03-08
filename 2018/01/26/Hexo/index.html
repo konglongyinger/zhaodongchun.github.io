@@ -88,7 +88,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/github.png">
 <meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/hexo-1.png">
-<meta property="og:updated_time" content="2018-03-08T07:40:40.724Z">
+<meta property="og:updated_time" content="2018-03-08T08:51:39.065Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用框架Hexo在Github上搭建个人博客">
 <meta name="twitter:description" content="Hexo+Github [Mac环境] 假如你有一个Github帐号，我们就可以开始了，如果你说没有，就去注册好了。想想咱们注册微信时也不是很难的事吧，准备好一个邮箱就行了，真的别的都不需要。">
@@ -381,11 +381,11 @@
         <p><img src="http://p3d3seyjq.bkt.clouddn.com/github.png" alt="github"></p>
 <p><a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>+<a href="https://github.com" target="_blank" rel="noopener">Github</a> [Mac环境]</p>
 <p>假如你有一个Github帐号，我们就可以开始了，如果你说没有，就去注册好了。想想咱们注册微信时也不是很难的事吧，准备好一个邮箱就行了，真的别的都不需要。<br><a id="more"></a></p>
-<h2 id="1-配置远程和本地Github"><a href="#1-配置远程和本地Github" class="headerlink" title="1. 配置远程和本地Github"></a>1. 配置远程和本地Github</h2><h4 id="1-1-在-Github-上创建一个仓库（Repo）"><a href="#1-1-在-Github-上创建一个仓库（Repo）" class="headerlink" title="1.1 在 Github 上创建一个仓库（Repo）"></a>1.1 在 Github 上创建一个仓库（Repo）</h4><p>登陆Github网址，用你的账号登陆进去，点右上角的<code>+</code>，弹出菜单选择<code>New repository</code>,在弹出的<code>Repository name</code>下面的文本框内按照<code>yourname.github.io</code> 这种格式输入，然后选中 <label class="input-label"><input class="input-radio" type="radio" name="radio"> <code>Public</code></label>, 最后点击绿色的<code>Create repository</code>创建成功。</p>
+<h2 id="1-配置远程和本地Github"><a href="#1-配置远程和本地Github" class="headerlink" title="1. 配置远程和本地Github"></a>1. 配置远程和本地Github</h2><h3 id="1-1-在-Github-上创建一个仓库（Repo）"><a href="#1-1-在-Github-上创建一个仓库（Repo）" class="headerlink" title="1.1 在 Github 上创建一个仓库（Repo）"></a>1.1 在 Github 上创建一个仓库（Repo）</h3><p>登陆Github网址，用你的账号登陆进去，点右上角的<code>+</code>，弹出菜单选择<code>New repository</code>,在弹出的<code>Repository name</code>下面的文本框内按照<code>yourname.github.io</code> 这种格式输入，然后选中 <label class="input-label"><input class="input-radio" type="radio" name="radio"> <code>Public</code></label>, 最后点击绿色的<code>Create repository</code>创建成功。</p>
 <p>重新登陆，点右上角你的头像，在弹出的菜单中选中<code>Your profile</code>,会发现“youname.github.io”分支创建成功，点击进去，在右边找到<code>Settings</code>,在左侧栏最下面找到<code>Deploy keys</code>,点击<code>Add deploy key</code>,输入你的”key”,密匙的求解过程请参见<a href="http://iissnan.com/progit/html/zh/ch4_3.html" target="_blank" rel="noopener">Git密匙</a>,至此你的远程仓库部分已经配置完成。</p>
 <p>如果你对git很感兴趣，或者，对git的命令行方式很头疼的，可以阅读此物: <a href="http://iissnan.com/progit/" target="_blank" rel="noopener">Git入门教材</a></p>
 <p> <em>⚠️我的git仓库名字为zhaodongchun.github.io,你的就用你自己的名字好了.</em></p>
-<h4 id="1-2-确认本地已经安装好-git-和-npm"><a href="#1-2-确认本地已经安装好-git-和-npm" class="headerlink" title="1.2 确认本地已经安装好 git 和 npm"></a>1.2 确认本地已经安装好 git 和 npm</h4><p>在终端输入下面两条命令，确认已经安装好git和npm,如果电脑还没装这两个东西的，请参照官方文档安装：<a href="http://iissnan.com/progit/" target="_blank" rel="noopener">Git入门教材</a>+<a href="https://www.npmjs.com.cn/" target="_blank" rel="noopener">npm中文文档</a></p>
+<h3 id="1-2-确认本地已经安装好-git-和-npm"><a href="#1-2-确认本地已经安装好-git-和-npm" class="headerlink" title="1.2 确认本地已经安装好 git 和 npm"></a>1.2 确认本地已经安装好 git 和 npm</h3><p>在终端输入下面两条命令，确认已经安装好git和npm,如果电脑还没装这两个东西的，请参照官方文档安装：<a href="http://iissnan.com/progit/" target="_blank" rel="noopener">Git入门教材</a>+<a href="https://www.npmjs.com.cn/" target="_blank" rel="noopener">npm中文文档</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br><span class="line">npm --version</span><br></pre></td></tr></table></figure>
 <h2 id="2-配置Hexo"><a href="#2-配置Hexo" class="headerlink" title="2. 配置Hexo"></a>2. 配置Hexo</h2><p><img src="http://p3d3seyjq.bkt.clouddn.com/hexo-1.png" alt="hexo-1"></p>
 <p> 1） 安装 hexo</p>
@@ -632,7 +632,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-配置远程和本地Github"><span class="nav-text">1. 配置远程和本地Github</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-在-Github-上创建一个仓库（Repo）"><span class="nav-text">1.1 在 Github 上创建一个仓库（Repo）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-确认本地已经安装好-git-和-npm"><span class="nav-text">1.2 确认本地已经安装好 git 和 npm</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-配置Hexo"><span class="nav-text">2. 配置Hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-部署到-Github-上"><span class="nav-text">3. 部署到 Github 上</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-调试网站"><span class="nav-text">4. 调试网站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-域名绑定"><span class="nav-text">5. 域名绑定</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-配置远程和本地Github"><span class="nav-text">1. 配置远程和本地Github</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-在-Github-上创建一个仓库（Repo）"><span class="nav-text">1.1 在 Github 上创建一个仓库（Repo）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-确认本地已经安装好-git-和-npm"><span class="nav-text">1.2 确认本地已经安装好 git 和 npm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-配置Hexo"><span class="nav-text">2. 配置Hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-部署到-Github-上"><span class="nav-text">3. 部署到 Github 上</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-调试网站"><span class="nav-text">4. 调试网站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-域名绑定"><span class="nav-text">5. 域名绑定</span></a></li></ol></div>
             
 
           </div>
