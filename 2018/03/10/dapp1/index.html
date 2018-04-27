@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="创建一个去中心化拍卖项目ebay_dapp,实现在以太坊上拍卖商品的功能。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="去中心化拍卖项目ebay_Dapp">
+<meta property="og:url" content="https://zhaodongchun.com/2018/03/10/dapp1/index.html">
+<meta property="og:site_name" content="LEO&#39;S BLOG">
+<meta property="og:description" content="创建一个去中心化拍卖项目ebay_dapp,实现在以太坊上拍卖商品的功能。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/vote-1.png">
+<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/vote-3.png">
+<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/vote-4.png">
+<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/bote-4.png">
+<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/vote-1.png">
+<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/vote-5.png">
+<meta property="og:updated_time" content="2018-04-25T10:16:04.868Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="去中心化拍卖项目ebay_Dapp">
+<meta name="twitter:description" content="创建一个去中心化拍卖项目ebay_dapp,实现在以太坊上拍卖商品的功能。">
+<meta name="twitter:image" content="http://p3d3seyjq.bkt.clouddn.com/vote-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zhaodongchun.com/2018/03/10/dapp1/"/>
+
+
+
+
+
+  <title>去中心化拍卖项目ebay_Dapp | LEO'S BLOG</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4224474104259248ae107d6d2699cf80";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LEO'S BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhaodongchun.com/2018/03/10/dapp1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="赵东春">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://p3d3seyjq.bkt.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LEO'S BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">去中心化拍卖项目ebay_Dapp</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-10T21:10:19+08:00">
+                2018-03-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ETH智能合约开发/" itemprop="url" rel="index">
+                    <span itemprop="name">ETH智能合约开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/10/dapp1/" class="leancloud_visitors" data-flag-title="去中心化拍卖项目ebay_Dapp">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://p3d3seyjq.bkt.clouddn.com/vote-1.png" alt="vote-1"></p>
+<p>创建一个去中心化拍卖项目ebay_dapp,实现在以太坊上拍卖商品的功能。</p>
+<a id="more"></a>
+<h2 id="1-下载项目模版"><a href="#1-下载项目模版" class="headerlink" title="1. 下载项目模版"></a>1. 下载项目模版</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/konglongyinger/Dapp-vote.git</span><br></pre></td></tr></table></figure>
+<h2 id="2-安装相关依赖包"><a href="#2-安装相关依赖包" class="headerlink" title="2. 安装相关依赖包"></a>2. 安装相关依赖包</h2><p>1） 安装ipfs-ipfsAPI<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install ipfs-api</span><br></pre></td></tr></table></figure></p>
+<p>2) 安装node_module文件夹<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-安装种子文件seed-js"><a href="#3-安装种子文件seed-js" class="headerlink" title="3. 安装种子文件seed.js"></a>3. 安装种子文件seed.js</h2><h3 id="3-1-新建图片和描述信息"><a href="#3-1-新建图片和描述信息" class="headerlink" title="3.1 新建图片和描述信息"></a>3.1 新建图片和描述信息</h3><p>1）在桌面创建一个data文件夹用来存放图片和描述信息，并且创建一个desc.txt文件用来存储描述信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> desktop</span><br><span class="line">mkdir data</span><br><span class="line"><span class="built_in">cd</span> data</span><br><span class="line">touch desc.txt</span><br></pre></td></tr></table></figure></p>
+<p>2）下载一张图片放到data文件夹中，命名为mac,并且编辑desc.txt文件，cat命令后显示以下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ cat desc.txt</span><br><span class="line">名称:Power Macintosh（Power Mac）</span><br><span class="line">发布时间：1994</span><br><span class="line">停产时间：1998</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p3d3seyjq.bkt.clouddn.com/vote-3.png" alt="vote-3"></p>
+<h3 id="3-2-添加数据到ipfs"><a href="#3-2-添加数据到ipfs" class="headerlink" title="3.2 添加数据到ipfs"></a>3.2 添加数据到ipfs</h3><p>1) 启动IPFS节点服务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipfs daemon</span><br></pre></td></tr></table></figure></p>
+<p>2) 添加数据到ipfs<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> data</span><br><span class="line">ipfs add desc.txt</span><br><span class="line">ipfs add mac.jpg</span><br></pre></td></tr></table></figure></p>
+<p>得到图片的哈希值，和描述文件的哈希值。<br><img src="http://p3d3seyjq.bkt.clouddn.com/vote-4.png" alt="vote-4"></p>
+<h3 id="3-3-配置种子文件"><a href="#3-3-配置种子文件" class="headerlink" title="3.3 配置种子文件"></a>3.3 配置种子文件</h3><p>1) 新建seed.js文件</p>
+<p>atom打开项目<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ebay_dapp</span><br><span class="line">atom .</span><br></pre></td></tr></table></figure></p>
+<p>项目根目录下新建文件，命名为seed.js</p>
+<p>2) 拷贝以下代码到seed.js文件中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Eutil = require(&apos;ethereumjs-util&apos;);</span><br><span class="line">EcommerceStore = artifacts.require(&quot;./EcommerceStore.sol&quot;);</span><br><span class="line">module.exports = function(callback) &#123;</span><br><span class="line"> current_time = Math.round(new Date() / 1000);</span><br><span class="line"> amt_1 = web3.toWei(1, &apos;ether&apos;);</span><br><span class="line"> EcommerceStore.deployed().then(function(i) &#123;i.addProductToStore(&apos;Mac&apos;, &apos;Mac Phones &amp; Accessories&apos;, &apos;QmRaNVNKSUPMcAsDYBYQUdexRhqpi72YusgvL5PB5w1XVv&apos;, &apos;QmfGwUSbWnHDckfwZikjucac7Lg7SuN87Fwtsy9Y322czZ&apos;, current_time, current_time + 200, 2*amt_1, 0).then(function(f) &#123;console.log(f)&#125;)&#125;);</span><br><span class="line"> EcommerceStore.deployed().then(function(i) &#123;i.addProductToStore(&apos;Mac&apos;, &apos;Mac Phones &amp; Accessories&apos;, &apos;QmRaNVNKSUPMcAsDYBYQUdexRhqpi72YusgvL5PB5w1XVv&apos;, &apos;QmfGwUSbWnHDckfwZikjucac7Lg7SuN87Fwtsy9Y322czZ&apos;, current_time, current_time + 400, 3*amt_1, 1).then(function(f) &#123;console.log(f)&#125;)&#125;);</span><br><span class="line"> EcommerceStore.deployed().then(function(i) &#123;i.addProductToStore(&apos;Mac&apos;, &apos;Mac Phones &amp; Accessories&apos;, &apos;QmRaNVNKSUPMcAsDYBYQUdexRhqpi72YusgvL5PB5w1XVv&apos;, &apos;QmfGwUSbWnHDckfwZikjucac7Lg7SuN87Fwtsy9Y322czZ&apos;, current_time, current_time + 14, amt_1, 0).then(function(f) &#123;console.log(f)&#125;)&#125;);</span><br><span class="line"> EcommerceStore.deployed().then(function(i) &#123;i.addProductToStore(&apos;Mac&apos;, &apos;Mac Phones &amp; Accessories&apos;, &apos;QmRaNVNKSUPMcAsDYBYQUdexRhqpi72YusgvL5PB5w1XVv&apos;, &apos;QmfGwUSbWnHDckfwZikjucac7Lg7SuN87Fwtsy9Y322czZ&apos;, current_time, current_time + 86400, 4*amt_1, 1).then(function(f) &#123;console.log(f)&#125;)&#125;);</span><br><span class="line"> EcommerceStore.deployed().then(function(i) &#123;i.addProductToStore(&apos;Mac&apos;, &apos;Mac Phones &amp; Accessories&apos;, &apos;QmRaNVNKSUPMcAsDYBYQUdexRhqpi72YusgvL5PB5w1XVv&apos;, &apos;QmfGwUSbWnHDckfwZikjucac7Lg7SuN87Fwtsy9Y322czZ&apos;, current_time, current_time + 86400, 5*amt_1, 1).then(function(f) &#123;console.log(f)&#125;)&#125;);</span><br><span class="line"> EcommerceStore.deployed().then(function(i) &#123;i.addProductToStore(&apos;Mac&apos;, &apos;Clothing, Shoes &amp; Accessories&apos;, &apos;QmRaNVNKSUPMcAsDYBYQUdexRhqpi72YusgvL5PB5w1XVv&apos;, &apos;QmfGwUSbWnHDckfwZikjucac7Lg7SuN87Fwtsy9Y322czZ&apos;, current_time, current_time + 86400 + 86400 + 86400, 5*amt_1, 1).then(function(f) &#123;console.log(f)&#125;)&#125;);</span><br><span class="line"> EcommerceStore.deployed().then(function(i) &#123;i.productIndex.call().then(function(f)&#123;console.log(f)&#125;)&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3）将seed.js中的六行hash全部替换为3.2节中的ipfs哈希值。</p>
+<p><img src="http://p3d3seyjq.bkt.clouddn.com/bote-4.png" alt="vote-4"></p>
+<h2 id="4-配置前端和合约代码"><a href="#4-配置前端和合约代码" class="headerlink" title="4. 配置前端和合约代码"></a>4. 配置前端和合约代码</h2><h3 id="4-1-App文件夹"><a href="#4-1-App文件夹" class="headerlink" title="4.1 App文件夹"></a>4.1 App文件夹</h3><p>1) 用以下代码替换到javascripts文件夹下app.js中代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">// Import the page&apos;s CSS. Webpack will know what to do with it.</span><br><span class="line">import &quot;../stylesheets/app.css&quot;;</span><br><span class="line"></span><br><span class="line">// Import libraries we need.</span><br><span class="line">import &#123; default as Web3&#125; from &apos;web3&apos;;</span><br><span class="line">import &#123; default as contract &#125; from &apos;truffle-contract&apos;</span><br><span class="line"></span><br><span class="line">// Import our contract artifacts and turn them into usable abstractions.</span><br><span class="line">import EcommerceStoreJSON from &apos;../../build/contracts/EcommerceStore.json&apos;</span><br><span class="line"></span><br><span class="line">// MetaCoin is our usable abstraction, which we&apos;ll use through the code below.</span><br><span class="line">var EcommerceStore = contract(EcommerceStoreJSON);</span><br><span class="line"></span><br><span class="line">// The following code is simple to show off interacting with your contracts.</span><br><span class="line">// As your needs grow you will likely need to change its form and structure.</span><br><span class="line">// For application bootstrapping, check out window.addEventListener below.</span><br><span class="line"></span><br><span class="line">window.App = &#123;</span><br><span class="line"> start: function() &#123;</span><br><span class="line">  var self = this;</span><br><span class="line">  console.log(&quot;start: function()&quot;)</span><br><span class="line">  EcommerceStore.setProvider(web3.currentProvider);</span><br><span class="line">  renderStore();</span><br><span class="line"> &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function renderStore() &#123;</span><br><span class="line"> EcommerceStore.deployed().then(function(i) &#123;</span><br><span class="line">   console.log(&quot;renderStore()&quot;);</span><br><span class="line">  i.getProduct.call(1).then(function(p) &#123;</span><br><span class="line">   $(&quot;#product-list&quot;).append(buildProduct(p));</span><br><span class="line">  &#125;);</span><br><span class="line">  i.getProduct.call(2).then(function(p) &#123;</span><br><span class="line">   $(&quot;#product-list&quot;).append(buildProduct(p));</span><br><span class="line">  &#125;);</span><br><span class="line">  i.getProduct.call(3).then(function(p) &#123;</span><br><span class="line">   $(&quot;#product-list&quot;).append(buildProduct(p));</span><br><span class="line">  &#125;);</span><br><span class="line">  i.getProduct.call(4).then(function(p) &#123;</span><br><span class="line">   $(&quot;#product-list&quot;).append(buildProduct(p));</span><br><span class="line">  &#125;);</span><br><span class="line">  i.getProduct.call(5).then(function(p) &#123;</span><br><span class="line">   $(&quot;#product-list&quot;).append(buildProduct(p));</span><br><span class="line">  &#125;);</span><br><span class="line">  i.getProduct.call(6).then(function(p) &#123;</span><br><span class="line">   $(&quot;#product-list&quot;).append(buildProduct(p));</span><br><span class="line">  &#125;);</span><br><span class="line"> &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function buildProduct(product) &#123;</span><br><span class="line">  console.log(product[3]);</span><br><span class="line"> let node = $(&quot;&lt;div/&gt;&quot;);</span><br><span class="line"> node.addClass(&quot;col-sm-3 text-center col-margin-bottom-1&quot;);</span><br><span class="line"> node.append(&quot;&lt;img src=&apos;http://localhost:8080/ipfs/&quot; + product[3] + &quot;&apos; width=&apos;150px&apos; /&gt;&quot;);</span><br><span class="line"> node.append(&quot;&lt;div&gt;&quot; + product[1]+ &quot;&lt;/div&gt;&quot;);</span><br><span class="line"> node.append(&quot;&lt;div&gt;&quot; + product[2]+ &quot;&lt;/div&gt;&quot;);</span><br><span class="line"> node.append(&quot;&lt;div&gt;&quot; + product[5]+ &quot;&lt;/div&gt;&quot;);</span><br><span class="line"> node.append(&quot;&lt;div&gt;&quot; + product[6]+ &quot;&lt;/div&gt;&quot;);</span><br><span class="line"> node.append(&quot;&lt;div&gt;Ether &quot; + product[7] + &quot;&lt;/div&gt;&quot;);</span><br><span class="line"> return node;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">window.addEventListener(&apos;load&apos;, function() &#123;</span><br><span class="line">  console.log(&quot;window.addEventListener&quot;)</span><br><span class="line">  // Checking if Web3 has been injected by the browser (Mist/MetaMask)</span><br><span class="line">  if (typeof web3 !== &apos;undefined&apos;) &#123;</span><br><span class="line">    console.warn(&quot;Using web3 detected from external source. If you find that your accounts don&apos;t appear or you have 0 MetaCoin, ensure you&apos;ve configured that source properly. If using MetaMask, see the following link. Feel free to delete this warning. :) http://truffleframework.com/tutorials/truffle-and-metamask&quot;)</span><br><span class="line">    // Use Mist/MetaMask&apos;s provider</span><br><span class="line">    window.web3 = new Web3(web3.currentProvider);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    console.warn(&quot;No web3 detected. Falling back to http://127.0.0.1:9545. You should remove this fallback when you deploy live, as it&apos;s inherently insecure. Consider switching to Metamask for development. More info here: http://truffleframework.com/tutorials/truffle-and-metamask&quot;);</span><br><span class="line">    // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)</span><br><span class="line">    window.web3 = new Web3(new Web3.providers.HttpProvider(&quot;http://127.0.0.1:9545&quot;));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  App.start();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>2) 用以下代码替换到stylesheets文件夹下app.css文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br></pre></td><td class="code"><pre><span class="line">.col-margin-bottom-1 &#123;</span><br><span class="line">  margin-bottom: 1em;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a &#123;</span><br><span class="line">  cursor: pointer;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.navbar.main &#123;</span><br><span class="line">  background: #5f6d7f;</span><br><span class="line">  color: white;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.navbar.main .list.nav-link &#123;</span><br><span class="line">  background: #01bf86;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.navbar.main a &#123;</span><br><span class="line">  color: white;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.navbar ul &#123;</span><br><span class="line">  list-style: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.side-bar.col-sm-2 &#123;</span><br><span class="line">  margin-left: 1em;</span><br><span class="line">  border-right: 1px solid #5f6d7f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#product-list.row &#123;</span><br><span class="line">  margin-left: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#product-list .row,</span><br><span class="line">#product-finalize-list &#123;</span><br><span class="line">  margin-top: 2em;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.row h2,</span><br><span class="line">.categories a,</span><br><span class="line">#categories a &#123;</span><br><span class="line">  color: #5f6d7f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#product-list a,</span><br><span class="line">#product-reveal-list a,</span><br><span class="line">#product-list .row &gt; div &#123;</span><br><span class="line">  color: #01bf86;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">.container-fluid .row &#123;</span><br><span class="line">  margin-left: 0px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#product-list img,</span><br><span class="line">#product-reveal-list img,</span><br><span class="line">#product-finalize-list img &#123;</span><br><span class="line">  width: 150px;</span><br><span class="line">  height: 150px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.container-fluid .title &#123;</span><br><span class="line">  font-size: 1.2em;</span><br><span class="line">  font-weight: bold;</span><br><span class="line">  margin-top: 1em;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#product-list .details,</span><br><span class="line">.container-fluid .title,</span><br><span class="line">#product-finalize-list a &#123;</span><br><span class="line">  color: #5f6d7f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.product .details &#123;</span><br><span class="line">  text-decoration: underline;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.time &#123;</span><br><span class="line">  font-style: italic;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#product-finalize-list .row &gt; div&#123;</span><br><span class="line">  color: #e76e6e;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#product-details-page &#123;</span><br><span class="line">  color: #5f6d7f;</span><br><span class="line">  background-color: #e9ebef;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#product-details-page h4 &#123;</span><br><span class="line">  margin-top: 0px;</span><br><span class="line">  font-size: 20px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#product-details-page h4.align &#123;</span><br><span class="line">  margin-left: 15px;</span><br><span class="line">  font-style: italic;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#product-details-page #product-price &#123;</span><br><span class="line">  color: #01bf86;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#product-details-page .bid-details,</span><br><span class="line">#product-details-page #product-desc &#123;</span><br><span class="line">  padding: 2em;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#product-details-page #product-image &#123;</span><br><span class="line">  padding: 2em 1em;</span><br><span class="line">  /*border: 1px solid #b2bcc8;*/</span><br><span class="line">  border-radius: 10px;</span><br><span class="line">  background-color: white;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#product-details-page h1 &#123;</span><br><span class="line">  color: #5f6d7f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#product-details-page h2.product-name &#123;</span><br><span class="line">  color: #01bf86;</span><br><span class="line">  margin-top: 0;</span><br><span class="line">  margin-bottom: 1em</span><br><span class="line">  /*font-size: 1.5em;*/</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#product-details-page #product-auction-end &#123;</span><br><span class="line">  color: #e76e6e;</span><br><span class="line">  font-style: italic;</span><br><span class="line">  font-size: 17px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#product-details-page #product-reveal &#123;</span><br><span class="line">  margin-top: 3em;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#product-details-page button.form-submit &#123;</span><br><span class="line">  background-color: #01bf86;</span><br><span class="line">  color: white;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#product-details-page #product-desc &#123;</span><br><span class="line">  padding: 2em;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>3）用以下代码替换掉index.html文件中代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line"> &lt;title&gt;Decentralized Ecommerce Store&lt;/title&gt;</span><br><span class="line"> &lt;link href=&apos;https://fonts.googleapis.com/css?family=Open+Sans:400,700&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</span><br><span class="line"> &lt;link href=&apos;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</span><br><span class="line"> &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"> &lt;script src=&quot;./app.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"> &lt;div class=&quot;container-fluid&quot;&gt;</span><br><span class="line">  &lt;h1&gt;Ecommerce Store&lt;/h1&gt;</span><br><span class="line">  &lt;div&gt;Total Products: &lt;span id=&quot;total-products&quot;&gt;&lt;/span&gt;&lt;/div&gt;</span><br><span class="line">  &lt;a href=&quot;&quot; class=&quot;btn btn-primary&quot;&gt;List Item&lt;/a&gt;</span><br><span class="line">  &lt;div class=&quot;row&quot;&gt;</span><br><span class="line">   &lt;div class=&quot;col-sm-2&quot;&gt;</span><br><span class="line">    &lt;h2&gt;Categories&lt;/h2&gt;</span><br><span class="line">    &lt;div id=&quot;categories&quot;&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">   &lt;/div&gt;</span><br><span class="line">   &lt;div class=&quot;col-sm-10&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;row&quot;&gt;</span><br><span class="line">     &lt;h2 class=&quot;text-center&quot;&gt;Products To Buy&lt;/h2&gt;</span><br><span class="line">     &lt;div class=&quot;row&quot;&gt;</span><br><span class="line">      &lt;div class=&quot;row&quot; id=&quot;product-list&quot;&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">     &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;row&quot;&gt;</span><br><span class="line">     &lt;h2 class=&quot;text-center&quot;&gt;Products In Reveal Stage&lt;/h2&gt;</span><br><span class="line">     &lt;div class=&quot;row&quot;&gt;</span><br><span class="line">      &lt;div class=&quot;row&quot; id=&quot;product-reveal-list&quot;&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">     &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">   &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"> &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>4) app文件夹下新建一个product.html文件，拷贝以下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line"> &lt;title&gt;Decentralized Ecommerce Store&lt;/title&gt;</span><br><span class="line"> &lt;link href=&apos;https://fonts.googleapis.com/css?family=Open+Sans:400,700&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</span><br><span class="line"> &lt;link href=&apos;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</span><br><span class="line"> &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"> &lt;script src=&quot;./app.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"> &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">  &lt;h1 class=&quot;text-center&quot;&gt;Product Details&lt;/h1&gt;</span><br><span class="line">  &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">   &lt;div class=&quot;row&quot; id=&quot;product-details&quot;&gt;</span><br><span class="line">    &lt;div style=&quot;display: none;&quot; class=&quot;alert alert-success&quot; id=&quot;msg&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;col-sm-12&quot;&gt;</span><br><span class="line">     &lt;div class=&quot;col-sm-4&quot;&gt;</span><br><span class="line">      &lt;div id=&quot;product-image&quot;&gt;&lt;/div&gt;</span><br><span class="line">      &lt;div id=&quot;product-name&quot;&gt;&lt;/div&gt;</span><br><span class="line">      &lt;div id=&quot;product-auction-end&quot;&gt;&lt;/div&gt;</span><br><span class="line">     &lt;/div&gt;</span><br><span class="line">     &lt;div class=&quot;col-sm-8&quot;&gt;</span><br><span class="line">      &lt;h3&gt;Start Price: &lt;span id=&quot;product-price&quot;&gt;&lt;/span&gt;&lt;/h3&gt;</span><br><span class="line">      &lt;form id=&quot;bidding&quot; class=&quot;col-sm-4&quot;&gt;</span><br><span class="line">       &lt;h4&gt;Your Bid&lt;/h4&gt;</span><br><span class="line">       &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">        &lt;label for=&quot;bid-amount&quot;&gt;Enter Bid Amount&lt;/label&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;bid-amount&quot; id=&quot;bid-amount&quot; placeholder=&quot;Amount &gt; Start Price&quot; required=&quot;required&quot;&gt;</span><br><span class="line">       &lt;/div&gt;</span><br><span class="line">       &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">        &lt;label for=&quot;bid-send-amount&quot;&gt;Enter Amount To Send&lt;/label&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;bid-send-amount&quot; id=&quot;bid-send-amount&quot; placeholder=&quot;Amount &gt;= Bid Amount&quot; required=&quot;required&quot;&gt;</span><br><span class="line">       &lt;/div&gt;</span><br><span class="line">       &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">        &lt;label for=&quot;secret-text&quot;&gt;Enter Secret Text&lt;/label&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;secret-text&quot; id=&quot;secret-text&quot; placeholder=&quot;Any random text&quot; required=&quot;required&quot;&gt;</span><br><span class="line">       &lt;/div&gt;</span><br><span class="line">       &lt;input type=&quot;hidden&quot; name=&quot;product-id&quot; id=&quot;product-id&quot; /&gt;</span><br><span class="line">       &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Submit Bid&lt;/button&gt;</span><br><span class="line">      &lt;/form&gt;</span><br><span class="line">      &lt;form id=&quot;revealing&quot; class=&quot;col-sm-4&quot;&gt;</span><br><span class="line">       &lt;h4&gt;Reveal Bid&lt;/h4&gt;</span><br><span class="line">       &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">        &lt;label for=&quot;actual-amount&quot;&gt;Amount You Bid&lt;/label&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;actual-amount&quot; id=&quot;actual-amount&quot; placeholder=&quot;Amount &gt; Start Price&quot; required=&quot;required&quot;&gt;</span><br><span class="line">       &lt;/div&gt;</span><br><span class="line">       &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">        &lt;label for=&quot;reveal-secret-text&quot;&gt;Enter Secret Text&lt;/label&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;reveal-secret-text&quot; id=&quot;reveal-secret-text&quot; placeholder=&quot;Any random text&quot; required=&quot;required&quot;&gt;</span><br><span class="line">       &lt;/div&gt;</span><br><span class="line">       &lt;input type=&quot;hidden&quot; name=&quot;product-id&quot; id=&quot;product-id&quot; /&gt;</span><br><span class="line">       &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Reveal Bid&lt;/button&gt;</span><br><span class="line">      &lt;/form&gt;</span><br><span class="line">     &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;product-desc&quot; class=&quot;col-sm-12&quot;&gt;</span><br><span class="line">     &lt;h2&gt;Product Description&lt;/h2&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">   &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"> &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-2-contracts文件夹"><a href="#4-2-contracts文件夹" class="headerlink" title="4.2 contracts文件夹"></a>4.2 contracts文件夹</h3><p>1) 仅保留Migrations.sol文件，删除其他文件，<br>新建一个文件，命名为<code>EcommerceStore.sol</code>拷贝以下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^ 0.4 .17;</span><br><span class="line"></span><br><span class="line">contract EcommerceStore &#123;</span><br><span class="line"></span><br><span class="line">  struct Bid &#123;</span><br><span class="line">    address bidder; // 拍卖的人的钱包地址</span><br><span class="line">    uint productId; // 产品id</span><br><span class="line">    uint value; // 拍卖出的价格</span><br><span class="line">    bool revealed; // 是否公告</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  enum ProductStatus &#123;</span><br><span class="line">    Open, //拍卖中</span><br><span class="line">    Sold, //已经拍卖结束</span><br><span class="line">    Unsold // 还没开始拍卖</span><br><span class="line">  &#125;</span><br><span class="line">  enum ProductCondition &#123;</span><br><span class="line">    New, //新</span><br><span class="line">    Used //旧</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 统计拍卖的产品的数量</span><br><span class="line">  uint public productIndex;</span><br><span class="line">  mapping(address =&gt; mapping(uint =&gt; Product)) stores;</span><br><span class="line">  mapping(uint =&gt; address) productIdInStore;</span><br><span class="line"></span><br><span class="line">  struct Product &#123;</span><br><span class="line">    uint id; //产品ID</span><br><span class="line">    string name; // 产品名字</span><br><span class="line">    string category; //产品分类</span><br><span class="line">    string imageLink; //产品图片在ipfs上返回回来的hash</span><br><span class="line">    string descLink; //产品描述信息在ipfs上返回回来的hash</span><br><span class="line">    uint auctionStartTime; // 拍卖的时间</span><br><span class="line">    uint auctionEndTime; // 拍卖结束时间</span><br><span class="line">    uint startPrice; // 起始拍卖价格</span><br><span class="line">    address highestBidder; // 最高拍卖人的地址</span><br><span class="line">    uint highestBid; // 当前的产品公告以后最终统计出来的最高的价格</span><br><span class="line">    uint secondHighestBid; // 第二高的人出的拍卖价格</span><br><span class="line"></span><br><span class="line">    uint totalBids; // 一共多少人来参与拍卖</span><br><span class="line">    ProductStatus status; // 产品拍卖的状态</span><br><span class="line">    ProductCondition condition; // 产品是新的还是旧的</span><br><span class="line"></span><br><span class="line">    mapping(address =&gt; mapping(bytes32 =&gt; Bid)) bids;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  function EcommerceStore() public &#123;</span><br><span class="line">    productIndex = 0; //0</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  // 添加产品到合约里面</span><br><span class="line">  function addProductToStore(string _name, string _category, string _imageLink, string _descLink, uint _auctionStartTime,</span><br><span class="line">    uint _auctionEndTime, uint _startPrice, uint _productCondition) public &#123;</span><br><span class="line"></span><br><span class="line">    // 断言：判断拍卖结束时间必须大于拍卖起始时间</span><br><span class="line">    require(_auctionStartTime &lt; _auctionEndTime);</span><br><span class="line">    // 每增加一款产品，productIndex，计数器</span><br><span class="line">    productIndex += 1;</span><br><span class="line">    // 创建一个产品的结构体对象</span><br><span class="line">    Product memory product = Product(productIndex, _name, _category, _imageLink, _descLink, _auctionStartTime, _auctionEndTime,</span><br><span class="line">      _startPrice, 0, 0, 0, 0, ProductStatus.Open, ProductCondition(_productCondition));</span><br><span class="line"></span><br><span class="line">    //存储拍卖的产品的产品的信息</span><br><span class="line">    stores[msg.sender][productIndex] = product;</span><br><span class="line">    // 1 -&gt; 0xf550abc</span><br><span class="line">    productIdInStore[productIndex] = msg.sender;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 通过id读取产品的数据信息</span><br><span class="line">  function getProduct(uint _productId) view public returns(uint, string, string, string, string, uint, uint, uint, ProductStatus, ProductCondition) &#123;</span><br><span class="line">    Product memory product = stores[productIdInStore[_productId]][_productId];</span><br><span class="line">    return (product.id, product.name, product.category, product.imageLink, product.descLink, product.auctionStartTime,</span><br><span class="line">      product.auctionEndTime, product.startPrice, product.status, product.condition);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 投标</span><br><span class="line">  function bid(uint _productId, bytes32 _bid) payable public returns(bool) &#123;</span><br><span class="line">    // 获取产品信息</span><br><span class="line">    Product storage product = stores[productIdInStore[_productId]][_productId];</span><br><span class="line">    // 当前时间必须大于启始拍卖时间</span><br><span class="line">    require(now &gt;= product.auctionStartTime);</span><br><span class="line">    // 当前时间必须小于结束时间</span><br><span class="line">    require(now &lt;= product.auctionEndTime);</span><br><span class="line">    // msg.value 迷惑别人的价格</span><br><span class="line">    require(msg.value &gt; product.startPrice);</span><br><span class="line"></span><br><span class="line">    // mapping (address =&gt; mapping (bytes32 =&gt; Bid)) bids;</span><br><span class="line">    // &#123;0xf55 -&gt; &#123;0xfadfasfasl: Bid&#125;&#125;</span><br><span class="line">    // 3 + zhaohui</span><br><span class="line">    require(product.bids[msg.sender][_bid].bidder == 0);</span><br><span class="line">    // 存储这一次竞标的人的相关信息</span><br><span class="line">    product.bids[msg.sender][_bid] = Bid(msg.sender, _productId, msg.value, false);</span><br><span class="line">    product.totalBids += 1; // 竞标的次数</span><br><span class="line">    return true;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  // 30 3</span><br><span class="line"></span><br><span class="line">  // 公告</span><br><span class="line">  // 赵辉 0xF055775eBD516e7419ae486C1d50C682d4170645 3 zhaohui 5 100</span><br><span class="line">  // 老麻 0xf17f52151EbEF6C7334FAD080c5704D77216b732 5 laoma   8 100</span><br><span class="line">  // yunbo 0x627306090abaB3A6e1400e9345bC60c78a8BEf57 2 yunbo 2.5</span><br><span class="line">  // 揭标 产品id，产品id由前端提供</span><br><span class="line">  // 对于辉哥和老麻公告来讲，你们需要传入两个值，一个是实际想支付的价格，一个是投标的秘钥</span><br><span class="line">  function revealBid(uint _productId, string _amount, string _secret) public &#123;</span><br><span class="line">    // 获取你投标的产品的结构体信息</span><br><span class="line">    Product storage product = stores[productIdInStore[_productId]][_productId];</span><br><span class="line">    // 当前时间必须大于产品竞标结束时间</span><br><span class="line">    require(now &gt; product.auctionEndTime);</span><br><span class="line">    // sealedBid 生成一个hash</span><br><span class="line">    bytes32 sealedBid = sha3(_amount, _secret);</span><br><span class="line">    // 获取投标人的相关信息</span><br><span class="line">    Bid memory bidInfo = product.bids[msg.sender][sealedBid];</span><br><span class="line">    require(bidInfo.bidder &gt; 0); // 地址不为空</span><br><span class="line">    require(bidInfo.revealed == false); // 现在的状态必须为未公告状态</span><br><span class="line"></span><br><span class="line">    uint refund; // 判断返回多少钱</span><br><span class="line">    // 将_amount转换为uint，3</span><br><span class="line">    uint amount = stringToUint(_amount);</span><br><span class="line">    // bidInfo.value 5</span><br><span class="line"></span><br><span class="line">    if (bidInfo.value &lt; amount) &#123;</span><br><span class="line">      // 无效的投标</span><br><span class="line">      refund = bidInfo.value;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line"></span><br><span class="line">      if (address(product.highestBidder) == 0) &#123;</span><br><span class="line">        product.highestBidder = msg.sender;</span><br><span class="line">        product.highestBid = amount;</span><br><span class="line">        product.secondHighestBid = product.startPrice;</span><br><span class="line">        refund = bidInfo.value - amount; // 5 - 3，2</span><br><span class="line">      &#125; else &#123;</span><br><span class="line"></span><br><span class="line">        if (amount &gt; product.highestBid) &#123;</span><br><span class="line">          // 交换j价钱</span><br><span class="line">          product.secondHighestBid = product.highestBid;</span><br><span class="line">          // 把所有钱返回给辉哥</span><br><span class="line">          product.highestBidder.transfer(product.highestBid);</span><br><span class="line">          // 老大变成老麻</span><br><span class="line">          product.highestBidder = msg.sender;</span><br><span class="line">          // 5</span><br><span class="line">          product.highestBid = amount;</span><br><span class="line">          // 8 - 5 = 3</span><br><span class="line">          refund = bidInfo.value - amount;</span><br><span class="line">        &#125; else if (amount &gt; product.secondHighestBid) &#123;</span><br><span class="line">          product.secondHighestBid = amount;</span><br><span class="line">          refund = amount;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">          refund = amount;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      if (refund &gt; 0) &#123;</span><br><span class="line">        // 退还多余的代币</span><br><span class="line">        msg.sender.transfer(refund);</span><br><span class="line">        // 公告成功</span><br><span class="line">        product.bids[msg.sender][sealedBid].revealed = true;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 返回老大和老二的数据信息</span><br><span class="line">  function highestBidderInfo(uint _productId) view public returns(address, uint, uint) &#123;</span><br><span class="line">    Product memory product = stores[productIdInStore[_productId]][_productId];</span><br><span class="line">    return (product.highestBidder, product.highestBid, product.secondHighestBid);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 接收到多少次投标</span><br><span class="line">  function totalBids(uint _productId) view public returns(uint) &#123;</span><br><span class="line">    Product memory product = stores[productIdInStore[_productId]][_productId];</span><br><span class="line">    return product.totalBids;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 将string转换为uint类型</span><br><span class="line">  function stringToUint(string s) pure private returns(uint) &#123;</span><br><span class="line">    bytes memory b = bytes(s);</span><br><span class="line">    uint result = 0;</span><br><span class="line">    for (uint i = 0; i &lt; b.length; i++) &#123;</span><br><span class="line">      if (b[i] &gt;= 48 &amp;&amp; b[i] &lt;= 57) &#123;</span><br><span class="line">        result = result * 10 + (uint(b[i]) - 48);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-3-migration文件夹"><a href="#4-3-migration文件夹" class="headerlink" title="4.3 migration文件夹"></a>4.3 migration文件夹</h3><p>拷贝以下代码，替换掉<code>2_deploy_contracts.js</code>文件中代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var EcommerceStore = artifacts.require(&quot;./EcommerceStore.sol&quot;);</span><br><span class="line"></span><br><span class="line">module.exports = function(deployer) &#123;</span><br><span class="line"> deployer.deploy(EcommerceStore);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-4-truffle-js"><a href="#4-4-truffle-js" class="headerlink" title="4.4 truffle.js"></a>4.4 truffle.js</h3><p>修改truffle.js文件中的<code>port: 7545,</code>为<code>port: 9545,</code></p>
+<h2 id="5-部署合约"><a href="#5-部署合约" class="headerlink" title="5. 部署合约"></a>5. 部署合约</h2><p>1) 删除项目根目录下的build文件夹</p>
+<p>2) 启动开发服务器,添加种子数据<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">truffle develop</span><br><span class="line">compile</span><br><span class="line">migrate</span><br><span class="line"><span class="built_in">exec</span> seed.js</span><br></pre></td></tr></table></figure></p>
+<p>3) 运行测试</p>
+<h2 id="5-测试"><a href="#5-测试" class="headerlink" title="5. 测试"></a>5. 测试</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<p>浏览器打开<a href="http://localhost:8081/" target="_blank" rel="noopener">http://localhost:8081/</a></p>
+<p><img src="http://p3d3seyjq.bkt.clouddn.com/vote-1.png" alt="vote-1"></p>
+<h2 id="6-完善二级页面List-Item"><a href="#6-完善二级页面List-Item" class="headerlink" title="6. 完善二级页面List Item"></a>6. 完善二级页面List Item</h2><h3 id="6-1-前端实现"><a href="#6-1-前端实现" class="headerlink" title="6.1 前端实现"></a>6.1 前端实现</h3><p>接下来实现点击左上角蓝色List Item按钮，跳转到二级页面List Item。</p>
+<p>1)在app文件夹下创建一个<code>list-item.html</code>文件，拷贝以下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line"> &lt;title&gt;Decentralized Ecommerce Store&lt;/title&gt;</span><br><span class="line"> &lt;link href=&apos;https://fonts.googleapis.com/css?family=Open+Sans:400,700&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</span><br><span class="line"> &lt;link href=&apos;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</span><br><span class="line"> &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"> &lt;script src=&quot;./app.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"> &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">  &lt;h1&gt;List an item&lt;/h1&gt;</span><br><span class="line">  &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">   &lt;div class=&quot;row&quot;&gt;</span><br><span class="line">    &lt;div style=&quot;display: none;&quot; class=&quot;alert alert-success&quot; id=&quot;msg&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;form class=&quot;form-horizontal col-sm-5&quot; id=&quot;add-item-to-store&quot;&gt;</span><br><span class="line">     &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">      &lt;label for=&quot;product-name&quot; class=&quot;col-sm-2 control-label&quot;&gt;Name&lt;/label&gt;</span><br><span class="line">      &lt;div class=&quot;col-sm-10&quot;&gt;</span><br><span class="line">       &lt;input type=&quot;text&quot; name=&quot;product-name&quot; class=&quot;form-control&quot; id=&quot;product-name&quot; placeholder=&quot;iPhone, Jeans, shoes etc&quot; required=&quot;required&quot;&gt;&lt;/input&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">     &lt;/div&gt;</span><br><span class="line">     &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">      &lt;label for=&quot;product-description&quot; class=&quot;col-sm-2 control-label&quot;&gt;Description&lt;/label&gt;</span><br><span class="line">      &lt;div class=&quot;col-sm-10&quot;&gt;</span><br><span class="line">       &lt;textarea class=&quot;form-control&quot; name=&quot;product-description&quot; rows=&quot;8&quot; id=&quot;product-description&quot; placeholder=&quot;Enter detailed product description&quot; required=&quot;required&quot;&gt;&lt;/textarea&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">     &lt;/div&gt;</span><br><span class="line">     &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">      &lt;label for=&quot;product-image&quot; class=&quot;col-sm-2 control-label&quot;&gt;Upload product photo&lt;/label&gt;</span><br><span class="line">      &lt;div class=&quot;col-sm-10&quot;&gt;</span><br><span class="line">       &lt;input type=&quot;file&quot; name=&quot;product-image&quot; class=&quot;form-control&quot; id=&quot;product-image&quot; required=&quot;required&quot;&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">     &lt;/div&gt;</span><br><span class="line">     &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">      &lt;label for=&quot;product-category&quot; class=&quot;col-sm-2 control-label&quot;&gt;Category&lt;/label&gt;</span><br><span class="line">      &lt;div class=&quot;col-sm-10&quot;&gt;</span><br><span class="line">       &lt;select class=&quot;form-control&quot; name=&quot;product-category&quot; id=&quot;product-category&quot;&gt;</span><br><span class="line">        &lt;option&gt;Art&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;Books&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;Cameras&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;Cell Phones &amp; Accessories&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;Clothing&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;Coins &amp; Paper Money&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;Collectibles&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;Computers/Tablets &amp; Networking&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;Consumer Electronics&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;Crafts&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;DVDs &amp; Movies&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;Entertainment Memorabilia&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;Gift Cards &amp; Coupons&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;Music&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;Musical Instruments &amp; Gear&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;Pet Supplies&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;Pottery &amp; Glass&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;Sporting Goods&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;Stamps&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;Tickets&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;Toys &amp; Hobbies&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;Video Games&lt;/option&gt;</span><br><span class="line">       &lt;/select&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">     &lt;/div&gt;</span><br><span class="line">     &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">      &lt;label for=&quot;product-price&quot; class=&quot;col-sm-2 control-label&quot;&gt;Start Price&lt;/label&gt;</span><br><span class="line">      &lt;div class=&quot;col-sm-10&quot;&gt;</span><br><span class="line">       &lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;product-price&quot; id=&quot;product-price&quot; required=&quot;required&quot;&gt;&lt;/input&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">     &lt;/div&gt;</span><br><span class="line">     &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">      &lt;label for=&quot;product-condition&quot; class=&quot;col-sm-2 control-label&quot;&gt;Product Condition&lt;/label&gt;</span><br><span class="line">      &lt;div class=&quot;col-sm-10&quot;&gt;</span><br><span class="line">       &lt;select class=&quot;form-control&quot; name=&quot;product-condition&quot; id=&quot;product-condition&quot;&gt;</span><br><span class="line">        &lt;option value=&quot;1&quot;&gt;New&lt;/option&gt;</span><br><span class="line">        &lt;option value=&quot;2&quot;&gt;Used&lt;/option&gt;</span><br><span class="line">       &lt;/select&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">     &lt;/div&gt;</span><br><span class="line">     &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">      &lt;label for=&quot;product-price&quot; class=&quot;col-sm-2 control-label&quot;&gt;Auction Start Time&lt;/label&gt;</span><br><span class="line">      &lt;div class=&quot;col-sm-10&quot;&gt;</span><br><span class="line">       &lt;input type=&quot;datetime-local&quot; class=&quot;form-control&quot; name=&quot;product-auction-start&quot; id=&quot;product-auction-start&quot; required=&quot;required&quot;&gt;&lt;/input&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">     &lt;/div&gt;</span><br><span class="line">     &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">      &lt;label for=&quot;product-price&quot; class=&quot;col-sm-2 control-label&quot;&gt;Days to run the auction&lt;/label&gt;</span><br><span class="line">      &lt;div class=&quot;col-sm-10&quot;&gt;</span><br><span class="line">       &lt;select class=&quot;form-control&quot; name=&quot;product-auction-end&quot; id=&quot;product-auction-end&quot;&gt;</span><br><span class="line">        &lt;option&gt;1&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;3&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;5&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;7&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;10&lt;/option&gt;</span><br><span class="line">       &lt;/select&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">     &lt;/div&gt;</span><br><span class="line">     &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">      &lt;div class=&quot;col-sm-offset-2 col-sm-10&quot;&gt;</span><br><span class="line">       &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Add Product To Store&lt;/button&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">     &lt;/div&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">   &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"> &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>2）在index.html增加一a标签,将链接指向List Item，定位到第14行href=“”双引号内填上文件名<code>list-item.html</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;list-item.html&quot; class=&quot;btn btn-primary&quot;&gt;List Item&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
+<p>3) 在浏览器端验证，点击按钮是够跳转二级页面</p>
+<p><img src="http://p3d3seyjq.bkt.clouddn.com/vote-5.png" alt="vote-5"></p>
+<h3 id="6-2-合约实现"><a href="#6-2-合约实现" class="headerlink" title="6.2 合约实现"></a>6.2 合约实现</h3><p>点击按钮<code>Add Product To Store</code>实现前端首页增加一子项目。</p>
+<p>1）定位到app.js文件中，第18行<code>window.App = {}</code>到<code>function renderStore()</code>,用下面代码替换<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br></pre></td><td class="code"><pre><span class="line">window.App = &#123;</span><br><span class="line"></span><br><span class="line">   start: function() &#123;</span><br><span class="line">    var self = this;</span><br><span class="line"></span><br><span class="line">    EcommerceStore.setProvider(web3.currentProvider);</span><br><span class="line">    renderStore();</span><br><span class="line"></span><br><span class="line">    var reader;</span><br><span class="line"></span><br><span class="line">  $(&quot;#product-image&quot;).change(function(event) &#123;</span><br><span class="line">    const file = event.target.files[0]</span><br><span class="line">    reader = new window.FileReader()</span><br><span class="line">    reader.readAsArrayBuffer(file)</span><br><span class="line">  &#125;);</span><br><span class="line">  $(&quot;#add-item-to-store&quot;).submit(function(event) &#123;</span><br><span class="line">     const req = $(&quot;#add-item-to-store&quot;).serialize();</span><br><span class="line">     let params = JSON.parse(&apos;&#123;&quot;&apos; + req.replace(/&quot;/g, &apos;\\&quot;&apos;).replace(/&amp;/g, &apos;&quot;,&quot;&apos;).replace(/=/g,&apos;&quot;:&quot;&apos;) + &apos;&quot;&#125;&apos;);</span><br><span class="line">     let decodedParams = &#123;&#125;</span><br><span class="line">     Object.keys(params).forEach(function(v) &#123;</span><br><span class="line">      decodedParams[v] = decodeURIComponent(decodeURI(params[v]));</span><br><span class="line">     &#125;);</span><br><span class="line">     saveProduct(reader, decodedParams);</span><br><span class="line">     event.preventDefault();</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  $(&quot;#bidding&quot;).submit(function(event) &#123;</span><br><span class="line">   $(&quot;#msg&quot;).hide();</span><br><span class="line">   let amount = $(&quot;#bid-amount&quot;).val();</span><br><span class="line">   let sendAmount = $(&quot;#bid-send-amount&quot;).val();</span><br><span class="line">   let secretText = $(&quot;#secret-text&quot;).val();</span><br><span class="line">   let sealedBid = &apos;0x&apos; + ethUtil.sha3(web3.toWei(amount, &apos;ether&apos;) + secretText).toString(&apos;hex&apos;);</span><br><span class="line">   let productId = $(&quot;#product-id&quot;).val();</span><br><span class="line">   console.log(sealedBid + &quot; for &quot; + productId);</span><br><span class="line">   EcommerceStore.deployed().then(function(i) &#123;</span><br><span class="line">    i.bid(parseInt(productId), sealedBid, &#123;value: web3.toWei(sendAmount), from: web3.eth.accounts[0], gas: 440000&#125;).then(</span><br><span class="line">     function(f) &#123;</span><br><span class="line">      $(&quot;#msg&quot;).html(&quot;Your bid has been successfully submitted!&quot;);</span><br><span class="line">      $(&quot;#msg&quot;).show();</span><br><span class="line">      console.log(f)</span><br><span class="line">     &#125;</span><br><span class="line">    )</span><br><span class="line">   &#125;);</span><br><span class="line">   event.preventDefault();</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  $(&quot;#revealing&quot;).submit(function(event) &#123;</span><br><span class="line">   $(&quot;#msg&quot;).hide();</span><br><span class="line">   let amount = $(&quot;#actual-amount&quot;).val();</span><br><span class="line">   let secretText = $(&quot;#reveal-secret-text&quot;).val();</span><br><span class="line">   let productId = $(&quot;#product-id&quot;).val();</span><br><span class="line">   EcommerceStore.deployed().then(function(i) &#123;</span><br><span class="line">    i.revealBid(parseInt(productId), web3.toWei(amount).toString(), secretText, &#123;from: web3.eth.accounts[0], gas: 440000&#125;).then(</span><br><span class="line">     function(f) &#123;</span><br><span class="line">      $(&quot;#msg&quot;).show();</span><br><span class="line">      $(&quot;#msg&quot;).html(&quot;Your bid has been successfully revealed!&quot;);</span><br><span class="line">      console.log(f)</span><br><span class="line">     &#125;</span><br><span class="line">    )</span><br><span class="line">   &#125;);</span><br><span class="line">   event.preventDefault();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">  if ($(&quot;#product-details&quot;).length &gt; 0) &#123;</span><br><span class="line">      console.log(window.location);</span><br><span class="line">      console.log(&quot;Search Params = &quot; + new URLSearchParams(window.location))</span><br><span class="line">      let productId = new URLSearchParams(window.location.search).get(&apos;id&apos;);</span><br><span class="line">      console.log(productId);</span><br><span class="line">      renderProductDetails(productId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">function renderProductDetails(productId) &#123;</span><br><span class="line">  console.log(&quot;renderProductDetails&quot;);</span><br><span class="line">  console.log(productId);</span><br><span class="line">  EcommerceStore.deployed().then(function(i) &#123;</span><br><span class="line">    i.getProduct(productId).then(function(p) &#123;</span><br><span class="line">      console.log(&quot;getProduct&quot;);</span><br><span class="line">      console.log(p[4]);</span><br><span class="line">      let content = &quot;&quot;;</span><br><span class="line">      ipfs.cat(p[4]).then(function(stream) &#123;</span><br><span class="line"></span><br><span class="line">        console.log(stream);</span><br><span class="line">        let content = Utf8ArrayToStr(stream);</span><br><span class="line">        $(&quot;#product-desc&quot;).append(&quot;&lt;div&gt;&quot; + content + &quot;&lt;/div&gt;&quot;);</span><br><span class="line"></span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      $(&quot;#product-image&quot;).append(&quot;&lt;img src=&apos;http://127.0.0.1:8080/ipfs/&quot; + p[3] + &quot;&apos; width=&apos;250px&apos; /&gt;&quot;);</span><br><span class="line">      $(&quot;#product-price&quot;).html(displayPrice(p[7]));</span><br><span class="line">      $(&quot;#product-name&quot;).html(p[1].name);</span><br><span class="line">      $(&quot;#product-auction-end&quot;).html(displayEndHours(p[6]));</span><br><span class="line">      $(&quot;#product-id&quot;).val(p[0]);</span><br><span class="line">      $(&quot;#revealing, #bidding&quot;).hide();</span><br><span class="line">      let currentTime = getCurrentTimeInSeconds();</span><br><span class="line">      if (currentTime &lt; p[6]) &#123;</span><br><span class="line">        $(&quot;#bidding&quot;).show();</span><br><span class="line">      &#125; else if (currentTime - (60) &lt; p[6]) &#123;</span><br><span class="line">        $(&quot;#revealing&quot;).show();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function Utf8ArrayToStr(array) &#123;</span><br><span class="line">    var out, i, len, c;</span><br><span class="line">    var char2, char3;</span><br><span class="line"></span><br><span class="line">    out = &quot;&quot;;</span><br><span class="line">    len = array.length;</span><br><span class="line">    i = 0;</span><br><span class="line">    while(i &lt; len) &#123;</span><br><span class="line">    c = array[i++];</span><br><span class="line">    switch(c &gt;&gt; 4)</span><br><span class="line">      &#123;</span><br><span class="line">        case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7:</span><br><span class="line">          // 0xxxxxxx</span><br><span class="line">          out += String.fromCharCode(c);</span><br><span class="line">          break;</span><br><span class="line">        case 12: case 13:</span><br><span class="line">          // 110x xxxx   10xx xxxx</span><br><span class="line">          char2 = array[i++];</span><br><span class="line">          out += String.fromCharCode(((c &amp; 0x1F) &lt;&lt; 6) | (char2 &amp; 0x3F));</span><br><span class="line">          break;</span><br><span class="line">        case 14:</span><br><span class="line">          // 1110 xxxx  10xx xxxx  10xx xxxx</span><br><span class="line">          char2 = array[i++];</span><br><span class="line">          char3 = array[i++];</span><br><span class="line">          out += String.fromCharCode(((c &amp; 0x0F) &lt;&lt; 12) |</span><br><span class="line">                         ((char2 &amp; 0x3F) &lt;&lt; 6) |</span><br><span class="line">                         ((char3 &amp; 0x3F) &lt;&lt; 0));</span><br><span class="line">          break;</span><br><span class="line">        default:</span><br><span class="line">          break;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function getCurrentTimeInSeconds()&#123;</span><br><span class="line"> return Math.round(new Date() / 1000);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function displayPrice(amt) &#123;</span><br><span class="line"> return &apos;Ξ&apos; + web3.fromWei(amt, &apos;ether&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function displayEndHours(seconds) &#123;</span><br><span class="line"> let current_time = getCurrentTimeInSeconds()</span><br><span class="line"> let remaining_seconds = seconds - current_time;</span><br><span class="line"></span><br><span class="line"> if (remaining_seconds &lt;= 0) &#123;</span><br><span class="line">  return &quot;Auction has ended&quot;;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> let days = Math.trunc(remaining_seconds / (24*60*60));</span><br><span class="line"></span><br><span class="line"> remaining_seconds -= days*24*60*60</span><br><span class="line"> let hours = Math.trunc(remaining_seconds / (60*60));</span><br><span class="line"></span><br><span class="line"> remaining_seconds -= hours*60*60</span><br><span class="line"></span><br><span class="line"> let minutes = Math.trunc(remaining_seconds / 60);</span><br><span class="line"></span><br><span class="line"> if (days &gt; 0) &#123;</span><br><span class="line">  return &quot;Auction ends in &quot; + days + &quot; days, &quot; + hours + &quot;, hours, &quot; + minutes + &quot; minutes&quot;;</span><br><span class="line"> &#125; else if (hours &gt; 0) &#123;</span><br><span class="line">  return &quot;Auction ends in &quot; + hours + &quot; hours, &quot; + minutes + &quot; minutes &quot;;</span><br><span class="line"> &#125; else if (minutes &gt; 0) &#123;</span><br><span class="line">  return &quot;Auction ends in &quot; + minutes + &quot; minutes &quot;;</span><br><span class="line"> &#125; else &#123;</span><br><span class="line">  return &quot;Auction ends in &quot; + remaining_seconds + &quot; seconds&quot;;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function saveProduct(reader, decodedParams) &#123;</span><br><span class="line">  let imageId, descId;</span><br><span class="line">  saveImageOnIpfs(reader).then(function(id) &#123;</span><br><span class="line">    imageId = id;</span><br><span class="line">    saveTextBlobOnIpfs(decodedParams[&quot;product-description&quot;]).then(function(id) &#123;</span><br><span class="line">      descId = id;</span><br><span class="line">       saveProductToBlockchain(decodedParams, imageId, descId);</span><br><span class="line">    &#125;)</span><br><span class="line"> &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function buildProduct(product, id) &#123;</span><br><span class="line">  console.log(&quot;buildProduct&quot;);</span><br><span class="line">  console.log(id);</span><br><span class="line">  let node = $(&quot;&lt;div/&gt;&quot;);</span><br><span class="line">  node.addClass(&quot;col-sm-3 text-center col-margin-bottom-1&quot;);</span><br><span class="line">  node.append(&quot;&lt;img src=&apos;http://localhost:8080/ipfs/&quot; + product[3] + &quot;&apos; width=&apos;150px&apos; /&gt;&quot;);</span><br><span class="line">  node.append(&quot;&lt;div&gt;&quot; + product[1] + &quot;&lt;/div&gt;&quot;);</span><br><span class="line">  node.append(&quot;&lt;div&gt;&quot; + product[2] + &quot;&lt;/div&gt;&quot;);</span><br><span class="line">  node.append(&quot;&lt;div&gt;&quot; + new Date(product[5] * 1000) + &quot;&lt;/div&gt;&quot;);</span><br><span class="line">  node.append(&quot;&lt;div&gt;&quot; + new Date(product[6] * 1000) + &quot;&lt;/div&gt;&quot;);</span><br><span class="line">  node.append(&quot;&lt;div&gt;Ether &quot; + product[7] + &quot;&lt;/div&gt;&quot;);</span><br><span class="line">  node.append(&quot;&lt;a href=&apos;product.html?id=&quot; + id + &quot;&apos;class=&apos;btn btn-primary&apos;&gt;Show&lt;/a &gt;&quot;)</span><br><span class="line">  return node;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">function saveProductToBlockchain(params, imageId, descId) &#123;</span><br><span class="line">  console.log(params);</span><br><span class="line">  let auctionStartTime = Date.parse(params[&quot;product-auction-start&quot;]) / 1000;</span><br><span class="line">  let auctionEndTime = auctionStartTime + parseInt(params[&quot;product-auction-end&quot;]) * 24 * 60 * 60</span><br><span class="line"></span><br><span class="line">  EcommerceStore.deployed().then(function(i) &#123;</span><br><span class="line">    i.addProductToStore(params[&quot;product-name&quot;], params[&quot;product-category&quot;], imageId, descId, auctionStartTime,</span><br><span class="line">   auctionEndTime, web3.toWei(params[&quot;product-price&quot;], &apos;ether&apos;), parseInt(params[&quot;product-condition&quot;]), &#123;from: web3.eth.accounts[0], gas: 440000&#125;).then(function(f) &#123;</span><br><span class="line">   console.log(f);</span><br><span class="line">   $(&quot;#msg&quot;).show();</span><br><span class="line">   $(&quot;#msg&quot;).html(&quot;Your product was successfully added to your store!&quot;);</span><br><span class="line">  &#125;)</span><br><span class="line"> &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function saveImageOnIpfs(reader) &#123;</span><br><span class="line"> return new Promise(function(resolve, reject) &#123;</span><br><span class="line">  const buffer = Buffer.from(reader.result);</span><br><span class="line">  ipfs.add(buffer)</span><br><span class="line">  .then((response) =&gt; &#123;</span><br><span class="line">   console.log(response)</span><br><span class="line">   resolve(response[0].hash);</span><br><span class="line">  &#125;).catch((err) =&gt; &#123;</span><br><span class="line">   console.error(err)</span><br><span class="line">   reject(err);</span><br><span class="line">  &#125;)</span><br><span class="line"> &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function saveTextBlobOnIpfs(blob) &#123;</span><br><span class="line"> return new Promise(function(resolve, reject) &#123;</span><br><span class="line">  const descBuffer = Buffer.from(blob, &apos;utf-8&apos;);</span><br><span class="line">  ipfs.add(descBuffer)</span><br><span class="line">  .then((response) =&gt; &#123;</span><br><span class="line">   console.log(response)</span><br><span class="line">   resolve(response[0].hash);</span><br><span class="line">  &#125;).catch((err) =&gt; &#123;</span><br><span class="line">   console.error(err)</span><br><span class="line">   reject(err);</span><br><span class="line">  &#125;)</span><br><span class="line"> &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2)删除buildproduct函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function buildProduct(product) &#123;</span><br><span class="line">  console.log(product[3]);</span><br><span class="line"> let node = $(&quot;&lt;div/&gt;&quot;);</span><br><span class="line"> node.addClass(&quot;col-sm-3 text-center col-margin-bottom-1&quot;);</span><br><span class="line"> node.append(&quot;&lt;img src=&apos;http://localhost:8080/ipfs/&quot; + product[3] + &quot;&apos; width=&apos;150px&apos; /&gt;&quot;);</span><br><span class="line"> node.append(&quot;&lt;div&gt;&quot; + product[1]+ &quot;&lt;/div&gt;&quot;);</span><br><span class="line"> node.append(&quot;&lt;div&gt;&quot; + product[2]+ &quot;&lt;/div&gt;&quot;);</span><br><span class="line"> node.append(&quot;&lt;div&gt;&quot; + product[5]+ &quot;&lt;/div&gt;&quot;);</span><br><span class="line"> node.append(&quot;&lt;div&gt;&quot; + product[6]+ &quot;&lt;/div&gt;&quot;);</span><br><span class="line"> node.append(&quot;&lt;div&gt;Ether &quot; + product[7] + &quot;&lt;/div&gt;&quot;);</span><br><span class="line"> return node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://p3d3seyjq.bkt.clouddn.com/qrcode_for_gh_5e09eb8b9b30_258.jpg" alt="赵东春 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/09/Truffle5/" rel="next" title="Truffle课程笔记（五）">
+                <i class="fa fa-chevron-left"></i> Truffle课程笔记（五）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/18/eos1/" rel="prev" title="EOS(DAWN3.0)智能合约开发01-下载和编译eos工程（2小时）">
+                EOS(DAWN3.0)智能合约开发01-下载和编译eos工程（2小时） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://p3d3seyjq.bkt.clouddn.com/avatar.png"
+                alt="赵东春" />
+            
+              <p class="site-author-name" itemprop="name">赵东春</p>
+              <p class="site-description motion-element" itemprop="description">山重水复疑无路,柳岸花明又一春</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/konglongyinger" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/zhao-dong-chun-91/posts" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://m.weibo.cn/p/1005053232517464" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://eosfans.io" title="EOS中文社区" target="_blank">EOS中文社区</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://eosmonitor.io" title="EOS浏览器" target="_blank">EOS浏览器</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-下载项目模版"><span class="nav-text">1. 下载项目模版</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-安装相关依赖包"><span class="nav-text">2. 安装相关依赖包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-安装种子文件seed-js"><span class="nav-text">3. 安装种子文件seed.js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-新建图片和描述信息"><span class="nav-text">3.1 新建图片和描述信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-添加数据到ipfs"><span class="nav-text">3.2 添加数据到ipfs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-配置种子文件"><span class="nav-text">3.3 配置种子文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-配置前端和合约代码"><span class="nav-text">4. 配置前端和合约代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-App文件夹"><span class="nav-text">4.1 App文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-contracts文件夹"><span class="nav-text">4.2 contracts文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-migration文件夹"><span class="nav-text">4.3 migration文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-truffle-js"><span class="nav-text">4.4 truffle.js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-部署合约"><span class="nav-text">5. 部署合约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-测试"><span class="nav-text">5. 测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-完善二级页面List-Item"><span class="nav-text">6. 完善二级页面List Item</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-前端实现"><span class="nav-text">6.1 前端实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-合约实现"><span class="nav-text">6.2 合约实现</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赵东春</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("k5gEBkQRrVQiP07x7UY9gNRf-gzGzoHsz", "Yi0mm2rhgES6JA7VxB80oMaq");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="选择图片，点击submit,将图片提交到ipfs,并且返回IPFS的HASH值，再通过HASH从IPFS读取图片。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Truffle课程笔记（五）">
+<meta property="og:url" content="https://zhaodongchun.com/2018/03/09/Truffle5/index.html">
+<meta property="og:site_name" content="LEO&#39;S BLOG">
+<meta property="og:description" content="选择图片，点击submit,将图片提交到ipfs,并且返回IPFS的HASH值，再通过HASH从IPFS读取图片。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/test-2.png">
+<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/test-1.png">
+<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/test-33.png">
+<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/test-4.png">
+<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/test-5.png">
+<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/test-6.png">
+<meta property="og:updated_time" content="2018-04-25T10:12:04.567Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Truffle课程笔记（五）">
+<meta name="twitter:description" content="选择图片，点击submit,将图片提交到ipfs,并且返回IPFS的HASH值，再通过HASH从IPFS读取图片。">
+<meta name="twitter:image" content="http://p3d3seyjq.bkt.clouddn.com/test-2.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zhaodongchun.com/2018/03/09/Truffle5/"/>
+
+
+
+
+
+  <title>Truffle课程笔记（五） | LEO'S BLOG</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4224474104259248ae107d6d2699cf80";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LEO'S BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhaodongchun.com/2018/03/09/Truffle5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="赵东春">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://p3d3seyjq.bkt.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LEO'S BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Truffle课程笔记（五）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T11:20:14+08:00">
+                2018-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ETH智能合约开发/" itemprop="url" rel="index">
+                    <span itemprop="name">ETH智能合约开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/09/Truffle5/" class="leancloud_visitors" data-flag-title="Truffle课程笔记（五）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://p3d3seyjq.bkt.clouddn.com/test-2.png" alt="test-2"></p>
+<p>选择图片，点击submit,将图片提交到ipfs,并且返回IPFS的HASH值，再通过HASH从IPFS读取图片。</p>
+<a id="more"></a>
+<h2 id="1-创建react项目"><a href="#1-创建react项目" class="headerlink" title="1. 创建react项目"></a>1. 创建react项目</h2><p>1)安装box模版<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g truffle</span><br><span class="line">truffle unbox react</span><br></pre></td></tr></table></figure></p>
+<p>2)运行本地智能合约<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">truffle develop</span><br><span class="line">compile</span><br><span class="line">migrate</span><br></pre></td></tr></table></figure></p>
+<p>3）终端验证效果</p>
+<p><img src="http://p3d3seyjq.bkt.clouddn.com/test-1.png" alt=""></p>
+<h2 id="2-完成前端UI逻辑"><a href="#2-完成前端UI逻辑" class="headerlink" title="2. 完成前端UI逻辑"></a>2. 完成前端UI逻辑</h2><p>1)拷贝以下代码替换app.js文件里代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123;Component&#125; from <span class="string">'react'</span></span><br><span class="line"></span><br><span class="line">class App extends Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props)</span><br><span class="line">    this.state = &#123;</span><br><span class="line">      imgSrc: null</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> (&lt;div className=<span class="string">"App"</span>&gt;</span><br><span class="line">      &lt;h2&gt;上传图片到IPFS：&lt;/h2&gt;</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;label id=<span class="string">"file"</span>&gt;Choose file to upload&lt;/label&gt;</span><br><span class="line">        &lt;input <span class="built_in">type</span>=<span class="string">"file"</span> ref=<span class="string">"file"</span> id=<span class="string">"file"</span> name=<span class="string">"file"</span> multiple=<span class="string">"multip le"</span>/&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;button onClick=&#123;() =&gt; &#123;</span><br><span class="line">            var file = this.refs.file.files[0];</span><br><span class="line">            var reader = new FileReader();</span><br><span class="line">            reader.readAsArrayBuffer(file)</span><br><span class="line">            reader.onloadend = (e) =&gt; &#123;</span><br><span class="line">            console.log(reader);</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          &#125;&#125;&gt;Submit&lt;/button&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &#123;</span><br><span class="line">        this.state.imgSrc</span><br><span class="line">          ? &lt;div&gt;</span><br><span class="line">              &lt;h2&gt;&#123;<span class="string">"http://localhost:8080/ipfs/"</span> + this.state.imgSrc&#125;&lt;/h2&gt;</span><br><span class="line">              &lt;img alt=<span class="string">"区块链部落"</span> style=&#123;&#123;</span><br><span class="line">                width: 300</span><br><span class="line">&#125;&#125; src=&#123;<span class="string">"http://localhost:8080/ipfs/"</span> + this.state.imgSrc&#125;/&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  : &lt;img alt=<span class="string">""</span>/&gt;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/div&gt;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">export</span> default App</span><br></pre></td></tr></table></figure></p>
+<p>2)浏览器端验证效果</p>
+<p><img src="http://p3d3seyjq.bkt.clouddn.com/test-33.png" alt="test-33"></p>
+<h2 id="3-安装ipfs-api"><a href="#3-安装ipfs-api" class="headerlink" title="3. 安装ipfs-api"></a>3. 安装ipfs-api</h2><p>1)终端定位到项目根目录，安装ipfs-api<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> react-copy</span><br><span class="line">npm install --save-dev ipfs-api</span><br></pre></td></tr></table></figure></p>
+<p>2)atom打开项目，<code>node_modules</code>文件夹中查看<code>ipfs-api</code>安装包,验证安装是否成功。</p>
+<p><img src="http://p3d3seyjq.bkt.clouddn.com/test-4.png" alt="test-4"></p>
+<h2 id="4-App-js导入IPFS"><a href="#4-App-js导入IPFS" class="headerlink" title="4. App.js导入IPFS"></a>4. App.js导入IPFS</h2><p>在<code>src</code>目录下的<code>App.js</code>文件中第一行<code>import</code>下面插入下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const ipfsAPI = require(&apos;ipfs-api&apos;);</span><br><span class="line">const ipfs = ipfsAPI(&#123;host: &apos;localhost&apos;, port: &apos;5001&apos;, protocol: &apos;http&apos;&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="5-实现上传图片到IPFS的Promise函数"><a href="#5-实现上传图片到IPFS的Promise函数" class="headerlink" title="5. 实现上传图片到IPFS的Promise函数"></a>5. 实现上传图片到IPFS的Promise函数</h2><p>继续在刚刚插入的代码下面添加以下代码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">let saveImageOnIpfs = (reader) =&gt; &#123;</span><br><span class="line">  return new Promise(function(resolve, reject) &#123;</span><br><span class="line">    const buffer = Buffer.from(reader.result);</span><br><span class="line">    ipfs.add(buffer).then((response) =&gt; &#123;</span><br><span class="line">      console.log(response)</span><br><span class="line">      resolve(response[0].hash);</span><br><span class="line">    &#125;).catch((err) =&gt; &#123;</span><br><span class="line">      console.error(err)</span><br><span class="line">      reject(err);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>并在<code>render</code>函数的<code>button onclick</code>事件中的<code>console.log(reader);</code>代码下面插入以下代码，此代码的作用是<code>当触发点击事件后，上传数据到IPFS</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">saveImageOnIpfs(reader).then((hash) =&gt; &#123;</span><br><span class="line">  console.log(hash);</span><br><span class="line">  this.setState(&#123;imgSrc: hash&#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="6-运行测试"><a href="#6-运行测试" class="headerlink" title="6. 运行测试"></a>6. 运行测试</h2><p>确认网络连接正常。</p>
+<p>1)第一个终端运行，启动前端服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure></p>
+<p>2）第二个终端运行,启动节点服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipfs daemon</span><br></pre></td></tr></table></figure></p>
+<p>3）浏览器前端测试<br>点击<code>choose Files</code>按钮，选择一张图片，然后点击<code>submit</code>按钮，返回哈希值和图片<br><img src="http://p3d3seyjq.bkt.clouddn.com/test-5.png" alt="test-5"><br>下面我们完成<code>将图片哈希存储到区块链</code></p>
+<h2 id="7-配置合约"><a href="#7-配置合约" class="headerlink" title="7. 配置合约"></a>7. 配置合约</h2><p>1) 删除contracts文件下Simple.sol</p>
+<p>2) 新建一文件<code>Album.sol</code>,代码拷贝以下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.18;</span><br><span class="line"></span><br><span class="line">contract Album &#123;</span><br><span class="line"></span><br><span class="line">    struct Photo &#123;</span><br><span class="line">        address author;</span><br><span class="line">        string title;</span><br><span class="line">        string hash;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    address internal owner;</span><br><span class="line"></span><br><span class="line">    Photo[] public photos;</span><br><span class="line"></span><br><span class="line">    modifier onlyOwner() &#123;</span><br><span class="line">        require(msg.sender == owner);</span><br><span class="line">        _;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function Album() public &#123;</span><br><span class="line">        owner = msg.sender;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function addPhoto(string title, string hash) public &#123;</span><br><span class="line">        photos.push(Photo(msg.sender, title, hash));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function getPhotosNum() public view returns(uint)&#123;</span><br><span class="line">        return photos.length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function clearPhotos() public onlyOwner &#123;</span><br><span class="line">        delete photos;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="8-配置编译"><a href="#8-配置编译" class="headerlink" title="8. 配置编译"></a>8. 配置编译</h2><p>设置migrations文件下2_deploy_contracts.js文件，拷贝以下代码替换原代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var Album = artifacts.require(<span class="string">"./Album.sol"</span>);</span><br><span class="line"></span><br><span class="line">module.exports = <span class="keyword">function</span>(deployer) &#123;</span><br><span class="line">  deployer.deploy(Album);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="9-App-js导入合约"><a href="#9-App-js导入合约" class="headerlink" title="9. App.js导入合约"></a>9. App.js导入合约</h2><p>1) 在App.js文件中第一行<code>import</code>下面插入以下代码，完成智能合约导入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import AlbumContract from <span class="string">'../build/contracts/Album.json'</span></span><br><span class="line">import getWeb3 from <span class="string">'./utils/getWeb3'</span></span><br></pre></td></tr></table></figure></p>
+<p>2) 在第6行<code>const ipfs=ipfsAPI({host: &#39;localhost&#39;, port: &#39;5001&#39;, protocol: &#39;http&#39;});</code>下面插入以下代码，用来存储合约<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//合约实例</span><br><span class="line">const contract = require(<span class="string">'truffle-contract'</span>);</span><br><span class="line">const album = contract(AlbumContract);</span><br><span class="line"><span class="built_in">let</span> account;</span><br><span class="line"><span class="built_in">let</span> albumInstance;</span><br></pre></td></tr></table></figure></p>
+<p>3) 在<code>App</code>组件上面增加一个<code>Phote</code>组件类<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Photo extends Component &#123;</span><br><span class="line">    <span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span> (</span><br><span class="line">			&lt;li&gt;</span><br><span class="line">				&lt;p&gt;相片名称: &#123;this.props.photoDetail.title&#125;&lt;/p&gt;</span><br><span class="line">				&lt;p&gt;上传地址: &#123;this.props.photoDetail.author&#125;&lt;/p&gt;</span><br><span class="line">				&lt;p&gt;相片<span class="built_in">hash</span>: &#123;this.props.photoDetail.hash&#125;&lt;/p&gt;</span><br><span class="line">				&lt;img alt=<span class="string">""</span> style=&#123;&#123;width: 600&#125;&#125; src=&#123;<span class="string">"http://ipfs.io/ipfs/"</span>+this.props.photoDetail.hash&#125; /&gt;</span><br><span class="line">			&lt;/li&gt;</span><br><span class="line">		);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>4）用以下代码替换掉<code>App</code>组件，完成前端UI更新<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br></pre></td><td class="code"><pre><span class="line">class App extends Component &#123;</span><br><span class="line">	constructor(props) &#123;</span><br><span class="line">    	super(props)</span><br><span class="line">		  this.state = &#123;</span><br><span class="line">			photos: [],</span><br><span class="line">			web3: null</span><br><span class="line">		&#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">componentWillMount</span></span>() &#123;</span><br><span class="line">    // Get network provider and web3 instance.</span><br><span class="line">    // See utils/getWeb3 <span class="keyword">for</span> more info.</span><br><span class="line"></span><br><span class="line">    getWeb3</span><br><span class="line">    .<span class="keyword">then</span>(results =&gt; &#123;</span><br><span class="line">      this.setState(&#123;</span><br><span class="line">        web3: results.web3</span><br><span class="line">      &#125;)</span><br><span class="line"></span><br><span class="line">      // Instantiate contract once web3 provided.</span><br><span class="line">      this.instantiateContract()</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(() =&gt; &#123;</span><br><span class="line">      console.log(<span class="string">'Error finding web3.'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">instantiateContract</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">    album.setProvider(this.state.web3.currentProvider)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // Get accounts.</span><br><span class="line">    this.state.web3.eth.getAccounts((error, accounts) =&gt; &#123;</span><br><span class="line">      album.at(CONTRACT_ADDRESS).<span class="keyword">then</span>((instance) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">		  albumInstance = instance</span><br><span class="line"></span><br><span class="line">		  console.log(instance.address)</span><br><span class="line"></span><br><span class="line">		  console.log(accounts[0])</span><br><span class="line">		  account = accounts[0]</span><br><span class="line"></span><br><span class="line">        //获取相册</span><br><span class="line">		albumInstance.getPhotosNum().<span class="keyword">then</span>(result =&gt; &#123;</span><br><span class="line">			<span class="built_in">let</span> num = result.c[0]</span><br><span class="line"></span><br><span class="line">			console.log(<span class="string">"照片数量:"</span>)</span><br><span class="line">			console.log(num)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">			<span class="keyword">for</span>(<span class="built_in">let</span> i = 0; i&lt;num; i++)&#123;</span><br><span class="line">				albumInstance.photos(i).<span class="keyword">then</span>(result2 =&gt; &#123;</span><br><span class="line">					<span class="built_in">let</span> photo = &#123;&#125;</span><br><span class="line">					photo.author = result2[0]</span><br><span class="line">					photo.title = result2[1]</span><br><span class="line">					photo.hash = result2[2]</span><br><span class="line"></span><br><span class="line">					console.log(photo)</span><br><span class="line"></span><br><span class="line">					<span class="built_in">let</span> oldPhotos = this.state.photos</span><br><span class="line"></span><br><span class="line">					oldPhotos.push(photo)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">					this.setState(&#123;</span><br><span class="line">						photos: oldPhotos</span><br><span class="line">					&#125;)</span><br><span class="line"></span><br><span class="line">				&#125;)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;)</span><br><span class="line"></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span></span>() &#123;</span><br><span class="line">//	// 遍历数组创建新的 组件数组</span><br><span class="line">//	<span class="built_in">let</span> photosdiv = this.state.photos.map((val,index) =&gt;</span><br><span class="line">//		&lt;Photo index=&#123;index&#125; key=&#123;index&#125; photoDetail=&#123;val&#125; /&gt;</span><br><span class="line">//	)</span><br><span class="line">//</span><br><span class="line">    <span class="built_in">return</span> (</span><br><span class="line">		&lt;div className=<span class="string">"App"</span>&gt;</span><br><span class="line">			&lt;div&gt;</span><br><span class="line">				&lt;h1&gt;相册:&lt;/h1&gt;</span><br><span class="line">				&lt;ul&gt;</span><br><span class="line">					&#123;this.state.photos.map((val,index) =&gt; &lt;Photo index=&#123;index&#125; key=&#123;index&#125; photoDetail=&#123;val&#125; /&gt;</span><br><span class="line">					)&#125;</span><br><span class="line">				&lt;/ul&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">			&lt;div&gt;</span><br><span class="line">				&lt;h1&gt;添加新相片&lt;/h1&gt;</span><br><span class="line">				&lt;p&gt;</span><br><span class="line">					&lt;label htmlFor=<span class="string">"photoTitle"</span>&gt;相片名:&lt;/label&gt;</span><br><span class="line">					&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> id=<span class="string">"photoTitle"</span> ref=<span class="string">"photoTitle"</span> /&gt;</span><br><span class="line">				&lt;/p&gt;</span><br><span class="line">				&lt;p&gt;</span><br><span class="line">					&lt;input <span class="built_in">type</span>=<span class="string">"file"</span> id=<span class="string">"photoFile"</span> name=<span class="string">"photoFile"</span> ref=<span class="string">"photoFile"</span> /&gt;</span><br><span class="line">				&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">				&lt;p&gt;</span><br><span class="line">					&lt;button onClick=&#123;() =&gt; &#123;</span><br><span class="line">							var name = this.refs.photoTitle.value</span><br><span class="line">							<span class="keyword">if</span>(!name)&#123;</span><br><span class="line">								alert(<span class="string">"请填写相片名"</span>);</span><br><span class="line">								<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">							&#125;</span><br><span class="line">							var file = this.refs.photoFile.files[0];</span><br><span class="line">							<span class="keyword">if</span>(!file)&#123;</span><br><span class="line">								alert(<span class="string">"请选择图片"</span>);</span><br><span class="line">								<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">							&#125;</span><br><span class="line">							var reader = new FileReader();</span><br><span class="line">							reader.readAsArrayBuffer(file);</span><br><span class="line">							reader.onloadend = <span class="keyword">function</span>(e)&#123;</span><br><span class="line">								console.log(reader);</span><br><span class="line">								//上传数据到ipfs</span><br><span class="line">								saveImageOnIpfs(reader).<span class="keyword">then</span>((<span class="built_in">hash</span>) =&gt; &#123;</span><br><span class="line">									console.log(<span class="string">"图片已经成功上传至ipfs"</span>);</span><br><span class="line">									console.log(<span class="built_in">hash</span>);</span><br><span class="line">									//将新图片写入区块链</span><br><span class="line">									albumInstance.addPhoto(name, <span class="built_in">hash</span>, &#123;from: account&#125;).<span class="keyword">then</span>(result =&gt; &#123;</span><br><span class="line">										console.log(<span class="string">'写入成功'</span>);</span><br><span class="line">										//写入成功，更新state中的photos</span><br><span class="line">										//获取相册</span><br><span class="line">										albumInstance.getPhotosNum().<span class="keyword">then</span>(result =&gt; &#123;</span><br><span class="line">											<span class="built_in">let</span> num = result.c[0]</span><br><span class="line"></span><br><span class="line">											console.log(<span class="string">"照片数量:"</span>)</span><br><span class="line">											console.log(num)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">											albumInstance.photos(num-1).<span class="keyword">then</span>(result2 =&gt; &#123;</span><br><span class="line">												<span class="built_in">let</span> photo = &#123;&#125;</span><br><span class="line">												photo.author = result2[0]</span><br><span class="line">												photo.title = result2[1]</span><br><span class="line">												photo.hash = result2[2]</span><br><span class="line"></span><br><span class="line">												<span class="built_in">let</span> oldPhotos = this.state.photos</span><br><span class="line">												oldPhotos.push(photo)</span><br><span class="line">												this.setState(&#123;</span><br><span class="line">													photos : oldPhotos</span><br><span class="line">												&#125;)</span><br><span class="line">											&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">										&#125;)</span><br><span class="line"></span><br><span class="line">									&#125;).catch((err) =&gt; &#123;</span><br><span class="line">										console.log(<span class="string">"写入失败"</span>)</span><br><span class="line">										console.error(err)</span><br><span class="line">									&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">								&#125;)</span><br><span class="line">							&#125;.<span class="built_in">bind</span>(this);</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;&gt;添加&lt;/button&gt;</span><br><span class="line">				&lt;/p&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>5) 终端运行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">truffle develop</span><br><span class="line">compile</span><br><span class="line">migrate</span><br></pre></td></tr></table></figure></p>
+<p>结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Deploying Album...</span><br><span class="line">... 0xeed67fe8d612303d2e7d4da7ed64fe29608417c8eb0c5f3ca6c26f1914d4aef3</span><br><span class="line"></span><br><span class="line">Album: 0x345ca3e014aaf5dca488057592ee47305d9b3e10</span><br><span class="line">Saving successful migration to network...</span><br><span class="line">... 0xf36163615f41ef7ed8f4a8f192149a0bf633fe1a2398ce001bf44c43dc7bdda0</span><br><span class="line">Saving artifacts...</span><br><span class="line">truffle(develop)&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>0xf36163615f41ef7ed8f4a8f192149a0bf633fe1a2398ce001bf44c43dc7bdda0</code>为部署在本地的合约地址</p>
+<p>6) 最后在第16行<code>let albumInstance;</code>下面面插入合约地址，此合约地址为执行<code>migrate</code>命令部署后的地址。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> CONTRACT_ADDRESS=<span class="string">"0xf36163615f41ef7ed8f4a8f192149a0bf633fe1a2398ce001bf44c43dc7bdda0"</span>;</span><br></pre></td></tr></table></figure></p>
+<h2 id="10-运行测试程序"><a href="#10-运行测试程序" class="headerlink" title="10.运行测试程序"></a>10.运行测试程序</h2><p>确认网络连接正常。</p>
+<p>1)第一个终端运行，启动前端服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure></p>
+<p>2）第二个终端运行,启动节点服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipfs daemon</span><br></pre></td></tr></table></figure></p>
+<p>3) 前端测试<br><img src="http://p3d3seyjq.bkt.clouddn.com/test-6.png" alt="test-6"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://p3d3seyjq.bkt.clouddn.com/qrcode_for_gh_5e09eb8b9b30_258.jpg" alt="赵东春 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/07/IPFS1/" rel="next" title="使用框架Hexo在IPFS上搭建个人博客">
+                <i class="fa fa-chevron-left"></i> 使用框架Hexo在IPFS上搭建个人博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/10/dapp1/" rel="prev" title="去中心化拍卖项目ebay_Dapp">
+                去中心化拍卖项目ebay_Dapp <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://p3d3seyjq.bkt.clouddn.com/avatar.png"
+                alt="赵东春" />
+            
+              <p class="site-author-name" itemprop="name">赵东春</p>
+              <p class="site-description motion-element" itemprop="description">山重水复疑无路,柳岸花明又一春</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/konglongyinger" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/zhao-dong-chun-91/posts" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://m.weibo.cn/p/1005053232517464" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://eosfans.io" title="EOS中文社区" target="_blank">EOS中文社区</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://eosmonitor.io" title="EOS浏览器" target="_blank">EOS浏览器</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-创建react项目"><span class="nav-text">1. 创建react项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-完成前端UI逻辑"><span class="nav-text">2. 完成前端UI逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-安装ipfs-api"><span class="nav-text">3. 安装ipfs-api</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-App-js导入IPFS"><span class="nav-text">4. App.js导入IPFS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-实现上传图片到IPFS的Promise函数"><span class="nav-text">5. 实现上传图片到IPFS的Promise函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-运行测试"><span class="nav-text">6. 运行测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-配置合约"><span class="nav-text">7. 配置合约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-配置编译"><span class="nav-text">8. 配置编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-App-js导入合约"><span class="nav-text">9. App.js导入合约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-运行测试程序"><span class="nav-text">10.运行测试程序</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赵东春</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("k5gEBkQRrVQiP07x7UY9gNRf-gzGzoHsz", "Yi0mm2rhgES6JA7VxB80oMaq");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

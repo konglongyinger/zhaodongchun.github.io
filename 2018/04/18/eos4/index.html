@@ -79,19 +79,22 @@
 
 
 
-<meta name="description" content="Ubuntu操作系统安装配置">
+<meta name="description" content="上篇我们创建了一个EOS钱包，有了钱包我们可以用这个钱包创建一个账户。 请保持区块链一直运行状态。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go语言系列（二）">
-<meta property="og:url" content="https://zhaodongchun.com/2018/01/31/go3/index.html">
+<meta property="og:title" content="EOS(DAWN3.0)智能合约开发04-创建eos智能合约-hello world">
+<meta property="og:url" content="https://zhaodongchun.com/2018/04/18/eos4/index.html">
 <meta property="og:site_name" content="LEO&#39;S BLOG">
-<meta property="og:description" content="Ubuntu操作系统安装配置">
+<meta property="og:description" content="上篇我们创建了一个EOS钱包，有了钱包我们可以用这个钱包创建一个账户。 请保持区块链一直运行状态。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://om1c35wrq.bkt.clouddn.com/WX20171208-095849@2x.png">
-<meta property="og:updated_time" content="2018-03-08T08:11:48.184Z">
+<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/eos-logo.jpg">
+<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/eos-coutract-build1.png">
+<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/eos-helloworld-set.png">
+<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/eos-helloworl-push.png">
+<meta property="og:updated_time" content="2018-04-25T09:39:15.197Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go语言系列（二）">
-<meta name="twitter:description" content="Ubuntu操作系统安装配置">
-<meta name="twitter:image" content="http://om1c35wrq.bkt.clouddn.com/WX20171208-095849@2x.png">
+<meta name="twitter:title" content="EOS(DAWN3.0)智能合约开发04-创建eos智能合约-hello world">
+<meta name="twitter:description" content="上篇我们创建了一个EOS钱包，有了钱包我们可以用这个钱包创建一个账户。 请保持区块链一直运行状态。">
+<meta name="twitter:image" content="http://p3d3seyjq.bkt.clouddn.com/eos-logo.jpg">
 
 
 
@@ -121,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://zhaodongchun.com/2018/01/31/go3/"/>
+  <link rel="canonical" href="https://zhaodongchun.com/2018/04/18/eos4/"/>
 
 
 
 
 
-  <title>Go语言系列（二） | LEO'S BLOG</title>
+  <title>EOS(DAWN3.0)智能合约开发04-创建eos智能合约-hello world | LEO'S BLOG</title>
   
 
 
@@ -288,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhaodongchun.com/2018/01/31/go3/">
+    <link itemprop="mainEntityOfPage" href="https://zhaodongchun.com/2018/04/18/eos4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="赵东春">
@@ -305,7 +308,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Go语言系列（二）</h1>
+          <h1 class="post-title" itemprop="name headline">EOS(DAWN3.0)智能合约开发04-创建eos智能合约-hello world</h1>
         
 
         <div class="post-meta">
@@ -317,8 +320,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-31T13:57:53+08:00">
-                2018-01-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-18T14:45:30+08:00">
+                2018-04-18
               </time>
             
 
@@ -340,8 +343,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Go语言/" itemprop="url" rel="index">
-                    <span itemprop="name">Go语言</span>
+                  <a href="/categories/EOS智能合约开发/" itemprop="url" rel="index">
+                    <span itemprop="name">EOS智能合约开发</span>
                   </a>
                 </span>
 
@@ -356,6 +359,17 @@
           
 
           
+          
+             <span id="/2018/04/18/eos4/" class="leancloud_visitors" data-flag-title="EOS(DAWN3.0)智能合约开发04-创建eos智能合约-hello world">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -377,10 +391,26 @@
       
 
       
-        <p><img src="http://om1c35wrq.bkt.clouddn.com/WX20171208-095849@2x.png" alt=""></p>
-<p>Ubuntu操作系统安装配置<br><a id="more"></a><br>假设你的电脑是mac电脑，先下载<a href="https://pan.baidu.com/s/1nwVsez3" target="_blank" rel="noopener">ubuntu-16.04.3-desktop-amd64</a>安装包到本地,并且下载一个虚拟机<a href="http://p3d3seyjq.bkt.clouddn.com/VirtualBox-5.2.4-119785-OSX.dmg" target="_blank" rel="noopener">VirtualBox-5.2.4-119785-OSX</a>。</p>
-<h2 id="1-安装ubuntu操作系统"><a href="#1-安装ubuntu操作系统" class="headerlink" title="1. 安装ubuntu操作系统"></a>1. 安装ubuntu操作系统</h2><p>按照次序安装，先安装VirtualBox,安装后运行，在 <code>Oracle VM VirtualBox Manager</code>主界面选择<code>New</code>创建一个<code>Name</code>为<code>Yourname</code>,<code>Type</code>为<code>Linux</code>,<code>Version</code>为<code>Ubuntu(64-bit)</code>后选择蓝色按钮<code>Continue</code>进入下一界面，设置<code>Memory size</code>为默认，继续下一步，设置<code>File location and size</code>为20G到50G之间就可以。</p>
-<h2 id="2-配置虚拟机ubuntu"><a href="#2-配置虚拟机ubuntu" class="headerlink" title="2. 配置虚拟机ubuntu"></a>2. 配置虚拟机ubuntu</h2>
+        <p><img src="http://p3d3seyjq.bkt.clouddn.com/eos-logo.jpg" alt="eos-log"></p>
+<p>上篇我们创建了一个EOS钱包，有了钱包我们可以用这个钱包创建一个账户。</p>
+<p>请保持区块链一直运行状态。</p>
+<a id="more"></a>
+<h2 id="1-创建合约"><a href="#1-创建合约" class="headerlink" title="1. 创建合约"></a>1. 创建合约</h2><p>定位到<code>eos/build/contracts/</code>目录,新建一个“helloworld”目录,此目录下新建一个“helloworld.cpp”文件.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> contracts</span><br><span class="line">mkdir helloworld</span><br><span class="line"><span class="built_in">cd</span> helloworld</span><br><span class="line">touch helloworld.cpp</span><br></pre></td></tr></table></figure></p>
+<p>复制下面合约代码到文件中：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;eosiolib/eosio.hpp&gt;  </span></span><br><span class="line"><span class="comment">#include &lt;eosiolib/print.hpp&gt;</span></span><br><span class="line"></span><br><span class="line">using namespace eosio;  </span><br><span class="line"></span><br><span class="line">class helloeos : public eosio::contract &#123;  </span><br><span class="line">  public:  </span><br><span class="line">      using contract::contract;  </span><br><span class="line"></span><br><span class="line">      void hello(account_name user) &#123;  </span><br><span class="line">         <span class="built_in">print</span>(<span class="string">"Hello world! "</span>, name&#123;user&#125;);  </span><br><span class="line">      &#125;  </span><br><span class="line">&#125;;  </span><br><span class="line"></span><br><span class="line">EOSIO_ABI(helloeos, (hello))</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-编译合约"><a href="#2-编译合约" class="headerlink" title="2. 编译合约"></a>2. 编译合约</h2><p>在终端通过eosiocpp命令，生成wast和abi文件</p>
+<p>1）编译成wast文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eosiocpp -o helloworld.wast helloworld.cpp</span><br></pre></td></tr></table></figure></p>
+<p>2）编译成abi文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eosiocpp -g helloworld.abi helloworld.cpp</span><br></pre></td></tr></table></figure>
+<p>结果目录如下：</p>
+<p><img src="http://p3d3seyjq.bkt.clouddn.com/eos-coutract-build1.png" alt="eos-contract-build"></p>
+<h2 id="3-部署合约"><a href="#3-部署合约" class="headerlink" title="3. 部署合约"></a>3. 部署合约</h2><p>定位到<code>eos/build/contracts/helloworld/</code>目录，使用<code>PW5KTy4QS1vkCtRev1dAgMYRAm8m5x1BncU52CEj2R2Z119YvzZHv</code>解锁钱包，使用账号“leo”部署智能合约,运行指令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> helloworld</span><br><span class="line">cleos wallet open</span><br><span class="line">cleos wallet unlock</span><br><span class="line">cleos <span class="built_in">set</span> contract leo ../helloworld -p leo</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p3d3seyjq.bkt.clouddn.com/eos-helloworld-set.png" alt="eos-contract-sucess"></p>
+<h2 id="4-调用合约"><a href="#4-调用合约" class="headerlink" title="4. 调用合约"></a>4. 调用合约</h2><p>定位到<code>eos/build/contracts/helloworld/</code>目录，使用<code>push action</code>命令调用合约：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos push action leo hello <span class="string">'[leo]'</span> -p leo</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p3d3seyjq.bkt.clouddn.com/eos-helloworl-push.png" alt="eos-contract-welcome"></p>
+<p>智能合约调用成功！</p>
+<p>在部署和调用合约成功后，区块链上也会有相关记录。</p>
+<p>通过操作我们知道了EOS智能合约是C++编写的一段程序，智能合约和区块链关系就像寄生。</p>
+
       
     </div>
     
@@ -412,8 +442,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/31/go2/" rel="next" title="Go语言系列（一）">
-                <i class="fa fa-chevron-left"></i> Go语言系列（一）
+              <a href="/2018/04/18/eos3/" rel="next" title="EOS(DAWN3.0)智能合约开发03-创建eos钱包">
+                <i class="fa fa-chevron-left"></i> EOS(DAWN3.0)智能合约开发03-创建eos钱包
               </a>
             
           </div>
@@ -422,8 +452,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/04/web scraper1/" rel="prev" title="网络爬虫-用web scraper抓取百份白皮书（一）">
-                网络爬虫-用web scraper抓取百份白皮书（一） <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/19/eos5/" rel="prev" title="EOS(DAWN3.0)智能合约开发05-创建eos智能合约-currency">
+                EOS(DAWN3.0)智能合约开发05-创建eos智能合约-currency <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -505,7 +535,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -516,7 +546,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -557,6 +587,24 @@
 
           
           
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://eosfans.io" title="EOS中文社区" target="_blank">EOS中文社区</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://eosmonitor.io" title="EOS浏览器" target="_blank">EOS浏览器</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
 
           
 
@@ -573,7 +621,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-安装ubuntu操作系统"><span class="nav-text">1. 安装ubuntu操作系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-配置虚拟机ubuntu"><span class="nav-text">2. 配置虚拟机ubuntu</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-创建合约"><span class="nav-text">1. 创建合约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-编译合约"><span class="nav-text">2. 编译合约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-部署合约"><span class="nav-text">3. 部署合约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-调用合约"><span class="nav-text">4. 调用合约</span></a></li></ol></div>
             
 
           </div>
@@ -1094,6 +1142,113 @@
 
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("k5gEBkQRrVQiP07x7UY9gNRf-gzGzoHsz", "Yi0mm2rhgES6JA7VxB80oMaq");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 
