@@ -1090,7 +1090,7 @@ pre .javascript .function {
   bottom: 19px;
 }
 .header {
-  background-image: url("http://p3d3seyjq.bkt.clouddn.com/backgroud-19.jpg");
+  background-image: url("http://p3d3seyjq.bkt.clouddn.com/backgroud-20.jpg");
 }
 .header-inner {
   position: relative;
@@ -1112,7 +1112,7 @@ pre .javascript .function {
   position: relative;
   display: inline-block;
   padding: 0 40px;
-  color: #555;
+  color: #fff;
   border-bottom: none;
 }
 .brand:hover {
@@ -1821,7 +1821,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #06aaff;
+  background: #49218c;
 }
 .links-of-blogroll {
   font-size: 13px;
