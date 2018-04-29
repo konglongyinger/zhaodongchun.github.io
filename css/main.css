@@ -1090,7 +1090,7 @@ pre .javascript .function {
   bottom: 19px;
 }
 .header {
-  background-image: url("https://ws1.sinaimg.cn/large/694830ebgy1fh3pyd05klj21kw0f2dy2.jpg");
+  background-image: url("http://p3d3seyjq.bkt.clouddn.com/backgroud-19.jpg");
 }
 .header-inner {
   position: relative;
@@ -1112,7 +1112,7 @@ pre .javascript .function {
   position: relative;
   display: inline-block;
   padding: 0 40px;
-  color: #fff;
+  color: #555;
   border-bottom: none;
 }
 .brand:hover {
@@ -1128,9 +1128,9 @@ pre .javascript .function {
   display: inline-block;
   vertical-align: top;
   line-height: 36px;
-  font-size: 48px;
+  font-size: 42px;
   font-weight: normal;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: monospace;
 }
 .site-subtitle {
   margin-top: 10px;
@@ -1187,7 +1187,6 @@ pre .javascript .function {
   margin-top: 20px;
   padding-left: 0;
   text-align: center;
-  background: rgba(255,250,250,0.62);
 }
 .menu .menu-item {
   display: inline-block;
@@ -1822,7 +1821,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #58ff24;
+  background: #06aaff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -1975,7 +1974,7 @@ pre .javascript .function {
   display: inline-block;
 }
 .theme-next #ds-thread #ds-reset {
-  color: #555;
+  color: #000;
 }
 .theme-next #ds-thread #ds-reset .ds-replybox {
   margin-bottom: 30px;
