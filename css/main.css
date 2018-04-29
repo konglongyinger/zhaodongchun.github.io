@@ -1130,7 +1130,7 @@ pre .javascript .function {
   line-height: 36px;
   font-size: 42px;
   font-weight: normal;
-  font-family: monospace;
+  font-family: serif;
 }
 .site-subtitle {
   margin-top: 10px;
@@ -1821,7 +1821,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #81ff99;
+  background: #54ffa6;
 }
 .links-of-blogroll {
   font-size: 13px;
