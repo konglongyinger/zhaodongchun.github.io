@@ -79,22 +79,21 @@
 
 
 
-<meta name="description" content="从02到05篇章我们一直是在本地单节点网络中创建钱包，智能合约。 这篇文章将创建一个多节点单主机的网络，实现两个节点间的通信。">
+<meta name="description" content="六体的虚与实就像地球的大陆与海洋。大陆的形形色色的实和海洋的一望无际的虚。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="EOS(DAWN3.0)智能合约开发06-创建eos多节点网络">
-<meta property="og:url" content="https://zhaodongchun.com/2018/04/23/eos6/index.html">
+<meta property="og:title" content="六体的虚与实">
+<meta property="og:url" content="https://zhaodongchun.com/2018/07/07/6ti2/index.html">
 <meta property="og:site_name" content="Leo Blog">
-<meta property="og:description" content="从02到05篇章我们一直是在本地单节点网络中创建钱包，智能合约。 这篇文章将创建一个多节点单主机的网络，实现两个节点间的通信。">
+<meta property="og:description" content="六体的虚与实就像地球的大陆与海洋。大陆的形形色色的实和海洋的一望无际的虚。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/eos">
-<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/eos-mult-node.png">
-<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/eos-multi-node.png">
-<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/eos-nodeos.png">
-<meta property="og:updated_time" content="2018-04-28T16:12:22.520Z">
+<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/xuyushi2.gif">
+<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/dot.jpg">
+<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/dot.jpg">
+<meta property="og:updated_time" content="2018-07-07T13:19:39.956Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="EOS(DAWN3.0)智能合约开发06-创建eos多节点网络">
-<meta name="twitter:description" content="从02到05篇章我们一直是在本地单节点网络中创建钱包，智能合约。 这篇文章将创建一个多节点单主机的网络，实现两个节点间的通信。">
-<meta name="twitter:image" content="http://p3d3seyjq.bkt.clouddn.com/eos">
+<meta name="twitter:title" content="六体的虚与实">
+<meta name="twitter:description" content="六体的虚与实就像地球的大陆与海洋。大陆的形形色色的实和海洋的一望无际的虚。">
+<meta name="twitter:image" content="http://p3d3seyjq.bkt.clouddn.com/xuyushi2.gif">
 
 
 
@@ -124,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="https://zhaodongchun.com/2018/04/23/eos6/"/>
+  <link rel="canonical" href="https://zhaodongchun.com/2018/07/07/6ti2/"/>
 
 
 
 
 
-  <title>EOS(DAWN3.0)智能合约开发06-创建eos多节点网络 | Leo Blog</title>
+  <title>六体的虚与实 | Leo Blog</title>
   
 
 
@@ -291,7 +290,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhaodongchun.com/2018/04/23/eos6/">
+    <link itemprop="mainEntityOfPage" href="https://zhaodongchun.com/2018/07/07/6ti2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="赵东春">
@@ -308,7 +307,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">EOS(DAWN3.0)智能合约开发06-创建eos多节点网络</h1>
+          <h1 class="post-title" itemprop="name headline">六体的虚与实</h1>
         
 
         <div class="post-meta">
@@ -320,8 +319,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-23T17:39:45+08:00">
-                2018-04-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-07T15:29:37+08:00">
+                2018-07-07
               </time>
             
 
@@ -343,8 +342,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/EOS智能合约开发/" itemprop="url" rel="index">
-                    <span itemprop="name">EOS智能合约开发</span>
+                  <a href="/categories/六体/" itemprop="url" rel="index">
+                    <span itemprop="name">六体</span>
                   </a>
                 </span>
 
@@ -360,7 +359,7 @@
 
           
           
-             <span id="/2018/04/23/eos6/" class="leancloud_visitors" data-flag-title="EOS(DAWN3.0)智能合约开发06-创建eos多节点网络">
+             <span id="/2018/07/07/6ti2/" class="leancloud_visitors" data-flag-title="六体的虚与实">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -391,40 +390,33 @@
       
 
       
-        <p><img src="http://p3d3seyjq.bkt.clouddn.com/eos" alt="eos-log"></p>
-<p>从02到05篇章我们一直是在本地单节点网络中创建钱包，智能合约。</p>
-<p>这篇文章将创建一个多节点单主机的网络，实现两个节点间的通信。</p>
+        <p><img src="http://p3d3seyjq.bkt.clouddn.com/xuyushi2.gif" alt="cover"></p>
+<p>六体的虚与实就像地球的大陆与海洋。大陆的形形色色的实和海洋的一望无际的虚。</p>
 <a id="more"></a>
-<h2 id="1-多节点网络概念"><a href="#1-多节点网络概念" class="headerlink" title="1. 多节点网络概念"></a>1. 多节点网络概念</h2><ul>
-<li>一个节点占用一个端口，如果想启动多节点需要使用多个端口</li>
-<li>一个节点需要一个账户，如果想启动多节点需要使用多个账户</li>
+<p>我们在进行一场社会实践。就像十年前的比特币。</p>
+<h3 id="1-什么是实"><a href="#1-什么是实" class="headerlink" title="1. 什么是实"></a>1. 什么是实</h3><p>以两个原点为例：</p>
+<p><img src="http://p3d3seyjq.bkt.clouddn.com/dot.jpg" alt="dot"></p>
+<p>一个实心的点和一个空心的点,实心的点是一种实。</p>
+<h3 id="2-什么是虚"><a href="#2-什么是虚" class="headerlink" title="2.什么是虚"></a>2.什么是虚</h3><p>以两个原点为例：</p>
+<p><img src="http://p3d3seyjq.bkt.clouddn.com/dot.jpg" alt="dot"></p>
+<p>一个实心的点和一个空心的点,空心的点是一种虚。</p>
+<h3 id="3-六体的虚和实的结合"><a href="#3-六体的虚和实的结合" class="headerlink" title="3.六体的虚和实的结合"></a>3.六体的虚和实的结合</h3><p>“实”是人类认识自然的目的，认识自然是人类生存的需要。</p>
+<p>“虚”是人类认识自身的目的，认识自身是人性的需求。</p>
+<p>虚与实是人和物的最一般关系，也是六体链接的人和物的最一般关系。</p>
+<p>六体链接的很多个实心节点，会是一个个有作品的人和组织。</p>
+<p>六体结构的内部会由很多实心节点和空心节点组成，完成实中有虚，虚中有实的形态。</p>
+<h3 id="4-六体要做的事情"><a href="#4-六体要做的事情" class="headerlink" title="4.六体要做的事情"></a>4.六体要做的事情</h3><p>我们始终以开放的心态拥抱世界上的任何人，任何事；我们始终以好奇的心态获取世界上的任何人，任何事。</p>
+<p>为了保持有效的链接，而不是无效的虚空的存在，我们的链接建立在实心的实体之上。</p>
+<p>因此我们接受任何人，但不是任何一个人能够加入六体，对于一个虚无的个体，只有用时间和精力填充自己的空虚之后，我们才能进行有效的链接。</p>
+<p>链接分两种情况：</p>
+<ul>
+<li>实体</li>
+<li>虚体</li>
 </ul>
-<h2 id="2-启动第一个节点"><a href="#2-启动第一个节点" class="headerlink" title="2. 启动第一个节点"></a>2. 启动第一个节点</h2><p>开启第一个终端，启动节点，此节点是默认的“eosio”账户，又称为“bios 生产者”。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nodeos</span><br></pre></td></tr></table></figure>
-<h2 id="3-启动第二个节点"><a href="#3-启动第二个节点" class="headerlink" title="3. 启动第二个节点"></a>3. 启动第二个节点</h2><p>1）确认已经设置好钱包API插件文件<code>config.ini</code></p>
-<p>2）启动新节点</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/eos/build/contracts/eosio.bios</span><br><span class="line">nodeos -p leo --plugin eosio::chain_api_plugin --plugin eosio::net_api_plugin --http-server-address 127.0.0.1:8889 --p2p-listen-endpoint 127.0.0.1:9877 --p2p-peer-address 127.0.0.1:9876 --config-dir node2 --data-dir node2 --private-key [\<span class="string">"EOS7kAFTAwFdurP9cMQJ1zd9akvUDPNhpnWUzUrdpjcf6nGMiQuy8\",\"5JM8oznp4ssuTvgFEzj2C98MzkitF64g5NGPTmGu3LdYqXsiJT2\"]</span></span><br></pre></td></tr></table></figure>
-<p><img src="http://p3d3seyjq.bkt.clouddn.com/eos-mult-node.png" alt=""></p>
-<p>如上图所示，第一个节点在产生区块（generate block），第二节点只是同步区块（push block）</p>
-<p>可以看出我们使用03篇创建好的“leo”账户来启动的新节点，”leo”账户owner权限的公私匙请查看03篇。</p>
-<p>3) 设置节点2</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos push action eosio setprods &quot;&#123; \&quot;version\&quot;: 1, \&quot;producers\&quot;: [&#123;\&quot;producer_name\&quot;: \&quot;leo\&quot;,\&quot;block_signing_key\&quot;: \&quot;EOS7kAFTAwFdurP9cMQJ1zd9akvUDPNhpnWUzUrdpjcf6nGMiQuy8\&quot;&#125;]&#125;&quot; -p eosio@active</span><br></pre></td></tr></table></figure>
-<p><img src="http://p3d3seyjq.bkt.clouddn.com/eos-multi-node.png" alt="eos-multi-node"></p>
-<p>通过设置节点，我们将账户为“leo”的第二个节点转变为活跃的生产者。</p>
-<p>查看两个运行节点的终端，结果是第一个节点不再生成（generated）区块，变成接收(push)区块并同步；第二个节点不再接收（push）区块并同步，变成生成(generated)区块。</p>
-<h2 id="4-获取节点信息"><a href="#4-获取节点信息" class="headerlink" title="4.获取节点信息"></a>4.获取节点信息</h2><p>1）第一个节点<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos --port 8888 get info</span><br></pre></td></tr></table></figure></p>
-<p> 结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;server_version&quot;: &quot;7b28e59c&quot;,</span><br><span class="line">  &quot;head_block_num&quot;: 51799,</span><br><span class="line">  &quot;last_irreversible_block_num&quot;: 51798,</span><br><span class="line">  &quot;head_block_id&quot;: &quot;0000ca57dbeff449459c61de62486508241e74771e14aa73170db0d3f153c432&quot;,</span><br><span class="line">  &quot;head_block_time&quot;: &quot;2018-04-24T06:33:52&quot;,</span><br><span class="line">  &quot;head_block_producer&quot;: &quot;leo&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2）第二个节点<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos --port 8889 get info</span><br></pre></td></tr></table></figure></p>
-<p>结果如下：</p>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;server_version&quot;: &quot;7b28e59c&quot;,</span><br><span class="line">  &quot;head_block_num&quot;: 51918,</span><br><span class="line">  &quot;last_irreversible_block_num&quot;: 51917,</span><br><span class="line">  &quot;head_block_id&quot;: &quot;0000cace679045d94d6953eac5c2631326f96cfdfc85aaf91cf2064b894b96af&quot;,</span><br><span class="line">  &quot;head_block_time&quot;: &quot;2018-04-24T06:34:51&quot;,</span><br><span class="line">  &quot;head_block_producer&quot;: &quot;leo&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="5-节点重置"><a href="#5-节点重置" class="headerlink" title="5. 节点重置"></a>5. 节点重置</h2><p>如何恢复多节点网络到单节点网络，其实不需要重新编译，只需要删除区块链节点数据，配置做下更改即可。</p>
-<p>1）在/Library/Application Support/eosio/nodeos/data目录下，将default.wallet文件拷贝出来。</p>
-<p>2）定位到Library/Application Support/目录,删除<code>eosio</code>文件夹。</p>
-<p>3）定位到Library/Application Support/eosio/nodeos/config目录,打开config.ini文件,通过<code>#</code>标记删除账户历史。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># plugin = eosio::account_history_api_plugin</span><br></pre></td></tr></table></figure></p>
-<p>4） 运行节点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nodeos</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p3d3seyjq.bkt.clouddn.com/eos-nodeos.png" alt=""></p>
-<p>重置成功，区块链单节点启动。</p>
+<p>对于第一种情况，判断的条件就是<code>是否有拿的出手的完整的作品</code>；对于第二种情况，我们能做的就是<code>进入预备军集合</code>，为进行有效链接做准备。</p>
+<p>六体要做的事情就是<code>链接实与虚</code></p>
+<h3 id="5-为什么要参与"><a href="#5-为什么要参与" class="headerlink" title="5.为什么要参与"></a>5.为什么要参与</h3><p>我们知道任何事件都由人产生，希望有更多希望变革和自由的新新人类参与这次社会实践，无论结果如何，也许变革会比比特币的影响更加长远。</p>
+<p>请加入一个有序化自治组织，参与一场社会实验，见证人类协作进化史。</p>
 
       
     </div>
@@ -457,8 +449,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/19/eos5/" rel="next" title="EOS(DAWN3.0)智能合约开发05-创建eos智能合约-currency">
-                <i class="fa fa-chevron-left"></i> EOS(DAWN3.0)智能合约开发05-创建eos智能合约-currency
+              <a href="/2018/07/04/6ti1/" rel="next" title="什么是六体">
+                <i class="fa fa-chevron-left"></i> 什么是六体
               </a>
             
           </div>
@@ -466,10 +458,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/25/eos7/" rel="prev" title="EOS(DAWN3.0)智能合约开发07-学会使用IDE创建智能合约">
-                EOS(DAWN3.0)智能合约开发07-学会使用IDE创建智能合约 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -636,7 +624,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-多节点网络概念"><span class="nav-text">1. 多节点网络概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-启动第一个节点"><span class="nav-text">2. 启动第一个节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-启动第二个节点"><span class="nav-text">3. 启动第二个节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-获取节点信息"><span class="nav-text">4.获取节点信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-节点重置"><span class="nav-text">5. 节点重置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-什么是实"><span class="nav-text">1. 什么是实</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-什么是虚"><span class="nav-text">2.什么是虚</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-六体的虚和实的结合"><span class="nav-text">3.六体的虚和实的结合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-六体要做的事情"><span class="nav-text">4.六体要做的事情</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-为什么要参与"><span class="nav-text">5.为什么要参与</span></a></li></ol></div>
             
 
           </div>
