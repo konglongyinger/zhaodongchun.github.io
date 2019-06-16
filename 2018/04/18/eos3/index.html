@@ -86,17 +86,17 @@
 <meta property="og:site_name" content="Leo Blog">
 <meta property="og:description" content="上篇我们启动了EOS区块链，请保持区块链一直运行状态。 先思考一个问题：钱包和区块链是什么关系？ 再思考另外一个问题：智能合约和区块链是什么关系？ 让我们带着疑问继续下面的学习。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/eos">
-<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/eos-wallet-folder.png">
-<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/eos-wallet-nodeos.png">
-<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/eos-wallet-import2.png">
-<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/eos-accout-finished1.png">
-<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/eos-accout-finished2.png">
-<meta property="og:updated_time" content="2018-04-28T16:11:52.407Z">
+<meta property="og:image" content="https://i.loli.net/2019/06/16/5d0648d1376f942134.jpeg">
+<meta property="og:image" content="https://i.loli.net/2019/06/16/5d064ddf7009843029.png">
+<meta property="og:image" content="https://i.loli.net/2019/06/16/5d064e1db2f3167929.png">
+<meta property="og:image" content="https://i.loli.net/2019/06/16/5d064ecc9a50a78885.png">
+<meta property="og:image" content="https://i.loli.net/2019/06/16/5d064f6179f2d47725.png">
+<meta property="og:image" content="https://i.loli.net/2019/06/16/5d064fb757ae963787.png">
+<meta property="og:updated_time" content="2019-06-16T14:18:54.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EOS(DAWN3.0)智能合约开发03-创建eos钱包">
 <meta name="twitter:description" content="上篇我们启动了EOS区块链，请保持区块链一直运行状态。 先思考一个问题：钱包和区块链是什么关系？ 再思考另外一个问题：智能合约和区块链是什么关系？ 让我们带着疑问继续下面的学习。">
-<meta name="twitter:image" content="http://p3d3seyjq.bkt.clouddn.com/eos">
+<meta name="twitter:image" content="https://i.loli.net/2019/06/16/5d0648d1376f942134.jpeg">
 
 
 
@@ -393,7 +393,7 @@
       
 
       
-        <p><img src="http://p3d3seyjq.bkt.clouddn.com/eos" alt="eos-log"></p>
+        <p><img src="https://i.loli.net/2019/06/16/5d0648d1376f942134.jpeg" alt="EOS_logo.jpeg"></p>
 <p>上篇我们启动了EOS区块链，请保持区块链一直运行状态。</p>
 <p>先思考一个问题：钱包和区块链是什么关系？</p>
 <p>再思考另外一个问题：智能合约和区块链是什么关系？</p>
@@ -403,9 +403,9 @@
 <p>终端显示以下结果：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Creating wallet: default</span><br><span class="line">Save password to use in the future to unlock this wallet.</span><br><span class="line">Without password imported keys will not be retrievable.</span><br><span class="line">&quot;PW5KTy4QS1vkCtRev1dAgMYRAm8m5x1BncU52CEj2R2Z119YvzZHv&quot;</span><br></pre></td></tr></table></figure>
 <p>1）如下目录得到一个<code>default.wallet</code>的文件：</p>
-<p><img src="http://p3d3seyjq.bkt.clouddn.com/eos-wallet-folder.png" alt=""></p>
+<p><img src="https://i.loli.net/2019/06/16/5d064ddf7009843029.png" alt="eos-wallet-folder.png"></p>
 <p>2）区块链网络中相应会多出一条记录：</p>
-<p><img src="http://p3d3seyjq.bkt.clouddn.com/eos-wallet-nodeos.png" alt=""></p>
+<p><img src="https://i.loli.net/2019/06/16/5d064e1db2f3167929.png" alt="eos-wallet-nodeos.png"></p>
 <p>通过创建钱包，我们知道了区块链发生什么。明白了钱包是写入区块链上的一段程序.</p>
 <h2 id="2-获取公匙-私匙"><a href="#2-获取公匙-私匙" class="headerlink" title="2. 获取公匙/私匙"></a>2. 获取公匙/私匙</h2><p>1）打开钱包</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos wallet open</span><br></pre></td></tr></table></figure>
@@ -425,13 +425,13 @@
 <p>通过上面命令随机生成四个密匙，记住权限为owner的一对公私钥，如果创建多节点需要。</p>
 <p>3）导入到钱包</p>
 <p>把两个私钥（privateKey）导入到钱包。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cleos wallet import 5JM8oznp4ssuTvgFEzj2C98MzkitF64g5NGPTmGu3LdYqXsiJT2</span><br><span class="line">cleos wallet import 5Jrnt6nQp6Rqu2MCKhdLfX3nD1ZkNDXYYYeESydKbdx9UXnahio</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p3d3seyjq.bkt.clouddn.com/eos-wallet-import2.png" alt=""></p>
+<p><img src="https://i.loli.net/2019/06/16/5d064ecc9a50a78885.png" alt="eos-wallet-import2.png"></p>
 <p>4）创建账户<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos create account eosio leo EOS7kAFTAwFdurP9cMQJ1zd9akvUDPNhpnWUzUrdpjcf6nGMiQuy8 EOS7s4cAmYBWbA5GFSDUXyepSgWYDm9CabBNxjAyuNDTJ3wGe9tvN</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p3d3seyjq.bkt.clouddn.com/eos-accout-finished1.png" alt=""></p>
+<p><img src="https://i.loli.net/2019/06/16/5d064f6179f2d47725.png" alt="eos-accout-finished1.png"></p>
 <p>可以看到，账户创建成功。</p>
 <p>其中“leo”是我创建的账户名，“eosio”是创建者（bios 生产者）,<br><code>EOS7kAFTAwFdurP9cMQJ1zd9akvUDPNhpnWUzUrdpjcf6nGMiQuy8</code><br><code>EOS7s4cAmYBWbA5GFSDUXyepSgWYDm9CabBNxjAyuNDTJ3wGe9tvN</code>是两个公匙。</p>
 <p>5) 查看账户<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos get account leo</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p3d3seyjq.bkt.clouddn.com/eos-accout-finished2.png" alt=""></p>
+<p><img src="https://i.loli.net/2019/06/16/5d064fb757ae963787.png" alt="eos-accout-finished2.png"></p>
 <p>下篇我们创建一个智能合约，看看智能合约又是什么，智能合约和区块链又是什么关系。</p>
 
       
@@ -440,14 +440,6 @@
     
     
 
-    
-      <div>
-        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="https://i.loli.net/2019/06/15/5d03cad5e89d723449.jpg" alt="赵东春 wechat" style="width: 200px; max-width: 100%;"/>
-    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
-</div>
-
-      </div>
     
 
     
@@ -558,7 +550,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -569,7 +561,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

@@ -86,13 +86,12 @@
 <meta property="og:site_name" content="Leo Blog">
 <meta property="og:description" content="Hexo+Github [Mac环境] 假如你有一个Github帐号，我们就可以开始了，如果你说没有，就去注册好了。想想咱们注册微信时也不是很难的事吧，准备好一个邮箱就行了，真的别的都不需要。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/github.png">
-<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/hexo-1.png">
-<meta property="og:updated_time" content="2018-04-25T10:00:33.077Z">
+<meta property="og:image" content="https://i.loli.net/2019/06/16/5d0655d7abb2187285.jpg">
+<meta property="og:updated_time" content="2019-06-16T15:05:27.610Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用框架Hexo在Github上搭建个人博客">
 <meta name="twitter:description" content="Hexo+Github [Mac环境] 假如你有一个Github帐号，我们就可以开始了，如果你说没有，就去注册好了。想想咱们注册微信时也不是很难的事吧，准备好一个邮箱就行了，真的别的都不需要。">
-<meta name="twitter:image" content="http://p3d3seyjq.bkt.clouddn.com/github.png">
+<meta name="twitter:image" content="https://i.loli.net/2019/06/16/5d0655d7abb2187285.jpg">
 
 
 
@@ -389,7 +388,7 @@
       
 
       
-        <p><img src="http://p3d3seyjq.bkt.clouddn.com/github.png" alt="github"></p>
+        <p><img src="https://i.loli.net/2019/06/16/5d0655d7abb2187285.jpg" alt="298c9e51503739.58efa5e24e28f.jpg"></p>
 <p><a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>+<a href="https://github.com" target="_blank" rel="noopener">Github</a> [Mac环境]</p>
 <p>假如你有一个Github帐号，我们就可以开始了，如果你说没有，就去注册好了。想想咱们注册微信时也不是很难的事吧，准备好一个邮箱就行了，真的别的都不需要。<br><a id="more"></a></p>
 <h2 id="1-配置远程和本地Github"><a href="#1-配置远程和本地Github" class="headerlink" title="1. 配置远程和本地Github"></a>1. 配置远程和本地Github</h2><h3 id="1-1-在-Github-上创建一个仓库（Repo）"><a href="#1-1-在-Github-上创建一个仓库（Repo）" class="headerlink" title="1.1 在 Github 上创建一个仓库（Repo）"></a>1.1 在 Github 上创建一个仓库（Repo）</h3><p>登陆Github网址，用你的账号登陆进去，点右上角的<code>+</code>，弹出菜单选择<code>New repository</code>,在弹出的<code>Repository name</code>下面的文本框内按照<code>yourname.github.io</code> 这种格式输入，然后选中 <label class="input-label"><input class="input-radio" type="radio" name="radio"> <code>Public</code></label>, 最后点击绿色的<code>Create repository</code>创建成功。</p>
@@ -398,8 +397,7 @@
 <p> <em>⚠️我的git仓库名字为zhaodongchun.github.io,你的就用你自己的名字好了.</em></p>
 <h3 id="1-2-确认本地已经安装好-git-和-npm"><a href="#1-2-确认本地已经安装好-git-和-npm" class="headerlink" title="1.2 确认本地已经安装好 git 和 npm"></a>1.2 确认本地已经安装好 git 和 npm</h3><p>在终端输入下面两条命令，确认已经安装好git和npm,如果电脑还没装这两个东西的，请参照官方文档安装：<a href="http://iissnan.com/progit/" target="_blank" rel="noopener">Git入门教材</a>+<a href="https://www.npmjs.com.cn/" target="_blank" rel="noopener">npm中文文档</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br><span class="line">npm --version</span><br></pre></td></tr></table></figure>
-<h2 id="2-配置Hexo"><a href="#2-配置Hexo" class="headerlink" title="2. 配置Hexo"></a>2. 配置Hexo</h2><p><img src="http://p3d3seyjq.bkt.clouddn.com/hexo-1.png" alt="hexo-1"></p>
-<p> 1） 安装 hexo</p>
+<h2 id="2-配置Hexo"><a href="#2-配置Hexo" class="headerlink" title="2. 配置Hexo"></a>2. 配置Hexo</h2><p> 1） 安装 hexo</p>
 <p>先通读官方文档<a href="https://hexo.io/zh-cn/docs/generating.html" target="_blank" rel="noopener">hexo自动部署网站</a>,不需要看内容，快速翻一遍知道有这个工具在这里就可以了，以后需要时再调用它。然后终端输入以下命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g</span><br><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure></p>
 <p> 2） 创建本地工作目录</p>
 <p>先登陆到github，点击你的分支<code>yourname.github.io</code>,在右边有个绿色的按钮<code>Clone or download</code>,点开后点击<code>copy to clipboard</code>把自己的git地址拷贝出来，在终端cd到你希望把站点放置的位置，下面我cd到Desktop了</p>
@@ -461,14 +459,6 @@
     
     
 
-    
-      <div>
-        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="https://i.loli.net/2019/06/15/5d03cad5e89d723449.jpg" alt="赵东春 wechat" style="width: 200px; max-width: 100%;"/>
-    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
-</div>
-
-      </div>
     
 
     
@@ -575,7 +565,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -586,7 +576,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

@@ -86,15 +86,15 @@
 <meta property="og:site_name" content="Leo Blog">
 <meta property="og:description" content="上篇我们创建了一个EOS钱包，有了钱包我们可以用这个钱包创建一个账户。 请保持区块链一直运行状态。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/eos">
-<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/eos-coutract-build1.png">
-<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/eos-helloworld-set.png">
-<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/eos-helloworl-push.png">
-<meta property="og:updated_time" content="2018-04-28T16:12:03.269Z">
+<meta property="og:image" content="https://i.loli.net/2019/06/16/5d0648d1376f942134.jpeg">
+<meta property="og:image" content="https://i.loli.net/2019/06/16/5d065041a87bc32355.png">
+<meta property="og:image" content="https://i.loli.net/2019/06/16/5d06509623ea172432.png">
+<meta property="og:image" content="https://i.loli.net/2019/06/16/5d0651022911482263.png">
+<meta property="og:updated_time" content="2019-06-16T14:24:29.394Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EOS(DAWN3.0)智能合约开发04-创建eos智能合约-hello world">
 <meta name="twitter:description" content="上篇我们创建了一个EOS钱包，有了钱包我们可以用这个钱包创建一个账户。 请保持区块链一直运行状态。">
-<meta name="twitter:image" content="http://p3d3seyjq.bkt.clouddn.com/eos">
+<meta name="twitter:image" content="https://i.loli.net/2019/06/16/5d0648d1376f942134.jpeg">
 
 
 
@@ -391,7 +391,7 @@
       
 
       
-        <p><img src="http://p3d3seyjq.bkt.clouddn.com/eos" alt="eos-log"></p>
+        <p><img src="https://i.loli.net/2019/06/16/5d0648d1376f942134.jpeg" alt="EOS_logo.jpeg"></p>
 <p>上篇我们创建了一个EOS钱包，有了钱包我们可以用这个钱包创建一个账户。</p>
 <p>请保持区块链一直运行状态。</p>
 <a id="more"></a>
@@ -402,11 +402,11 @@
 <p>2）编译成abi文件</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eosiocpp -g helloworld.abi helloworld.cpp</span><br></pre></td></tr></table></figure>
 <p>结果目录如下：</p>
-<p><img src="http://p3d3seyjq.bkt.clouddn.com/eos-coutract-build1.png" alt="eos-contract-build"></p>
+<p><img src="https://i.loli.net/2019/06/16/5d065041a87bc32355.png" alt="eos-coutract-build1.png"></p>
 <h2 id="3-部署合约"><a href="#3-部署合约" class="headerlink" title="3. 部署合约"></a>3. 部署合约</h2><p>定位到<code>eos/build/contracts/helloworld/</code>目录，使用<code>PW5KTy4QS1vkCtRev1dAgMYRAm8m5x1BncU52CEj2R2Z119YvzZHv</code>解锁钱包，使用账号“leo”部署智能合约,运行指令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> helloworld</span><br><span class="line">cleos wallet open</span><br><span class="line">cleos wallet unlock</span><br><span class="line">cleos <span class="built_in">set</span> contract leo ../helloworld -p leo</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p3d3seyjq.bkt.clouddn.com/eos-helloworld-set.png" alt="eos-contract-sucess"></p>
+<p><img src="https://i.loli.net/2019/06/16/5d06509623ea172432.png" alt="eos-helloworld-set.png"></p>
 <h2 id="4-调用合约"><a href="#4-调用合约" class="headerlink" title="4. 调用合约"></a>4. 调用合约</h2><p>定位到<code>eos/build/contracts/helloworld/</code>目录，使用<code>push action</code>命令调用合约：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos push action leo hello <span class="string">'[leo]'</span> -p leo</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p3d3seyjq.bkt.clouddn.com/eos-helloworl-push.png" alt="eos-contract-welcome"></p>
+<p><img src="https://i.loli.net/2019/06/16/5d0651022911482263.png" alt="eos-helloworl-push.png"></p>
 <p>智能合约调用成功！</p>
 <p>在部署和调用合约成功后，区块链上也会有相关记录。</p>
 <p>通过操作我们知道了EOS智能合约是C++编写的一段程序，智能合约和区块链关系就像寄生。</p>
@@ -417,14 +417,6 @@
     
     
 
-    
-      <div>
-        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="https://i.loli.net/2019/06/15/5d03cad5e89d723449.jpg" alt="赵东春 wechat" style="width: 200px; max-width: 100%;"/>
-    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
-</div>
-
-      </div>
     
 
     
@@ -535,7 +527,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -546,7 +538,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

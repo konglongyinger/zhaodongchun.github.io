@@ -86,15 +86,15 @@
 <meta property="og:site_name" content="Leo Blog">
 <meta property="og:description" content="从02到05篇章我们一直是在本地单节点网络中创建钱包，智能合约。 这篇文章将创建一个多节点单主机的网络，实现两个节点间的通信。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/eos">
-<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/eos-mult-node.png">
-<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/eos-multi-node.png">
-<meta property="og:image" content="http://p3d3seyjq.bkt.clouddn.com/eos-nodeos.png">
-<meta property="og:updated_time" content="2018-04-28T16:12:22.520Z">
+<meta property="og:image" content="https://i.loli.net/2019/06/16/5d0648d1376f942134.jpeg">
+<meta property="og:image" content="https://i.loli.net/2019/06/16/5d065349c9e2146814.png">
+<meta property="og:image" content="https://i.loli.net/2019/06/16/5d065386ac42962514.png">
+<meta property="og:image" content="https://i.loli.net/2019/06/16/5d0653d2ef1d473467.png">
+<meta property="og:updated_time" content="2019-06-16T14:36:29.600Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EOS(DAWN3.0)智能合约开发06-创建eos多节点网络">
 <meta name="twitter:description" content="从02到05篇章我们一直是在本地单节点网络中创建钱包，智能合约。 这篇文章将创建一个多节点单主机的网络，实现两个节点间的通信。">
-<meta name="twitter:image" content="http://p3d3seyjq.bkt.clouddn.com/eos">
+<meta name="twitter:image" content="https://i.loli.net/2019/06/16/5d0648d1376f942134.jpeg">
 
 
 
@@ -391,7 +391,7 @@
       
 
       
-        <p><img src="http://p3d3seyjq.bkt.clouddn.com/eos" alt="eos-log"></p>
+        <p><img src="https://i.loli.net/2019/06/16/5d0648d1376f942134.jpeg" alt="EOS_logo.jpeg"></p>
 <p>从02到05篇章我们一直是在本地单节点网络中创建钱包，智能合约。</p>
 <p>这篇文章将创建一个多节点单主机的网络，实现两个节点间的通信。</p>
 <a id="more"></a>
@@ -404,12 +404,12 @@
 <h2 id="3-启动第二个节点"><a href="#3-启动第二个节点" class="headerlink" title="3. 启动第二个节点"></a>3. 启动第二个节点</h2><p>1）确认已经设置好钱包API插件文件<code>config.ini</code></p>
 <p>2）启动新节点</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/eos/build/contracts/eosio.bios</span><br><span class="line">nodeos -p leo --plugin eosio::chain_api_plugin --plugin eosio::net_api_plugin --http-server-address 127.0.0.1:8889 --p2p-listen-endpoint 127.0.0.1:9877 --p2p-peer-address 127.0.0.1:9876 --config-dir node2 --data-dir node2 --private-key [\<span class="string">"EOS7kAFTAwFdurP9cMQJ1zd9akvUDPNhpnWUzUrdpjcf6nGMiQuy8\",\"5JM8oznp4ssuTvgFEzj2C98MzkitF64g5NGPTmGu3LdYqXsiJT2\"]</span></span><br></pre></td></tr></table></figure>
-<p><img src="http://p3d3seyjq.bkt.clouddn.com/eos-mult-node.png" alt=""></p>
+<p><img src="https://i.loli.net/2019/06/16/5d065349c9e2146814.png" alt="eos-mult-node.png"></p>
 <p>如上图所示，第一个节点在产生区块（generate block），第二节点只是同步区块（push block）</p>
 <p>可以看出我们使用03篇创建好的“leo”账户来启动的新节点，”leo”账户owner权限的公私匙请查看03篇。</p>
 <p>3) 设置节点2</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos push action eosio setprods &quot;&#123; \&quot;version\&quot;: 1, \&quot;producers\&quot;: [&#123;\&quot;producer_name\&quot;: \&quot;leo\&quot;,\&quot;block_signing_key\&quot;: \&quot;EOS7kAFTAwFdurP9cMQJ1zd9akvUDPNhpnWUzUrdpjcf6nGMiQuy8\&quot;&#125;]&#125;&quot; -p eosio@active</span><br></pre></td></tr></table></figure>
-<p><img src="http://p3d3seyjq.bkt.clouddn.com/eos-multi-node.png" alt="eos-multi-node"></p>
+<p><img src="https://i.loli.net/2019/06/16/5d065386ac42962514.png" alt="eos-multi-node.png"></p>
 <p>通过设置节点，我们将账户为“leo”的第二个节点转变为活跃的生产者。</p>
 <p>查看两个运行节点的终端，结果是第一个节点不再生成（generated）区块，变成接收(push)区块并同步；第二个节点不再接收（push）区块并同步，变成生成(generated)区块。</p>
 <h2 id="4-获取节点信息"><a href="#4-获取节点信息" class="headerlink" title="4.获取节点信息"></a>4.获取节点信息</h2><p>1）第一个节点<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos --port 8888 get info</span><br></pre></td></tr></table></figure></p>
@@ -423,7 +423,7 @@
 <p>2）定位到Library/Application Support/目录,删除<code>eosio</code>文件夹。</p>
 <p>3）定位到Library/Application Support/eosio/nodeos/config目录,打开config.ini文件,通过<code>#</code>标记删除账户历史。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># plugin = eosio::account_history_api_plugin</span><br></pre></td></tr></table></figure></p>
 <p>4） 运行节点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nodeos</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p3d3seyjq.bkt.clouddn.com/eos-nodeos.png" alt=""></p>
+<p><img src="https://i.loli.net/2019/06/16/5d0653d2ef1d473467.png" alt="eos-nodeos.png"></p>
 <p>重置成功，区块链单节点启动。</p>
 
       
@@ -432,14 +432,6 @@
     
     
 
-    
-      <div>
-        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="https://i.loli.net/2019/06/15/5d03cad5e89d723449.jpg" alt="赵东春 wechat" style="width: 200px; max-width: 100%;"/>
-    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
-</div>
-
-      </div>
     
 
     
@@ -467,8 +459,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/25/eos7/" rel="prev" title="EOS(DAWN3.0)智能合约开发07-学会使用IDE创建智能合约">
-                EOS(DAWN3.0)智能合约开发07-学会使用IDE创建智能合约 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/07/04/6ti1/" rel="prev" title="什么是区块链">
+                什么是区块链 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -550,7 +542,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -561,7 +553,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
